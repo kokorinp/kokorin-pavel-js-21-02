@@ -1,8 +1,27 @@
-body {
+html, body {
     font-family:sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
-    background: #fff;
-    color: #000;
+    background: #ffffff;
+    color: #000000;
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    margin: 0;
+    padding: 0;
+}
+
+.header{
+    background-color: #009A58;
+    width: 100%;
+    padding: 1em;
+    margin-bottom: 1em;
+}
+
+.h1-title{
+    color: #ffffff;
+    font-size: 1.5em;
 }
