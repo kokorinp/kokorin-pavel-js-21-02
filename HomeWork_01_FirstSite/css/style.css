@@ -1,0 +1,166 @@
+html, body {
+    font-family:sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    background: #ffffff;
+    color: #000000;
+    margin: 0;
+    padding: 0;
+}
+
+h1, p, h2{
+    margin: 0;
+    padding: 0;
+}
+
+.header{
+    background-color: #009A58;
+    /* width: 100%; */
+    padding: 1em;
+    margin-bottom: 1em;
+}
+
+.h1-title{
+    color: #ffffff;
+    font-size: 1.5em;
+}
+
+.div-content{
+    display: flex;
+    justify-content: space-between;
+    min-height: 60vh;
+}
+
+.div-left{
+    width: 25%;
+    background-color: #F2F2F2;
+    margin-right: 1em;
+    padding: 1em 0.5em;
+}
+
+.div-right{
+    width: 75%;
+    padding: 1em 0;
+}
+
+/* тут ниже фильтр */
+.div-filter-item{
+    padding-bottom: 0.5em;
+}
+
+.p-filter-item-title{
+    font-weight: bold;
+}
+
+.div-filter-item-inputs{
+    padding-left: 1em;
+}
+
+.div-filter-item-input-checkbox{
+    padding-bottom: 0.1em;
+}
+/* конец фильтра */
+
+
+.div-content-title{
+    padding-bottom: 1em;
+    padding-left: 0.5em;
+}
+
+.h2-content-title{
+    font-size: 1.85em;
+    margin-bottom: 0.2em;
+}
+
+
+.div-content-cats{
+    display: flex;
+    justify-content: space-between;
+}
+
+.div-content-cat-item{
+    width: 50%;
+    background-color: #F2F2F2;
+    padding: 1em 0.5em;
+}
+
+.div-content-cat-item:first-child{
+    margin-right: 1em;
+}
+
+a:hover{
+    text-decoration: none;
+}
+
+.div-content-popular-title{
+    padding-left: 0.5em;
+}
+
+.h3-title{
+    font-size: 1.5em;
+}
+
+.div-content-popular-row{
+    display: flex;
+    justify-content: flex-start;
+    padding-bottom: 1em;
+}
+
+/* карточка товара */
+
+.div-content-popular-item{
+    display: flex;
+    /*justify-content: space-between;*/
+    justify-content: flex-start;
+    background-color: #F2F2F2;
+    padding: 0.5em;
+    width: 33.33%;
+    margin-right: 1em;
+}
+
+.div-content-popular-row .div-content-popular-item:last-child{
+    margin-right: 0;
+}
+
+.div-content-popular-link{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    padding-left: 0.5em;
+}
+.button{
+    margin-top: auto;
+}
+
+.div-content-popular-img{
+    background-color: #C2C2C2;
+    height: 4em;
+    width: 4em;
+    overflow: hidden;
+}
+
+.div-content-popular-img img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.button button{
+    cursor: pointer;
+    background-color: #CCCCCC;
+    border: none;
+    padding: 0.3em 1em;
+}
+
+footer{
+    background-color: #F2F2F2;
+    margin-top: 1em;
+}
+
+.footer{
+    padding: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
