@@ -14,9 +14,15 @@ h1, p, h2{
     padding: 0;
 }
 
+.body{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100vh;
+}
+
 .header{
     background-color: #009A58;
-    /* width: 100%; */
     padding: 1em;
     margin-bottom: 1em;
 }
@@ -29,7 +35,9 @@ h1, p, h2{
 .div-content{
     display: flex;
     justify-content: space-between;
-    min-height: 60vh;
+    /*min-height: 60vh;*/
+    height: 100%;
+    margin-bottom: 1em;
 }
 
 .div-left{
@@ -153,12 +161,10 @@ a:hover{
     padding: 0.3em 1em;
 }
 
-footer{
-    background-color: #F2F2F2;
-    margin-top: 1em;
-}
 
 .footer{
+    background-color: #F2F2F2;
+    margin-top: auto;
     padding: 1em;
     display: flex;
     align-items: center;
