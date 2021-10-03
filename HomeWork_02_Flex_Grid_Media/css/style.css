@@ -14,6 +14,10 @@ h1, p, h2{
     padding: 0;
 }
 
+a:hover{
+    text-decoration: none;
+}
+
 .body{
     display: flex;
     flex-direction: column;
@@ -27,12 +31,12 @@ h1, p, h2{
     margin-bottom: 1em;
 }
 
-.h1-title{
+.header__title{
     color: #ffffff;
     font-size: 1.5em;
 }
 
-.div-content{
+.main{
     display: flex;
     justify-content: space-between;
     /*min-height: 60vh;*/
@@ -40,76 +44,73 @@ h1, p, h2{
     margin-bottom: 1em;
 }
 
-.div-left{
+.main__left{
     width: 25%;
     background-color: #F2F2F2;
     margin-right: 1em;
     padding: 1em 0.5em;
 }
 
-.div-right{
+.main__right{
     width: 75%;
     padding: 1em 0;
 }
 
 /* тут ниже фильтр */
-.div-filter-item{
+.filter__item{
     padding-bottom: 0.5em;
 }
 
-.p-filter-item-title{
+.filter__title{
     font-weight: bold;
 }
 
-.div-filter-item-inputs{
+.filter__inputs{
     padding-left: 1em;
 }
 
-.div-filter-item-input-checkbox{
+.filter__input-checkbox{
     padding-bottom: 0.1em;
 }
 /* конец фильтра */
 
 
-.div-content-title{
+.content__title{
     padding-bottom: 1em;
     padding-left: 0.5em;
 }
 
-.h2-content-title{
+.content__title-text{
     font-size: 1.85em;
     margin-bottom: 0.2em;
 }
 
 
-.div-content-cats{
+.cats{
     display: flex;
     justify-content: space-between;
 }
 
-.div-content-cat-item{
+.cats__item{
     width: 50%;
     background-color: #F2F2F2;
     padding: 1em 0.5em;
-}
-
-.div-content-cat-item:first-child{
     margin-right: 1em;
 }
 
-a:hover{
-    text-decoration: none;
+.cats__item:last-child{
+    margin-right: 0;
 }
 
-.div-content-popular-title{
+.popular__title{
     padding-left: 0.5em;
 }
 
-.h3-title{
+.popular__title{
     font-size: 1.5em;
 }
 
-.div-content-popular-row{
+.popular__row{
     display: flex;
     justify-content: flex-start;
     padding-bottom: 1em;
@@ -117,7 +118,7 @@ a:hover{
 
 /* карточка товара */
 
-.div-content-popular-item{
+.popular__item{
     display: flex;
     /*justify-content: space-between;*/
     justify-content: flex-start;
@@ -127,40 +128,42 @@ a:hover{
     margin-right: 1em;
 }
 
-.div-content-popular-row .div-content-popular-item:last-child{
+.popular__item:last-child{
     margin-right: 0;
 }
 
-.div-content-popular-link{
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    padding-left: 0.5em;
-}
-.button{
-    margin-top: auto;
-}
-
-.div-content-popular-img{
+.popular__img-wrapper{
     background-color: #C2C2C2;
     height: 4em;
     width: 4em;
     overflow: hidden;
 }
 
-.div-content-popular-img img {
+.popular__img {
     object-fit: cover;
     width: 100%;
     height: 100%;
 }
 
-.button button{
+.popular__link{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: column;
+    padding-left: 0.5em;
+}
+
+.popular__link-a{
+    display: block;
+}
+
+.popular__link-button{
+    display: block;
     cursor: pointer;
     background-color: #CCCCCC;
     border: none;
     padding: 0.3em 1em;
 }
-
 
 .footer{
     background-color: #F2F2F2;
