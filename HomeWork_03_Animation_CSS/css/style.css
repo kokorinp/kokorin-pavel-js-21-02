@@ -1,5 +1,4 @@
 @charset "UTF-8";
-/* t */
 html, body {
   font-family: sans-serif;
   font-style: normal;
@@ -37,6 +36,9 @@ a:hover {
 .header {
   background-color: #009A58;
   padding: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
 .header_them_dark {
@@ -46,8 +48,35 @@ a:hover {
 .header__title {
   color: #ffffff;
   font-size: 1.5em;
+  flex-grow: 1;
 }
 
+.preloader {
+  flex-grow: 1;
+}
+
+.preloader__fish {
+  width: 2em;
+  height: auto;
+  position: relative;
+  top: 0;
+  left: 0;
+  animation: reversal 0.7s linear 0.1s forwards, move 2s ease-in 0.85s forwards, reversal 0.5s linear 2.9s reverse forwards;
+}
+
+@keyframes reversal {
+  from {
+    transform: scale(1, 1);
+  }
+  to {
+    transform: scale(-1, 1);
+  }
+}
+@keyframes move {
+  to {
+    left: calc(100% - 2em);
+  }
+}
 .main {
   display: grid;
   grid-template-columns: 15em 1fr;
@@ -110,9 +139,20 @@ a:hover {
   padding: 1em 0.5em;
   margin-right: 1em;
 }
+.cats__item:hover {
+  background-color: #ce58a7;
+}
+
+.cats__item-animation {
+  transition-property: background-color;
+  transition-duration: 1s;
+}
 
 .cats__item_them_dark {
   background-color: #6c6c6c;
+}
+.cats__item_them_dark:hover {
+  background-color: #2b5921;
 }
 
 .cats__item:last-child {
@@ -142,9 +182,20 @@ a:hover {
   background-color: #F2F2F2;
   margin: 0 0 1em;
 }
+.popular__item:hover {
+  background-color: #ce58a7;
+}
+
+.popular__item-animation {
+  transition-property: background-color;
+  transition-duration: 1s;
+}
 
 .popular__item_them_dark {
   background-color: #6c6c6c;
+}
+.popular__item_them_dark:hover {
+  background-color: #2b5921;
 }
 
 .popular__img-wrapper {
