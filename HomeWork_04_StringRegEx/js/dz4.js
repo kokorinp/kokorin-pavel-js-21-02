@@ -50,9 +50,9 @@ document.addEventListener("DOMContentLoaded", function() {
     //3. Написать функцию, преобразующее строку с датой и временем формата '12/02/2021 12-00' в строку формата 12.02.2021 12:00, используя регулярные выражения
     document.getElementById("n3").addEventListener("click", function () {
         let datestr = prompt("Введите дату в формату '12/02/2021 12-00' в строку формата:","12/02/2021 12-00");
-        const reg = /^\d\d\/\d\d\/\d{4} \d\d\-\d\d$/;
+        const reg = /^\d\d\/\d\d\/\d{4} \d\d-\d\d$/;
         const reg2 = /\//g;
-        const reg3 = /\-/g;
+        const reg3 = /-/g;
         console.log(datestr);
         if (!reg.test(datestr)){
             alert("Не верный формат даты! вот верный формат: 12/02/2021 12-00");
@@ -74,14 +74,72 @@ document.addEventListener("DOMContentLoaded", function() {
 
     //5. На вход дана строка в CamelCase, преобразовать строку в snake_case
     document.getElementById("n5").addEventListener("click", function () {
-        const str = prompt("Введите строку в стиле CamelCase: ","CamelCase");
-        const reg = /[A-Z]/;
+        const str = prompt("Введите строку в стиле CamelCase: ","FirstAnaliseConcatKooo");
+        const reg = /[A-Z]/g;
 
-        // const i = str.indexOf();
-        // const str1 = str.slice(0,i);
-        // const str2 = str.slice(i+1,str.length-1);
+        const r = str.replace(reg,function (match,offset){
+            if (offset === 0) {
+                return match.toLowerCase();
+            }
+            return "_" + match.toLowerCase();
+        })
 
+        alert(r);
+    });
+
+    //6. На вход даётся многострочная строка, найти и вернуть через alert все html комментарии
+    document.getElementById("n6").addEventListener("click", function () {
+        const str = document.getElementById("txt6").value;
+        const reg = /(?<=<!--).+?(?=-->)/g;
+
+        let s = str.replace (/[\n\r]/g, ' ').replace (/\s{2,}/g, ' ').match(reg);
+
+        if (s === null){
+            alert("Комментарии не найдены");
+            return 0;
+        }
+        let r = "";
+        if (s.length > 0){
+            for (let i = 0; i < s.length; i++){
+                r += Number(i+1) + ". " + s[i].trim() + "\n";
+            }
+        }
+        else{
+            alert("Комментарии не найдены");
+        }
+        alert(r);
     });
 
 
+    //7. На вход дана строка, вернуть через alert все числа (десятичные разделяются сиволом ".")
+    document.getElementById("n7").addEventListener("click", function () {
+        const str = prompt("Введите строку с числами: ","10 20 вафля30 40_конь50.60пень котлеты70 утюг 80,90степлер 100");
+        const reg = /(\d+\.\d+)|(\d+)/g;
+
+        alert(str.match(reg));
+    });
+
+
+    // 8. Валидация введённого значения. Вводится идентификатор документа.
+    //     Идентификатор должен состоять из четырёх частей по четыре символа,разделённых или не разделённых знаком "-".
+    //     Допускаются только символы латинского алфавита и числа. Вывести через alert "ведётся поиск",
+    //     при соответствии введённого значения, или "неверный илентификатор", при несоответствии. При несоответствии снова вывести форму для ввода строки.
+    document.getElementById("n8").addEventListener("click", function () {
+        let x = 1;
+        while (x<100) {
+            const str = prompt("Введите идентификатор документа: ", "XX1X-XX2X-X3xX-X4xX");
+            const reg = /^[a-zA-Z0-9]{4}((|-)[a-zA-Z0-9]{4}){3}$/;
+
+            if (reg.test(str)) {
+                alert("ведётся поиск");
+                x = 1000;
+            } else {
+                alert("неверный идентификатор");
+                x++; // когда-то это должно закончится :)
+                //document.getElementById("n8").click(); //это почему-то не работает
+            }
+        }
+    });
+
 });
+
