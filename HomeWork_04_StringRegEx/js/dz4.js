@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
     //1. Написать скрипт, предлагающий пользователю ввести две строки через запятую. Вывести сообщение true, если вторая строка содержится в первый, в противном случае false, регистр при проверке не учитывать.
     document.getElementById("n1").addEventListener("click", function () {
         const reg = /,/g;
-        const str = prompt("Введите 2 строки разделённых запятой:");
+        const str = prompt("Введите 2 строки разделённых запятой:",'Привет ака уку, аку');
         let c = str.match(reg);
         //console.log(c);
         if (c == null){
@@ -19,7 +19,9 @@ document.addEventListener("DOMContentLoaded", function() {
         }
         const i = str.indexOf(',');
         const str1 = str.slice(0,i).toLowerCase();
-        const str2 = str.slice(i+1,str.length-1).toLowerCase();
+        const str2 = str.slice(i+1,str.length).toLowerCase();
+        console.log(str1);
+        console.log(str2);
         alert(str1.includes(str2));
     });
 
@@ -66,16 +68,16 @@ document.addEventListener("DOMContentLoaded", function() {
 
     //4. Написать функцию, валидирующую ФИО из кирилличиских символов (считать, что отчество может оканчиваться только на "вна" или "вич" или может отсутствовать)
     document.getElementById("n4").addEventListener("click", function () {
-        const str = prompt("Введите ФИО (например: Кокорин Павел Владимирович): ","Кокорин Павел Владимирович");
-        const reg = /^[А-Я][а-я]+ [А-Я][а-я]+( [А-Я][а-я]+(вна|вич))?$/;
+        const str = prompt("Введите ФИО (например: Кокорин Павел Владимирович): ","Кокорин Павел Семёнович");
+        const reg = /^[А-ЯЁ][а-яё]+ [А-ЯЁ][а-яё]+( [А-ЯЁ][а-яё]+(вна|вич))?$/; // про букву "ё" обсуждали с коллегами :)
         alert(reg.test(str));
     });
 
 
     //5. На вход дана строка в CamelCase, преобразовать строку в snake_case
     document.getElementById("n5").addEventListener("click", function () {
-        const str = prompt("Введите строку в стиле CamelCase: ","FirstAnaliseConcatKooo");
-        const reg = /[A-Z]/g;
+        const str = prompt("Введите строку в стиле CamelCase: ","КирилицаЁдАптека");
+        const reg = /[A-Z|А-ЯЁ]/g;
 
         const r = str.replace(reg,function (match,offset){
             if (offset === 0) {
@@ -89,7 +91,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
     //6. На вход даётся многострочная строка, найти и вернуть через alert все html комментарии
     document.getElementById("n6").addEventListener("click", function () {
-        const str = document.getElementById("txt6").value;
+        //const str = document.getElementById("txt6").value;
+        const str = prompt("Введите html код с комментариями");
         const reg = /(?<=<!--).+?(?=-->)/g;
 
         let s = str.replace (/[\n\r]/g, ' ').replace (/\s{2,}/g, ' ').match(reg);
