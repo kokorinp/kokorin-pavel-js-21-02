@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
     //1. Написать скрипт, предлагающий пользователю ввести две строки через запятую. Вывести сообщение true, если вторая строка содержится в первый, в противном случае false, регистр при проверке не учитывать.
     document.getElementById("n1").addEventListener("click", function () {
         const reg = /,/g;
-        const str = prompt("Введите 2 строки разделённых запятой:",'Привет ака уку, аку');
+        const str = prompt("Введите 2 строки разделённых запятой:",'Привет ака уку, Привет');
         let c = str.match(reg);
         //console.log(c);
         if (c == null){
@@ -18,8 +18,8 @@ document.addEventListener("DOMContentLoaded", function() {
             return 0;
         }
         const i = str.indexOf(',');
-        const str1 = str.slice(0,i).toLowerCase();
-        const str2 = str.slice(i+1,str.length).toLowerCase();
+        const str1 = str.slice(0,i).toLowerCase().trim();
+        const str2 = str.slice(i+1,str.length).toLowerCase().trim();
         console.log(str1);
         console.log(str2);
         alert(str1.includes(str2));
