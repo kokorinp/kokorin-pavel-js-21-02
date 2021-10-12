@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+<!--    <meta name="description" content="Интернет-магазин Не только красивое">-->
+<!--    <meta name="keywords" content="рыба, акула, окунь">-->
+
+    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>Тема 4. Взаимодействие с пользователем, строки, их методы, регулярные выражения</title>
+</head>
+<body class="body">
+    <header class="header">
+        <h2 class="header__title">
+            Тема 4. Взаимодействие с пользователем, строки, их методы, регулярные выражения
+        </h2>
+    </header>
+
+    <main class="main">
+        <section>
+            <h4>
+                1. Написать скрипт, предлагающий пользователю ввести две строки через запятую. Вывести сообщение true, если вторая строка содержится в первый, в противном случае false, регистр при проверке не учитывать.
+            </h4>
+            <button id="n1" type="button">
+                Запуск 1
+            </button>
+        </section>
+
+        <section>
+            <h4>
+                2. Пользователь вводит строку, затем число (кол-во символов). Функция усекает строку до кол-ва символов и добавляет многоточие.
+            </h4>
+            <button id="n2" type="button">
+                Запуск 2
+            </button>
+        </section>
+
+        <section>
+            <h4>
+                3. Написать функцию, преобразующее строку с датой и временем формата '12/02/2021 12-00' в строку формата 12.02.2021 12:00, используя регулярные выражения
+            </h4>
+            <button id="n3" type="button">
+                Запуск 3
+            </button>
+        </section>
+
+        <section>
+            <h4>
+                4. Написать функцию, валидирующую ФИО из кирилличиских символов (считать, что отчество может оканчиваться только на "вна" или "вич" или может отсутствовать)
+            </h4>
+            <button id="n4" type="button">
+                Запуск 4
+            </button>
+        </section>
+
+        <section>
+            <h4>
+                5. На вход дана строка в CamelCase, преобразовать строку в snake_case
+            </h4>
+            <button id="n5" type="button">
+                Запуск 5
+            </button>
+        </section>
+
+        <section>
+            <h4>
+                6. На вход даётся многострочная строка, найти и вернуть через alert все html комментарии
+            </h4>
+            <textarea id="txt6">
+<p>asdf</p>
+<!--первый простой коммент-->
+<!--
+                второй с переносом коммент-->
+<div>
+    <p>
+        zxcv
+        <!--
+                <span>третий с тегом спан</span> и текстом далее
+        -->
+    </p>
+    <p>qwer</p>
+</div>
+            </textarea>
+            <button id="n6" type="button">
+                Запуск 6
+            </button>
+        </section>
+
+
+        <section>
+            <h4>
+                7. На вход дана строка, вернуть через alert все числа (десятичные разделяются сиволом ".")
+            </h4>
+            <button id="n7" type="button">
+                Запуск 7
+            </button>
+        </section>
+
+        <section>
+            <h4>
+                8. Валидация введённого значения. Вводится идентификатор документа.
+                Идентификатор должен состоять из четырёх частей по четыре символа,разделённых или не разделённых знаком "-".
+                Допускаются только символы латинского алфавита и числа. Вывести через alert "ведётся поиск",
+                при соответствии введённого значения, или "неверный илентификатор", при несоответствии. При несоответствии снова вывести форму для ввода строки.
+            </h4>
+            <button id="n8" type="button">
+                Запуск 8
+            </button>
+        </section>
+
+
+    </main>
+
+    <footer class="footer">
+            <div class="footer__contact">
+
+            </div>
+
+            <div class="footer__copyright">
+                &copy; 2021 Кокорин П.В.
+            </div>
+    </footer>
+
+    <script type="text/javascript" src="js/dz4.js"></script>
+</body>
+</html>
+
