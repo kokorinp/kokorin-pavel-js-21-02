@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     //5. На вход поступает массив с числами, вывести среднее арифметическое элементов массива.
     document.getElementById("n5").addEventListener("click", function () {
-        let arr = ["1", 2, 3, 4, 5, 6, 7, 'кот', 8, 9, 'котята'];  //  45/11 = 4.090909090909091
+        let arr = ["1", 2, 3, 4, 5, 6, 7, 'кот', 8, 9, 'котята', null, -0, NaN, "",undefined];  //  45/11 = 4.090909090909091
         console.log(arr);
         const avg = arr.reduce((r,e,i,a)=>{
             //if (i === 0) {console.log("INDEX 0");}
@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             if (!Number.isNaN(Number(e))){
                 r += Number(e) / a.length;
-                console.log(`${r} += Number(${e}) / ${a.length};`);
+                console.log(`${r} += Number(${e}|${Number(e)}) / ${a.length};`);
             }
             return r;
         });
@@ -178,13 +178,172 @@ document.addEventListener("DOMContentLoaded", function() {
             }else {
                 console.log(e);
             }
-            // console.log(typeof e);
+            //console.log(`${e} (${typeof e})`);
 
         });
 
         console.log(o);
     });
 
+
+    //8. Функция принимает массив чисел и два числовых значения, вернуть новый массив, содержащий элементы первого массива
+    // , значение которых попадает под диапазон переданных в функцию чисел (второе переданное число может быть больше первого)
+    document.getElementById("n8").addEventListener("click", function () {
+
+        function ArrayBetween(ar,a,b){
+            a = Number(a);
+            b = Number(b);
+            if (Number.isNaN(a)||Number.isNaN(b)){return false;}
+            if (a>b){return false;}
+
+            return ar.filter((e)=>{
+                if (!Number.isNaN(Number(e))){
+                    return Number(e)>=a&&Number(e)<=b;
+                }
+                return false;
+            });
+        }
+
+        const arr = [1, 2.7, 0, [100,200], 3, "слон", 5.3, {key71: 300,key72: 400}, "-1", -1, {key101: "qwer", key102: 500},
+                    "9 0", [1000,2000,"zxcvzxcv"], "000", null, -0, NaN, "",undefined];
+        console.log(arr);
+        console.log(ArrayBetween(arr,0,5));
+    });
+
+
+    //9. Функция принимает две строки. Вывести true, если строки являются анаграммами, в противном случае false
+    document.getElementById("n9").addEventListener("click", function () {
+        function Anagramma(a,b){
+            if (typeof a !== "string"||typeof b !== "string"){return false;}
+            if (a.length !== b.length){return false;}
+            a = a.toLowerCase().split("");
+            b = b.toLowerCase().split("");
+
+            const ccc = a.map((ae)=>{
+                //console.log(ae);
+                let i = b.findIndex(be=>be===ae);
+                if (i!==-1){
+                    b.splice(i,1);
+                    return 1;
+                }
+                return 0;
+                //return i===-1 ? 0 : 1;
+            });
+            //console.log(ccc);
+            const c = ccc.reduce((acum, e)=>{
+                return acum+e;
+            });
+
+            return c===a.length;
+        }
+
+        console.log(Anagramma("ЖУТКАЯ","УТЯЖКА"));
+        console.log(Anagramma("ЛЕСОПРОМЫШЛЕННИК","СОЛЕПРОМЫШЛЕННИК"));
+        console.log(Anagramma("Я в мире — сирота.","Я в Риме — Ариост."));
+    });
+
+
+    //10. Создать объект, выводящий в консоль все ключи и значения объекта в формате "ключ: значение"
+    // через запятую (считать, что значением ключа объекта не может быть объектом или массивом, содержащими объекты)
+    // сама функция в консоль выводиться не должна.
+    document.getElementById("n10").addEventListener("click", function () {
+        function Obj(){
+            this.print = () =>{
+                let arr = [];
+                Object.entries(this).forEach(([k,v])=>{
+                    //if (!Array.isArray(v) && v !== Object(v)) {
+                    if((typeof v === "string" || typeof v === "number") && !Number.isNaN(v)){
+                        arr.push(k+":"+v);
+                    }
+                    // console.log(typeof v);
+                })
+                console.log(arr.join());
+
+            };
+
+            this.name = "Петя";
+            this.num = 22;
+            this.obj = {
+                key1: 1,
+                key2: "str"
+            };
+            this.arr = [1,2,"asdf"];
+            this.null = null;
+            this.NaN = NaN;
+            this.undef = undefined;
+            this.nol = -0;
+        }
+
+        const o = new Obj();
+        o.print();
+    });
+
+
+
+    // 11. Создать функцию-конструктор для объекта, содержащего методы serProp (установить значение свойства)
+    // , метод принимает ключь (строка), значение (произвольное) и объект со свойствами writable, configurable, enumerable
+    // (разрешение перезаписи свойства, разрешение перечисления свойства и разрешение удаления свойства).
+    // Если какое-то из свойств в объекте отсутствует, действие должно быть разрешено
+    document.getElementById("n11").addEventListener("click", function () {
+        function Obj(){
+            this.setProp = (k,v,prop)=>{
+                if(typeof k !== "string" || Number.isNaN(k)){
+                    console.log("ERROR: Ключь имеет тип данных отличны от string")
+                    return false;
+                }
+                if (prop !== Object(prop)){
+                    console.log("ERROR: prop не является объектом");
+                    return false;
+                }
+
+                let p = {
+                    //value: v,
+                    configurable: true,
+                    enumerable: true,
+                    writable: true
+                };
+
+                Object.entries(prop).forEach(([pk,pv])=>{
+                    if (typeof pv !== "boolean"){
+                        console.log("ERROR: prop значение не является boolean");
+                        pv = true;
+                    }
+                    if (Object.keys(p).findIndex((e)=>e===pk) !== -1){
+                        p[pk] = pv;
+                    }
+                });
+
+                Object.defineProperty(this, k, p);
+                this[k] = v;
+                return true;
+            }
+
+            Object.defineProperty(this, "setProp", {
+                configurable: false,
+                enumerable: false,
+                writable: false
+            });
+        }
+
+
+        const o = new Obj();
+        console.log(o.setProp("key1",100,{
+            configurable: true,
+            enumerable: false,
+            writable: false
+        }));
+        console.log(Object.getOwnPropertyDescriptors(o));
+        console.log(o.setProp("key1",1000,{
+            enumerable: false,
+        }));
+        console.log(Object.getOwnPropertyDescriptors(o));
+        console.log(o.setProp("key1",10000,{
+            configurable: false,
+            enumerable: false,
+            writable: false
+        }));
+        console.log(Object.getOwnPropertyDescriptors(o));
+    });
 
 });
 
