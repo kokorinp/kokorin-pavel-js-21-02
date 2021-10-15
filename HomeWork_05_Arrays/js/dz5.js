@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         let summa = 0;
         for(let key in o){
-            if (!Number.isNaN(Number(o[key]))){ //если не может преобразовать, то будет NaN
+            if (typeof o[key] === "number"){
                 summa += Number(o[key]);
                 console.log(`Number(o[${key}]): ${Number(o[key])}`);
             }
@@ -89,23 +89,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     //5. На вход поступает массив с числами, вывести среднее арифметическое элементов массива.
     document.getElementById("n5").addEventListener("click", function () {
-        let arr = ["1", 2, 3, 4, 5, 6, 7, 'кот', 8, 9, 'котята', null, -0, NaN, "",undefined];  //  45/11 = 4.090909090909091
+        let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
         console.log(arr);
-        const avg = arr.reduce((r,e,i,a)=>{
-            //if (i === 0) {console.log("INDEX 0");}
-            if (i === 1){
-                if (!Number.isNaN(Number(r))){
-                    r = Number(r) / a.length;
-                    console.log(`${r} = Number(${r}) / ${a.length};`);
-                } else{ r = 0;}
-            }
-
-            if (!Number.isNaN(Number(e))){
-                r += Number(e) / a.length;
-                console.log(`${r} += Number(${e}|${Number(e)}) / ${a.length};`);
-            }
-            return r;
-        });
+        const avg = arr.reduce((r,e)=>r + e) / arr.length;
         console.log(`avg: ${avg}`);
     });
 
@@ -191,23 +177,13 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("n8").addEventListener("click", function () {
 
         function ArrayBetween(ar,a,b){
-            a = Number(a);
-            b = Number(b);
-            if (Number.isNaN(a)||Number.isNaN(b)){return false;}
             if (a>b){return false;}
-
-            return ar.filter((e)=>{
-                if (!Number.isNaN(Number(e))){
-                    return Number(e)>=a&&Number(e)<=b;
-                }
-                return false;
-            });
+            return ar.filter((e)=> e>=a&&e<=b);
         }
 
-        const arr = [1, 2.7, 0, [100,200], 3, "слон", 5.3, {key71: 300,key72: 400}, "-1", -1, {key101: "qwer", key102: 500},
-                    "9 0", [1000,2000,"zxcvzxcv"], "000", null, -0, NaN, "",undefined];
+        const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
         console.log(arr);
-        console.log(ArrayBetween(arr,0,5));
+        console.log(ArrayBetween(arr,3.1,7));
     });
 
 
