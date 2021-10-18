@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>Тема 6. Функции, контекст, область видимости, замыкания, рекурсия. Обработка ошибок, отладка</title>
+</head>
+<body class="body">
+    <header class="header">
+        <h2 class="header__title">
+            Тема 6. Функции, контекст, область видимости, замыкания, рекурсия. Обработка ошибок, отладка
+        </h2>
+    </header>
+
+    <main class="main">
+        <section>
+            <h4>
+                1. Реализовать функцию, принимающую число (индекс в последовательности Фибоначчи), функция должна вернуть значение числа. Использовать рекурсию.
+            </h4>
+            <button id="n1" type="button">
+                Запуск 1
+            </button>
+        </section>
+
+        <section>
+            <h4>
+                2. Модернизировать написанную функцию, добавив кэширование (функция “”запоминает”” входной параметр и вычесленное значение, при следующем вызыве с этим же параметром, функция не вычисляет значение, а возвращает из памяти)
+            </h4>
+            <button id="n2" type="button">
+                Запуск 2
+            </button>
+        </section>
+
+
+        <section>
+            <h4>
+                3. Разработать рекурсивную функцию, принимающую массив, содержащий массивы из двух элементов, в каждом из которых первый элемент является строкой, а второй строкой, числом, логическим значением, объектом, или таким же массивом. Функция должна преобразовать массив в объект.Пример входного значения:
+                <br />
+                [[“name”: “Anna”], [“age”: 22],[“pets”: [[“dog”: “Faust”],[“cat”: “Balthazar”]]]]
+                <br />
+                Пример возвращаемого объекта:{namee: “Anna”,age: 22,pets: {dog: “Faust”,cat: “Balthazar”}}
+            </h4>
+            <button id="n3" type="button">
+                Запуск 3
+            </button>
+        </section>
+
+
+
+    </main>
+
+    <footer class="footer">
+            <div class="footer__contact">
+
+            </div>
+
+            <div class="footer__copyright">
+                &copy; 2021 Кокорин П.В.
+            </div>
+    </footer>
+
+    <script type="text/javascript" src="js/dz6.js"></script>
+</body>
+</html>
+
