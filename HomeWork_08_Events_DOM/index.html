@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>
+        Тема 8. События браузера, обработчики событий, всплытие и погружение, взаимодействие с DOM, управляемые input'ы
+    </title>
+</head>
+<body class="body">
+    <header class="header">
+        <h2 class="header__title">
+            Тема 8. События браузера, обработчики событий, всплытие и погружение, взаимодействие с DOM, управляемые input'ы
+        </h2>
+    </header>
+
+    <main class="main">
+        <section>
+            <p>
+                Реализация таблицы с именем и номером телефона, с возможностью добавления через валидируемые инпуты новых строк.
+            </p>
+            <p>
+                Добавить три кнопки, для смены цветового оформления таблицы (каждая меняет цвет фона и текста, цвета на выбор слушателей).
+            </p>
+            <p>
+                *Усложнённое задание: реализовать в каждой строке таблицы кнопку для удаление её строки из таблицы
+            </p>
+        </section>
+
+        <section class="form">
+            <input type="text" name="name" class="form__name" id="name">
+            <input type="text" name="phone" class="form__phone" id="phone">
+            <button type="button" class="form__add" id="add">
+                Добавить
+            </button>
+        </section>
+        <section id="form-error" class="form__error">
+            ошибка
+        </section>
+        <section class="phonebook">
+            <table id="tbl" class="phonebook__table">
+                <thead>
+                    <tr>
+                        <th>#</th><th>Имя</th><th>Телефон</th><th></th>
+                    </tr>
+                </thead>
+                <tbody id="tbl_tbody">
+                    <tr>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>x</td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </section>
+    </main>
+
+    <footer class="footer">
+            <div class="footer__contact">
+
+            </div>
+
+            <div class="footer__copyright">
+                &copy; 2021 Кокорин П.В.
+            </div>
+    </footer>
+
+    <script type="text/javascript" src="js/dz8.js"></script>
+</body>
+</html>
+
