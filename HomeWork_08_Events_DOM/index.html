@@ -30,7 +30,17 @@
                 *Усложнённое задание: реализовать в каждой строке таблицы кнопку для удаление её строки из таблицы
             </p>
         </section>
-
+        <section class="theme_switcher">
+            <button type="button" id="white" class="theme__button">
+                Светлая
+            </button>
+            <button type="button" id="gray" class="theme__button">
+                Серая
+            </button>
+            <button type="button" id="black" class="theme__button">
+                Тёмная
+            </button>
+        </section>
         <section class="form">
             <input type="text" name="name" class="form__name" id="name">
             <input type="text" name="phone" class="form__phone" id="phone">
@@ -42,7 +52,7 @@
             ошибка
         </section>
         <section class="phonebook">
-            <table id="tbl" class="phonebook__table">
+            <table id="tbl" class="phonebook__table phonebook__table_gray_theme">
                 <thead>
                     <tr>
                         <th>#</th><th>Имя</th><th>Телефон</th><th></th>

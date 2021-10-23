@@ -1,3 +1,18 @@
+function addClass(cl,classname) {
+    Array.from(document.getElementsByClassName(cl)).forEach((e)=>{
+        e.classList.add(classname);
+    });
+}
+
+function removeClass(cl,classname) {
+    Array.from(document.getElementsByClassName(cl)).forEach((e)=>{
+        e.classList.remove(classname);
+    });
+}
+
+const regName = /^([А-ЯЁ]|[а-яё]|\s|-)+$/;
+const regPhone = /^((\+79)|89)(\d){9}$/;
+const regPhoneInput = /^((\+79)|89)(\d)*$/;
 const jstr = `[
   {
     "name": "Алексей Мордашов",
@@ -52,9 +67,10 @@ class People {
     }
 
     set phone(p){
+        const reg = regPhone;
         //const reg = /^((\+79)|89)(\d){9}$/g;
-        const reg = /^((\+79)|89)(\d)+$/g;
-        p = p.replace(/\s/g,"").replace(/-/g,"");
+        //const reg = /^((\+79)|89)(\d)+$/g;
+        p = p.replace(/\s/g,"").replace(/-/g,"").replace(/\(/g,"").replace(/\)/g,"");
         if (reg.test(p)){
             this.#phone = p;
         }
@@ -157,7 +173,6 @@ class PhoneBook{
     }
 }
 
-
 // const phonebook = new PhoneBook(jstr);
 // console.log(phonebook);
 // console.log(phonebook.get(6));
@@ -170,9 +185,6 @@ class PhoneBook{
 // console.log(phonebook.delete(6));
 // console.log(phonebook);
 
-
-
-
 document.addEventListener("DOMContentLoaded", function() {
 
     const phonebook = new PhoneBook(jstr);
@@ -182,36 +194,107 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const error_section = document.getElementById("form-error");
 
+    //-----------------------------------------------------------------------------------------------------------------------------------------
+
     const input_name = document.getElementById("name");
     input_name.addEventListener("input",(e)=>{
-        const reg = /^([А-ЯЁ]|[а-яё]|\s|-)+$/g;
-        if (reg.test(input_name.value) || e.inputType === "deleteContentBackward" || e.inputType ===  "deleteContentForward" || e.inputType === "deleteByCut"){
+
+        // console.log(input_name.value);
+        if (regName.test(input_name.value) || e.inputType === "deleteContentBackward" || e.inputType ===  "deleteContentForward" || e.inputType === "deleteByCut"){
             name = input_name.value;
             error_section.style.visibility = "hidden";
         }
         else {
             input_name.value = name;
-            // console.log(name);
+            //console.log(name);
             error_section.innerHTML=`Имя может содержать только кирилицу, пробелы или тире "-"`;
             error_section.style.visibility = "visible";
         }
     });
 
+    //-----------------------------------------------------------------------------------------------------------------------------------------
+
     const input_phone = document.getElementById("phone");
     input_phone.addEventListener("input",(e)=>{
-        const reg = /^(((\+79)|89)(\d)+)|\+?|8?$/g;
-        //const reg = /^((\+79)|89)(\d)+$/g;
-        if (reg.test(input_phone.value) || e.inputType === "deleteContentBackward" || e.inputType ===  "deleteContentForward" || e.inputType === "deleteByCut"){
+        let flag = false;
+        if (e.inputType === "deleteContentBackward" || e.inputType ===  "deleteContentForward" || e.inputType === "deleteByCut") {
+            flag = true;
+        }
+        else {
+            switch (input_phone.value.length) {
+                case 1:
+                    flag = /^\+|8$/.test(input_phone.value);
+                    break;
+                case 2:
+                    flag = /^\+7|89$/.test(input_phone.value);
+                    break;
+                default:
+                    flag = regPhoneInput.test(input_phone.value);
+            }
+        }
+
+        if (flag && input_phone.value.replace(/\+/,"").length <= 11){
             phone = input_phone.value;
             error_section.style.visibility = "hidden";
-            console.log(phone);
+            // console.log(phone);
         }
         else {
             input_phone.value = phone;
-
-            error_section.innerHTML=`Телефон должен начинаться с "+79" или "89" и содержать только цифры`;
+            error_section.innerHTML=`Телефон должен начинаться с "+79" или "89" и содержать только 11 цифр`;
             error_section.style.visibility = "visible";
         }
     });
+
+    //-----------------------------------------------------------------------------------------------------------------------------------------
+
+    document.getElementById("add").addEventListener("click",(e)=>{
+        if (regName.test(input_name.value) && regPhone.test(input_phone.value)){
+            error_section.style.visibility = "hidden";
+            const p = new People(input_name.value,input_phone.value)
+            phonebook.push(p);
+            phonebook.draw("tbl_tbody","delete-row");
+            input_name.value = "";
+            input_phone.value = "";
+            name = "";
+            phone = "";
+        }
+        else {
+            error_section.innerHTML=`Имя может содержать только кирилицу, пробелы или тире "-" <br />Телефон должен начинаться с "+79" или "89" и содержать только 11 цифр`;
+            error_section.style.visibility = "visible";
+        }
+    });
+
+    //-----------------------------------------------------------------------------------------------------------------------------------------
+
+    Array.from(document.getElementsByTagName("input")).forEach((e) =>{
+        e.addEventListener("keyup", function (e) {
+            //console.log(e);
+            if (e.key === "Enter"){
+                document.getElementById("add").click();
+            }
+        })
+    });
+
+
+    //-----------------------------------------------------------------------------------------------------------------------------------------
+    document.getElementById("black").addEventListener("click",(e)=>{
+        removeClass("phonebook__table","phonebook__table_white_theme");
+        removeClass("phonebook__table","phonebook__table_gray_theme");
+        addClass("phonebook__table","phonebook__table_dark_theme");
+    });
+    //-----------------------------------------------------------------------------------------------------------------------------------------
+    document.getElementById("gray").addEventListener("click",(e)=>{
+        removeClass("phonebook__table","phonebook__table_dark_theme");
+        removeClass("phonebook__table","phonebook__table_white_theme");
+        addClass("phonebook__table","phonebook__table_gray_theme");
+    });
+    //-----------------------------------------------------------------------------------------------------------------------------------------
+    document.getElementById("white").addEventListener("click",(e)=>{
+        removeClass("phonebook__table","phonebook__table_dark_theme");
+        removeClass("phonebook__table","phonebook__table_gray_theme");
+        addClass("phonebook__table","phonebook__table_white_theme");
+    });
+
+
 });
 
