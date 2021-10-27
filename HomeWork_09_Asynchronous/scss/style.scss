@@ -74,7 +74,8 @@ a:hover{
 
 
 .sw__table{
-  //width: 100%;
+  width: 100%;
+
   border-collapse: collapse;
   td, th{
     padding: 0.5rem 1rem;
@@ -96,6 +97,30 @@ a:hover{
   }
 }
 
+.sw__buttons{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding-bottom: 1rem;
+
+}
+
+.sw__buttons_item{
+  padding: 0.2rem 1rem;
+  &:hover{
+    cursor: pointer;
+  }
+
+  &:disabled{
+    cursor: not-allowed;
+  }
+}
+
+.sort{
+  &:hover{
+    cursor: pointer;
+  }
+}
 
 .footer{
   background-color: #cfcfcf;
