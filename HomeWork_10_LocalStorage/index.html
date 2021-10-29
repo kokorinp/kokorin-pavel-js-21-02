@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <link rel="shortcut icon" href="img/favicon.png">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <script type="module" src="js/dz10.js"></script>
+
+    <title>
+        Тема 10. LocalStorage, SessionStorage, cookies. Бинарные данные и файлы. JS анимации
+    </title>
+</head>
+<body class="body">
+    <header class="header">
+        <h2 class="header__title">
+            Тема 10. LocalStorage, SessionStorage, cookies. Бинарные данные и файлы. JS анимации
+        </h2>
+    </header>
+
+    <main class="main">
+        <section>
+            <p>
+                Разработать страницу, подобную разработанной в ходе урока. Страница должна содержать инпут для ввода файла и дальнейшей отправки на сервер
+                по API https://api.imgbb.com/. Отправляемый файл должен быть закодирован в base64.
+            </p>
+            <p>
+                Отправленные изображения должны выводиться на страницу. Приходящие в ответе от сервера ссылки на изображения должны сохраняться в localStorage.
+                Если при загрузке страницы в localStorage уже есть сохранённые ссылки на изображения, эти изображения должны выводиться на страницу.
+                При выполнении задания необходимо соблюдать модульную структуру (подобную продемонстрированной в уроке посвящённому модулям).
+            </p>
+            <p>
+                *Опционально: При загрузке очередного изображения на сервер необходимо отображать над инпутом лоадер, анимированный на js.
+
+                В ответе на домашнее задание прикрепить ссылку на GitHub и ссылку на профиль в imgbb.
+            </p>
+        </section>
+        <section class="file">
+            <input type="file" id="fileInput" class="file__input">
+            <button type="button" id="fileButton" class="file__button">
+                Отправить
+            </button>
+            <div id="loader" class="file__loader"></div>
+        </section>
+        <section id="gallery" class="gallery">
+
+        </section>
+    </main>
+
+    <footer class="footer">
+            <div class="footer__contact">
+
+            </div>
+
+            <div class="footer__copyright">
+                &copy; 2021 Кокорин П.В.
+            </div>
+    </footer>
+
+
+</body>
+</html>
+
