@@ -1,0 +1,1 @@
+export const ROOT_URL: string = 'https://swapi.dev/api/';

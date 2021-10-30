@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <link rel="shortcut icon" href="favicon.png">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script type="module" src="bundle.js"></script>
+
+    <title>
+        Тема 11. Typescript: примитивные типы, сложные типы, дженерики
+    </title>
+</head>
+<body class="body">
+    <header class="header">
+        <h2 class="header__title">
+            Тема 11. Typescript: примитивные типы, сложные типы, дженерики
+        </h2>
+    </header>
+
+    <main class="main">
+        <section>
+            <p>
+                3. Реализовать страницу с таблицей.<br />
+                Таблица должна содержать инфрмацию, полученную по API https://swapi.dev/api/people/ (массив объектов в свойстве "results"). А именно росте, весе и поле персонажей (поля "name", "height", "mass" и "gender" соответственно).
+                <br />*Опционально: предусмотреть возможность сортировки таблицы
+                <br />*Опционально: предусмотреть возможность перехода к следующей странице (ссылка содержится в объекте API в свойстве "next") и предыдущей странице (ссылка содержится в объекте API в свойстве "previous")
+            </p>
+
+            <div class="sw__buttons">
+                <button id="prev" type="button" class="sw__buttons_item"><<</button>
+                <div id="page"></div>
+                <button id="next" type="button" class="sw__buttons_item">>></button>
+            </div>
+            <table id="tbl" class="sw__table sw__table_dark_theme">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th><span class="sort" data-sorttype="string" data-sort="0" data-sortname="name">Имя</span></th>
+                    <th><span class="sort" data-sorttype="number" data-sort="0" data-sortname="height">Рост</span></th>
+                    <th><span class="sort" data-sorttype="number" data-sort="0" data-sortname="mass">Вес</span></th>
+                    <th><span class="sort" data-sorttype="string" data-sort="0" data-sortname="gender">Пол</span></th>
+                </tr>
+                </thead>
+                <tbody id="tbl_tbody">
+
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer class="footer">
+            <div class="footer__contact">
+
+            </div>
+
+            <div class="footer__copyright">
+                &copy; 2021 Кокорин П.В.
+            </div>
+    </footer>
+
+
+</body>
+</html>
+
