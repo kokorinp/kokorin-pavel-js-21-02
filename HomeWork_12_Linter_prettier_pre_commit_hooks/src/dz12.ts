@@ -14,8 +14,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function clearSort() {
     Array.from(document.getElementsByClassName('sort')).forEach((element: HTMLElement) => {
-      element.dataset.sort = '0';
-      element.textContent = element.textContent.replace(/[\^˅]/g, '');
+      // no-param-reassign
+      // As this article explains, this rule is meant to avoid mutating the arguments object. If you assign to a parameter and then try and access some of the parameters via the arguments object, it can lead to unexpected results. You could keep the rule intact and maintain the AirBnB style by using another variable to get a reference to the DOM element and then modify that:
+      const e = element;
+      e.dataset.sort = '0';
+      e.textContent = element.textContent.replace(/[\^˅]/g, '');
     });
   }
   Array.from(document.getElementsByClassName('sort')).forEach((e: HTMLElement) => {

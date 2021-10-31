@@ -1,3 +1,2 @@
 export const ROOT_URL = 'https://swapi.dev/api/';
-let R = 'asdf';
-R = 5;
+export default ROOT_URL;

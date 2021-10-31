@@ -18,28 +18,28 @@ export class People {
     this._name = n;
   }
 
-  set height(h: string) {
-    this._height = h;
-  }
-
-  set mass(m: string) {
-    this._mass = m;
-  }
-
-  set gender(g: string) {
-    this._gender = g;
-  }
-
   get name(): string {
     return this._name;
+  }
+
+  set height(h: string) {
+    this._height = h;
   }
 
   get height(): string {
     return this._height;
   }
 
+  set mass(m: string) {
+    this._mass = m;
+  }
+
   get mass(): string {
     return this._mass;
+  }
+
+  set gender(g: string) {
+    this._gender = g;
   }
 
   get gender(): string {
@@ -57,23 +57,31 @@ export class People {
         return this.height;
       case 'gender':
         return this.gender;
+      default:
+        return '';
     }
     return '';
+  }
+
+  GetNumberFromPeopleForSortname(sortname: string): number {
+    return Number.isNaN(Number(this.GetValForIndex(sortname).replace(/,/g, '')))
+      ? 0
+      : Number(this.GetValForIndex(sortname).replace(/,/g, ''));
   }
 }
 
 //-------------------------------------------------------------------------------------------------------------------
 interface InterfacePeople {
-    name: string;
-    height: string;
-    mass: string;
-    gender: string;
+  name: string;
+  height: string;
+  mass: string;
+  gender: string;
 }
 
 interface InterfacePeoples {
-    count: number;
-    next: string | null;
-    results: Array<InterfacePeople>;
+  count: number;
+  next: string | null;
+  results: Array<InterfacePeople>;
 }
 
 export class Peoples {
@@ -136,13 +144,13 @@ export class Peoples {
 
   //----------------------------------
   draw() {
-    (document.getElementById('next') as HTMLButtonElement).disabled = (this._current_page + 1) * 10 > this.length && !this._next;
+    (document.getElementById('next') as HTMLButtonElement).disabled = (this._current_page + 1) * 10 > this.length && !this._next; // eslint-disable-line max-len
     (document.getElementById('prev') as HTMLButtonElement).disabled = !this._current_page;
     document.getElementById('page').innerHTML = String(this._current_page + 1);
 
-    const tbl_tbody = document.getElementById('tbl_tbody');
+    const TblTbody = document.getElementById('tbl_tbody');
 
-    tbl_tbody.innerHTML = '';
+    TblTbody.innerHTML = '';
     this._arr.forEach((p, i) => {
       if (i >= this._current_page * 10 && i < (this._current_page + 1) * 10) {
         const tr = document.createElement('tr');
@@ -167,7 +175,7 @@ export class Peoples {
         td5.append(document.createTextNode(p.gender));
         tr.append(td5);
 
-        tbl_tbody.append(tr);
+        TblTbody.append(tr);
       }
     });
   }
@@ -181,7 +189,7 @@ export class Peoples {
       const z = this.fetchURL(
         this._next,
         (r: InterfacePeoples) => {
-          this._current_page++;
+          this._current_page += 1;
           this._next = r.next ? r.next : '';
           r.results.forEach((e: InterfacePeople) => {
             const p = new People(e.name, e.height, e.mass, e.gender);
@@ -194,7 +202,7 @@ export class Peoples {
       );
       z.catch(console.error);
     } else {
-      this._current_page++;
+      this._current_page += 1;
       this.draw();
     }
     return true;
@@ -204,7 +212,7 @@ export class Peoples {
     if (this._blockFetch) {
       return false;
     }
-    this._current_page--;
+    this._current_page -= 1;
     this.draw();
     return true;
   }
@@ -222,6 +230,7 @@ export class Peoples {
           if (x > y) return 1;
           if (x === y) return 0;
           if (x < y) return -1;
+          return 0;
         });
       } else {
         this._arr.sort((a: People, b: People) => {
@@ -230,24 +239,27 @@ export class Peoples {
           if (x < y) return 1;
           if (x === y) return 0;
           if (x > y) return -1;
+          return 0;
         });
       }
     } else if (sorttype === 'number') {
       if (vector === 1) {
         this._arr.sort((a: People, b: People) => {
-          const x = this.GetNumberFromPeopleForSortname(a, sortname);
-          const y = this.GetNumberFromPeopleForSortname(b, sortname);
+          const x = a.GetNumberFromPeopleForSortname(sortname);
+          const y = b.GetNumberFromPeopleForSortname(sortname);
           if (x > y) return 1;
           if (x === y) return 0;
           if (x < y) return -1;
+          return 0;
         });
       } else {
         this._arr.sort((a: People, b: People) => {
-          const x = this.GetNumberFromPeopleForSortname(a, sortname);
-          const y = this.GetNumberFromPeopleForSortname(b, sortname);
+          const x = a.GetNumberFromPeopleForSortname(sortname);
+          const y = b.GetNumberFromPeopleForSortname(sortname);
           if (x < y) return 1;
           if (x === y) return 0;
           if (x > y) return -1;
+          return 0;
         });
       }
     } else if (sorttype === 'default') {
@@ -255,11 +267,5 @@ export class Peoples {
     } else {
       throw new Error('Не верный параметр сортировки');
     }
-  }
-
-  GetNumberFromPeopleForSortname(a: People, sortname: string): number {
-    return Number.isNaN(Number(a.GetValForIndex(sortname).replace(/,/g, '')))
-      ? 0
-      : Number(a.GetValForIndex(sortname).replace(/,/g, ''));
   }
 }
