@@ -1,0 +1,13 @@
+.footer {
+    background-color: #F2F2F2;
+    /*margin-top: auto;*/
+    padding: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footer_them_dark {
+    background-color: #6c6c6c;
+}
+

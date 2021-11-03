@@ -1,0 +1,26 @@
+.preloader {
+    flex-grow: 1;
+}
+
+.preloader__fish {
+    width: 2em;
+    height: auto;
+    position: relative;
+    top: 0;
+    left: 0;
+    animation: reversal 0.7s linear 0.1s forwards, move 2s ease-in 0.85s forwards, reversal 0.5s linear 2.9s reverse forwards;
+}
+
+@keyframes reversal {
+    from {
+        transform: scale(1, 1);
+    }
+    to {
+        transform: scale(-1, 1);
+    }
+}
+@keyframes move {
+    to {
+        left: calc(100% - 2em);
+    }
+}

@@ -1,0 +1,15 @@
+
+
+.body {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto 1fr auto;
+    grid-gap: 1em;
+    align-content: space-between;
+}
+
+.body_them_dark {
+    color: #ffffff;
+    background: #000000;
+}
