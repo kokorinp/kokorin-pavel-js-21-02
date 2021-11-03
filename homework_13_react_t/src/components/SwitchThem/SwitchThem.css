@@ -1,0 +1,16 @@
+.footer__switch-them {
+    display: flex;
+    align-items: center;
+}
+
+.switch-them__input {
+    display: block;
+    width: 1.5em;
+    height: 1.5em;
+    margin: 0 0.5em 0 0;
+}
+
+.switch-them__label {
+    display: block;
+    margin: 0;
+}
