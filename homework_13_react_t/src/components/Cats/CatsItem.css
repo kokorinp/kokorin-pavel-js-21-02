@@ -1,0 +1,26 @@
+
+.cats__item {
+    width: 50%;
+    background-color: #F2F2F2;
+    padding: 1em 0.5em;
+    margin-right: 1em;
+}
+.cats__item:hover {
+    background-color: #ce58a7;
+}
+
+.cats__item-animation {
+    transition-property: background-color;
+    transition-duration: 1s;
+}
+
+.cats__item_them_dark {
+    background-color: #6c6c6c;
+}
+.cats__item_them_dark:hover {
+    background-color: #2b5921;
+}
+
+.cats__item:last-child {
+    margin-right: 0;
+}
