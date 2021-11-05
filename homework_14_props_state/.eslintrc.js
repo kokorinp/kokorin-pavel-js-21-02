@@ -44,6 +44,7 @@ module.exports = {
     'jsx-a11y/no-static-element-interactions': 'off',
     'react/no-access-state-in-setstate': 'off',
     '@typescript-eslint/no-unused-expressions': 'off',
+    '@typescript-eslint/comma-dangle': 'off',
     'max-len': [
       'error',
       {
