@@ -53,6 +53,10 @@ module.exports = {
         ignoreUrls: true,
         ignoreComments: true
       }
-    ]
+    ],
+    'class-methods-use-this': 'off',
+    'react/jsx-one-expression-per-line': 'off',
+    'react/no-unused-state': 'warn',
+    '@typescript-eslint/no-unused-vars': 'warn'
   }
 };

@@ -1,0 +1,26 @@
+.add{
+    display: flex;
+    flex-direction: column;
+}
+
+.add__text{
+    min-height: 7rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+    padding: 0.3rem;
+    margin: 1rem 0;
+}
+
+.add__button{
+    font-weight: bold;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+}
+
+
+
+@media (min-width: 768px) {
+    .add__text{
+        min-height: 20rem;
+    }
+}
