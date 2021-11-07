@@ -1,0 +1,48 @@
+.todolist__item{
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto;
+    grid-gap: 0.5rem;
+    align-content: space-between;
+    padding: 1rem 0.5rem;
+    background-color: #eecbcb;
+    border-radius: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.todolist__item_done{
+    background-color: #cbeeda;
+}
+
+.todolist__item_num{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.todolist__item_text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.todolist__item_controls{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.todolist__item_del{
+    display: flex;
+    align-items: center;
+    color: red;
+    font-weight: bold;
+    font-size: 1.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+.todolist__item_del:hover{
+    cursor: pointer;
+}

@@ -1,0 +1,40 @@
+
+.body {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto 1fr auto;
+  grid-gap: 0.5rem;
+  align-content: space-between;
+
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0;
+  background: #f8f8f8;
+  color: #000000;
+}
+
+
+
+@media (min-width: 576px) {
+  .body {
+    max-width: 540px;
+
+  }
+}
+@media (min-width: 768px) {
+  .body {
+    max-width: 720px;
+  }
+}
+@media (min-width: 992px) {
+  .body {
+    max-width: 960px;
+  }
+}
+@media (min-width: 1200px) {
+  .body {
+    max-width: 1140px;
+  }
+}
