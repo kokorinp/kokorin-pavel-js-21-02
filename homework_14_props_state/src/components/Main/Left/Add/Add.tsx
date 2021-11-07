@@ -2,14 +2,14 @@ import React from 'react';
 
 import './Add.css';
 import { GetID } from '../../../../utils/GetID/GetID';
-import { Task } from '../../Right/Todolist/Todolist';
+import { Task } from '../../../../types/types';
 
 interface State {
   val: string;
 }
 
 interface Props {
-  getNewTask: (x: Task) => void;
+  addNewTask: (x: Task) => void;
 }
 
 class Add extends React.Component<Props, State> {
@@ -23,23 +23,16 @@ class Add extends React.Component<Props, State> {
   }
 
   handleAdd() {
-    // console.log(this.state.val);
-    // console.log(GetID());
     if (this.state.val && this.state.val !== '') {
-      const todolist: Array<Task> = localStorage.getItem('todolist')
-        ? JSON.parse(localStorage.getItem('todolist') as string)
-        : [];
-
       const x = {
         id: 'g'.concat(GetID()),
-        // num: todolist.length + 1,
         text: this.state.val,
         stat: false
       };
-      todolist.push(x);
-      localStorage.setItem('todolist', JSON.stringify(todolist));
-
-      this.props.getNewTask(x);
+      this.props.addNewTask(x);
+      this.setState({
+        val: ''
+      });
     }
   }
 

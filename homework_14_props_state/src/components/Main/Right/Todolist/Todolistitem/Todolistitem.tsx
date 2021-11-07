@@ -14,15 +14,13 @@ interface Props {
 
 interface State {
   stat: boolean;
-  num: number;
 }
 
 class Todolistitem extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      stat: this.props.stat,
-      num: this.props.num
+      stat: this.props.stat
     };
     this.handleStat = this.handleStat.bind(this);
     this.handleDel = this.handleDel.bind(this);
@@ -47,7 +45,7 @@ class Todolistitem extends React.Component<Props, State> {
     return (
       <div className={'todolist__item'.concat(this.state.stat ? ' todolist__item_done' : '')}>
         <div className="todolist__item_num">
-          <span>{this.state.num}</span>
+          <span>{this.props.num}</span>
         </div>
         <div className="todolist__item_text">
           <span>{this.props.text}</span>

@@ -2,21 +2,17 @@ import React from 'react';
 
 import './Left.css';
 import Add from './Add/Add';
-import { Task } from '../Right/Todolist/Todolist';
+import { Task } from '../../../types/types';
 
 interface Props {
-  getNewTask: (x: Task) => void;
+  addNewTask: (x: Task) => void;
 }
 
 class Left extends React.Component<Props, any> {
-  constructor(props: Props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className="main__left">
-        <Add getNewTask={this.props.getNewTask} />
+        <Add addNewTask={this.props.addNewTask} />
       </div>
     );
   }

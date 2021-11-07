@@ -2,44 +2,32 @@ import React from 'react';
 
 import './Right.css';
 import { Todolist } from './Todolist/Todolist';
+import { Task } from '../../../types/types';
 
-interface Props {}
-
-interface State {
+interface Props {
+  todolist: Array<Task>;
   countall: number;
   countdone: number;
+  plusCountdone: (id: string) => void;
+  minusCountdone: (id: string) => void;
+  deleteItem: (id: string) => void;
 }
 
+interface State {}
+
 class Right extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-
-    this.state = {
-      countall: 0,
-      countdone: 0
-    };
-    this.getToRightCountall = this.getToRightCountall.bind(this);
-    this.getToRightCountdone = this.getToRightCountdone.bind(this);
-  }
-
-  getToRightCountall(x: number) {
-    this.setState({
-      countall: x
-    });
-  }
-
-  getToRightCountdone(x: number) {
-    this.setState({
-      countdone: x
-    });
-  }
-
   render() {
     return (
       <div className="main__right">
-        <Todolist getToRightCountdone={this.getToRightCountdone} getToRightCountall={this.getToRightCountall} />
+        <Todolist
+          key="Todolist1"
+          todolist={this.props.todolist}
+          plusCountdone={this.props.plusCountdone}
+          minusCountdone={this.props.minusCountdone}
+          deleteItem={this.props.deleteItem}
+        />
         <section className="results">
-          Всего тасок: {this.state.countall} / Выполнено: {this.state.countdone}
+          Всего тасок: {this.props.countall} / Выполнено: {this.props.countdone}
         </section>
       </div>
     );
