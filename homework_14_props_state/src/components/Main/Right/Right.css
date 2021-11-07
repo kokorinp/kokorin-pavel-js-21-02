@@ -1,0 +1,14 @@
+.main__right {
+    padding: 1rem;
+    background: #eeeeee;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+.results{
+    font-size: 0.8rem;
+    font-weight: bold;
+}

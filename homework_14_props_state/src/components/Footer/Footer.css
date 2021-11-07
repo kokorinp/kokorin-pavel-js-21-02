@@ -1,0 +1,12 @@
+.footer {
+    padding: 1rem;
+    background: #eeeeee;
+    border-radius: 0.5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+
