@@ -1,0 +1,25 @@
+.header{
+    padding: 0 1rem;
+    background: #eeeeee;
+    border-radius: 0.5rem;
+}
+
+.header__title{
+    text-align: center;
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+}
+
+.header__text{
+    margin: 0.5rem 0;
+    font-size: 0.7em;
+}
+
+.header__link{
+    color: #545454;
+    border-bottom: 1px dotted #545454;
+}
+
+.header__link:hover{
+    border-bottom: 1px solid #545454;
+}
