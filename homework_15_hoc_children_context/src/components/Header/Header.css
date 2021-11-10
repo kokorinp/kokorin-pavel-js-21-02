@@ -1,7 +1,7 @@
 .header{
     padding: 0 1rem;
-    background: #eeeeee;
-    border-radius: 0.5rem;
+    background-color: #FFFFFF;
+    border-radius: 0.1rem;
 }
 
 .header__title{

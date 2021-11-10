@@ -1,18 +1,17 @@
 
 .body {
-  min-height: 100vh;
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: auto 1fr auto;
   grid-gap: 0.5rem;
   align-content: space-between;
-
   width: 100%;
   margin-right: auto;
   margin-left: auto;
   padding: 0;
-  background: #f8f8f8;
+  background-color: transparent;
   color: #000000;
+  min-height: 100vh;
 }
 
 

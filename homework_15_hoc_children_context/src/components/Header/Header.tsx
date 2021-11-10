@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 import './Header.css';
 
-class Header extends React.Component<any, any> {
-  render() {
+class Header extends React.Component<{}, {}> {
+  render(): ReactNode {
     return (
       <header className="header">
         <h1 className="header__title">Тема 15. Методы жизненного цикла / HOC / Children / Context</h1>
