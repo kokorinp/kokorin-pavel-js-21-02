@@ -1,0 +1,29 @@
+.paginator__select{
+    margin-left: 2rem;
+}
+
+.select{
+    font-size: 1rem;
+    background-color: #ffffff;
+    padding: 0.3rem 0.4rem;
+    border: 1px solid #000000;
+}
+
+.select_dark{
+    background-color: #000000;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+}
+
+.select__option{
+    background-color: #ffffff;
+}
+
+.select__option_dark{
+    background-color: #000000;
+}
+
+.select__option:hover, .select:hover{
+    cursor: pointer;
+}
+

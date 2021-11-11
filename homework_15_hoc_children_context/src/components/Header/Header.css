@@ -4,6 +4,10 @@
     border-radius: 0.1rem;
 }
 
+.header_dark{
+    background-color: #383838;
+}
+
 .header__title{
     text-align: center;
     font-size: 1.1rem;
@@ -20,6 +24,15 @@
     border-bottom: 1px dotted #545454;
 }
 
+.header__link_dark{
+    color: #e1e1e1;
+    border-bottom: 1px dotted #e1e1e1;
+}
+
 .header__link:hover{
     border-bottom: 1px solid #545454;
+}
+
+.header__link_dark:hover{
+    border-bottom: 1px solid #e1e1e1;
 }
