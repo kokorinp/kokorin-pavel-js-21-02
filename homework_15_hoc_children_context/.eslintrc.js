@@ -59,6 +59,9 @@ module.exports = {
     'react/no-unused-state': 'warn',
     '@typescript-eslint/no-unused-vars': 'warn',
     'jsx-a11y/label-has-associated-control': ['error', { required: { some: ['nesting', 'id'] } }],
-    'jsx-a11y/label-has-for': ['error', { required: { some: ['nesting', 'id'] } }]
+    'jsx-a11y/label-has-for': ['error', { required: { some: ['nesting', 'id'] } }],
+    'object-curly-newline': 'off',
+    'implicit-arrow-linebreak': 'off',
+    'no-nested-ternary': 'warn'
   }
 };

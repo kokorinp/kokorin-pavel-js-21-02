@@ -8,19 +8,41 @@ interface State {}
 
 interface Props {
   darkTheme: boolean;
+  page: number;
+  limit: number;
+  total: number;
+  setNewPage: (page: number) => void;
+  setNewLimit: (limit: number) => void;
 }
 
 class Paginator extends React.Component<Props, State> {
   render(): ReactNode {
+    const AllPages: Array<number> = [];
+    for (let i = 1; i <= (this.props.total + 1) / this.props.limit; i += 1) {
+      AllPages.push(i);
+    }
+    if ((this.props.total + 1) % this.props.limit > 0) {
+      AllPages.push(AllPages.length + 1);
+    }
+
     return (
       <div className="paginator">
         <div className="pages">
-          <Page key={1} num={1} active={false} darkTheme={this.props.darkTheme ? this.props.darkTheme : false} />
-          <Page key={2} num={2} active={false} darkTheme={this.props.darkTheme ? this.props.darkTheme : false} />
-          <Page key={3} num={3} active darkTheme={this.props.darkTheme ? this.props.darkTheme : false} />
-          <Page key={4} num={4} active={false} darkTheme={this.props.darkTheme ? this.props.darkTheme : false} />
+          {AllPages.map((e) => (
+            <Page
+              key={e}
+              num={e}
+              active={e === this.props.page + 1}
+              darkTheme={this.props.darkTheme ? this.props.darkTheme : false}
+              setNewPage={this.props.setNewPage}
+            />
+          ))}
         </div>
-        <Paginatorselect darkTheme={this.props.darkTheme ? this.props.darkTheme : false} />
+        <Paginatorselect
+          darkTheme={this.props.darkTheme ? this.props.darkTheme : false}
+          limit={this.props.limit}
+          setNewLimit={this.props.setNewLimit}
+        />
       </div>
     );
   }
