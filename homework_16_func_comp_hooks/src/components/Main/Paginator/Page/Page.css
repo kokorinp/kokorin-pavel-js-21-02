@@ -1,0 +1,28 @@
+.page{
+    background-color: #ffffff;
+    padding: 0.3rem 0.4rem;
+    border: 1px solid #000000;
+    margin-top: 0.4rem;
+}
+
+.page_dark{
+    background-color: #000000;
+    border: 1px solid #ffffff;
+}
+
+.page:not(:last-child){
+    margin-right: 0.4rem;
+}
+
+.page:hover{
+    cursor: pointer;
+}
+
+.page_active {
+    background-color: #ADD8E6;
+    color: #ffffff;
+}
+
+.page_active_dark {
+    color: #000000;
+}
