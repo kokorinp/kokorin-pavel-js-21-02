@@ -1,0 +1,13 @@
+.footer {
+    padding: 1rem;
+    background-color: #FFFFFF;
+    border-radius: 0.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footer_dark{
+    background-color: #383838;
+}
+
