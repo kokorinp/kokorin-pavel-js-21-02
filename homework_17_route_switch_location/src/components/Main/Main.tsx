@@ -5,7 +5,12 @@ import Paginator from "./Paginator/Paginator";
 import Cards from "./Cards/Cards";
 import Themeswitcher from "./Themeswitcher/Themeswitcher";
 import { getListUsers } from "../../api/api";
-import { ListResponseTypeUserPreview, UserPreview } from "../../types/types";
+import {
+  ListResponseTypeUserPreview,
+  ResponseError,
+  UserPreview,
+} from "../../types/types";
+import Formuser from "./Formuser/Formuser";
 
 const Main = () => {
   const p: number = localStorage.getItem("page")
@@ -44,7 +49,7 @@ const Main = () => {
         localStorage.setItem("limit", resp.limit.toString());
         localStorage.setItem("total", resp.total.toString());
       },
-      console.error
+      ({ error }: ResponseError) => console.error(error)
     );
   };
 
@@ -71,22 +76,23 @@ const Main = () => {
     <main className="main">
       <BrowserRouter>
         <Switch>
-          <Route path="/user">
-            <h1 className="main__title">Пользователи</h1>
+          <Route path="/user/:id">
+            <h1 className="main__title">Пользователь</h1>
+            <Formuser />
           </Route>
           <Route path="/">
             <h1 className="main__title">Главная</h1>
+            <Cards ListUsers={ListUsers} />
+            <Paginator
+              page={page}
+              limit={limit}
+              total={total}
+              setNewPage={setNewPage}
+              setNewLimit={setNewLimit}
+            />
           </Route>
         </Switch>
       </BrowserRouter>
-      <Cards ListUsers={ListUsers} />
-      <Paginator
-        page={page}
-        limit={limit}
-        total={total}
-        setNewPage={setNewPage}
-        setNewLimit={setNewLimit}
-      />
       <Themeswitcher />
     </main>
   );

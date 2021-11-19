@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-
+import { Link } from "react-router-dom";
 import "./Card.css";
 import UserNameWithHelper from "../../../../wrappers/UserNameWithHelper/UserNameWithHelper";
 import { ThemeContext } from "../../../../contexts/ThemeContext";
@@ -27,7 +27,9 @@ const Card = ({ img, img_alt, name, id }: Props) => {
           user_id={id}
           darkTheme={themeContext.darkTheme ? themeContext.darkTheme : false}
         >
-          {name}
+          <Link to={`/user/${id}`} className="card__user_name__link">
+            {name}
+          </Link>
         </UserNameWithHelper>
       </div>
     </div>

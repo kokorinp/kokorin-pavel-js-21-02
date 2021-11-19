@@ -34,6 +34,10 @@
     flex-grow: 1;
 }
 
+.card__user_name__link{
+    color: inherit;
+}
+
 @media (min-width: 576px) {
     .card{
         width: calc(50% - 1.25rem);

@@ -15,7 +15,7 @@ const Page = ({ num, setNewPage, active }: Props) => {
     setNewPage(page);
   };
   const themeContext = useContext(ThemeContext);
-  return (
+  return num !== -1 ? (
     <div
       className={`page ${active ? "page_active" : ""} ${
         themeContext.darkTheme ? "page_dark" : ""
@@ -24,6 +24,10 @@ const Page = ({ num, setNewPage, active }: Props) => {
       onClick={handleSelectPage}
     >
       {num}
+    </div>
+  ) : (
+    <div className={`page ${themeContext.darkTheme ? "page_dark" : ""}`}>
+      ...
     </div>
   );
 };
