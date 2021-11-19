@@ -1,0 +1,21 @@
+.themeswitcher {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.themeswitcher__input {
+    display: block;
+    width: 1.5em;
+    height: 1.5em;
+    margin: 0 0.5em 0 0;
+}
+
+.themeswitcher__label {
+    display: block;
+    margin-right: 0.5rem;
+}
+
+.themeswitcher__input:hover, .themeswitcher__label:hover{
+    cursor: pointer;
+}
