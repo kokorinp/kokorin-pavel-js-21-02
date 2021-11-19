@@ -1,0 +1,14 @@
+.main {
+    /*display: grid;*/
+    /*grid-template-columns: 1fr;*/
+    /*grid-template-rows: auto auto;*/
+    /*grid-column-gap: 0.5rem;*/
+    /*grid-row-gap: 0.5rem;*/
+    /*padding: 0 1rem;*/
+    background-color: transparent;
+}
+
+
+.main__title{
+    padding: 1rem 0;
+}
