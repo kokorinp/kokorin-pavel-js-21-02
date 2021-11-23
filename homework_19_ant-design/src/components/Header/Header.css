@@ -1,0 +1,52 @@
+.header{
+    padding: 0 1rem;
+    background-color: #FFFFFF;
+    border-radius: 0.1rem;
+}
+
+.header_dark{
+    background-color: #383838;
+}
+
+.header__title{
+    text-align: center;
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+}
+
+.header__text{
+    margin: 0.5rem 0;
+    font-size: 0.9em;
+}
+
+.header__link{
+    color: #545454;
+    border-bottom: 1px dotted #545454;
+}
+
+.header__link_dark{
+    color: #e1e1e1;
+    border-bottom: 1px dotted #e1e1e1;
+}
+
+.header__link:hover{
+    border-bottom: 1px solid #545454;
+}
+
+.header__link_dark:hover{
+    border-bottom: 1px solid #e1e1e1;
+}
+
+.header__button{
+    background-color: #ffffff;
+    padding: 0.3rem 0.4rem;
+    border: 1px solid #000000;
+    margin: 0.4rem 0;
+    color: #000000;
+}
+
+.header__button_dark {
+    background-color: #000000;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+}
