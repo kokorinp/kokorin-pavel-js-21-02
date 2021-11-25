@@ -12,6 +12,7 @@ import {
 import Formuser from "./Formuser/Formuser";
 import "./Main.css";
 import Menuapp from "./Menuapp/Menuapp";
+import Regform from "./Regform/Regform";
 
 const Main = (): ReactElement => {
   let p: number = 0;
@@ -90,6 +91,7 @@ const Main = (): ReactElement => {
           <Switch>
             <Route path="/reg">
               <h1 className="main__title">Регистрация</h1>
+              <Regform />
             </Route>
             <Route path="/user/:id">
               <h1 className="main__title">Пользователь</h1>

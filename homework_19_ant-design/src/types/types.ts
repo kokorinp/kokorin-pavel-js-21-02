@@ -17,11 +17,11 @@ export interface ListResponseTypeUserPreview
   extends ListResponseType<UserPreview> {}
 
 export interface LocationType {
-  street: string;
-  city: string;
-  state: string;
-  country: string;
-  timezone: string;
+  street?: string;
+  city?: string;
+  state?: string;
+  country?: string;
+  timezone?: string;
 }
 
 export interface UserFullType {
@@ -35,7 +35,7 @@ export interface UserFullType {
   registerDate?: string;
   phone?: string;
   picture?: string;
-  location: LocationType;
+  location?: LocationType;
 }
 
 export interface ResponseError {

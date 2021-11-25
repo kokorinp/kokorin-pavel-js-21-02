@@ -11,6 +11,7 @@ import {
   LIMIT_FIELD,
   APP_TOKEN,
   API_BASE_URL,
+  METHOD_POST,
 } from "../const/const";
 
 const doGetRequest = <T>(
@@ -65,30 +66,29 @@ export const getUserById = (
   );
 };
 
-/*
-export const getListUsers = (
-  page: number,
-  limit: number,
-  callback: (resp: ListResponseTypeUserPreview) => void,
-  errorCallback?: (resp: any) => void
-) =>
-  fetch(
-    API_GET_LIST_USERS.concat("?")
-      .concat(LIMIT_FIELD)
-      .concat("=")
-      .concat(limit.toString())
-      .concat("&")
-      .concat(PAGE_FIELD)
-      .concat("=")
-      .concat(page.toString()),
-    {
-      method: METHOD_GET,
-      headers: new Headers({
-        [APP_ID_FIELD]: APP_TOKEN,
-      }),
-    }
-  )
-    .then((response) => response.json())
-    .then((response: ListResponseTypeUserPreview) => callback(response))
-    .catch(errorCallback);
-*/
+const doPostRequest = <T>(
+  path: string,
+  callback: (resp: T) => void,
+  errorCallback?: (resp: ResponseError) => void,
+  finalCallback?: () => void,
+  searchParams?: Record<string, any>,
+  jsonBody?: Record<string, any>
+) => {
+  const url = new URL(path, API_BASE_URL);
+  searchParams &&
+    Object.entries(searchParams).forEach((params) => {
+      url.searchParams.append(params[0], params[1].toString());
+    });
+  fetch(url.toString(), {
+    method: METHOD_POST,
+    headers: new Headers({
+      [APP_ID_FIELD]: APP_TOKEN,
+      "Content-Type": "application/json",
+    }),
+    body: JSON.stringify(jsonBody),
+  })
+    .then((resp) => resp.json())
+    .then(callback)
+    .catch(errorCallback)
+    .finally(finalCallback);
+};

@@ -16,22 +16,6 @@ const Formuser = (): ReactElement => {
   const params = useParams<ParamsType>();
   const history = useHistory();
   const themeContext = useContext(ThemeContext);
-  // const getData = (): void => {
-  //   getListUsers(
-  //     page,
-  //     limit,
-  //     (resp: ListResponseTypeUserPreview) => {
-  //       setLimit(resp.limit);
-  //       setPage(resp.page);
-  //       setTotal(resp.total);
-  //       setListUsers(resp.data);
-  //       localStorage.setItem("page", resp.page.toString());
-  //       localStorage.setItem("limit", resp.limit.toString());
-  //       localStorage.setItem("total", resp.total.toString());
-  //     },
-  //     console.error
-  //   );
-  // };
 
   useEffect(() => {
     setLoading(true);
@@ -60,6 +44,24 @@ const Formuser = (): ReactElement => {
       .concat(d.getFullYear().toString());
   };
 
+  const renderLocation = (): ReactElement => {
+    if (user.location) {
+      return (
+        <section>
+          <p>
+            <strong>Location</strong>
+          </p>
+          <p>Country: {user.location.country}</p>
+          <p>City: {user.location.city}</p>
+          <p>State: {user.location.state}</p>
+          <p>Street: {user.location.street}</p>
+          <p>Timezone: {user.location.timezone}</p>
+        </section>
+      );
+    }
+    return <span />;
+  };
+
   useScrollToTop();
 
   const renderFormUser = (): ReactElement => (
@@ -86,16 +88,7 @@ const Formuser = (): ReactElement => {
         <p>Born date: {formatDate(user.dateOfBirth as string)}</p>
         <p>Register date: {formatDate(user.registerDate as string)}</p>
         <p>Phone: {user.phone}</p>
-        <section>
-          <p>
-            <strong>Location</strong>
-          </p>
-          <p>Country: {user.location.country}</p>
-          <p>City: {user.location.city}</p>
-          <p>State: {user.location.state}</p>
-          <p>Street: {user.location.street}</p>
-          <p>Timezone: {user.location.timezone}</p>
-        </section>
+        {renderLocation()}
       </div>
     </div>
   );

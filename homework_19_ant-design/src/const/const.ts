@@ -8,3 +8,4 @@ export const PAGE_FIELD: string = "page";
 export const LIMIT_FIELD: string = "limit";
 
 export const METHOD_GET: string = "GET";
+export const METHOD_POST: string = "POST";
