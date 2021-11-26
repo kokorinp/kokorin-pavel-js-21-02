@@ -17,25 +17,41 @@ export interface ListResponseTypeUserPreview
   extends ListResponseType<UserPreview> {}
 
 export interface LocationType {
-  street?: string;
-  city?: string;
-  state?: string;
-  country?: string;
-  timezone?: string;
+  [key: string]: string;
+  street: string;
+  city: string;
+  state: string;
+  country: string;
+  timezone: string;
 }
 
+// export interface UserFullType {
+//   id?: string;
+//   title?: string;
+//   firstName?: string;
+//   lastName?: string;
+//   gender?: string;
+//   email?: string;
+//   dateOfBirth?: string;
+//   registerDate?: string;
+//   phone?: string;
+//   picture?: string;
+//   location?: LocationType;
+// }
+
 export interface UserFullType {
-  id?: string;
-  title?: string;
-  firstName?: string;
-  lastName?: string;
-  gender?: string;
-  email?: string;
-  dateOfBirth?: string;
-  registerDate?: string;
-  phone?: string;
-  picture?: string;
-  location?: LocationType;
+  [key: string]: string | LocationType;
+  id: string;
+  title: string;
+  firstName: string;
+  lastName: string;
+  gender: string;
+  email: string;
+  dateOfBirth: string;
+  registerDate: string;
+  phone: string;
+  picture: string;
+  location: LocationType;
 }
 
 export interface ResponseError {

@@ -15,10 +15,10 @@ interface Props {
 
 const Paginator = ({ page, limit, total, setNewPage, setNewLimit }: Props) => {
   const AllPages: Array<number> = [];
-  for (let i = 1; i <= (total + 1) / limit; i += 1) {
+  for (let i = 1; i <= total / limit; i += 1) {
     if (
       i <= 3 ||
-      i >= (total + 1) / limit - 2 ||
+      i >= total / limit - 2 ||
       i === page ||
       i === page + 1 ||
       i === page + 2
@@ -29,7 +29,7 @@ const Paginator = ({ page, limit, total, setNewPage, setNewLimit }: Props) => {
     }
   }
 
-  if ((total + 1) % limit > 0) {
+  if (total % limit > 0) {
     AllPages.push(AllPages.length + 1);
   }
 

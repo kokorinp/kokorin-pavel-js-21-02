@@ -12,6 +12,7 @@ import {
   APP_TOKEN,
   API_BASE_URL,
   METHOD_POST,
+  API_REG,
 } from "../const/const";
 
 const doGetRequest = <T>(
@@ -87,8 +88,17 @@ const doPostRequest = <T>(
     }),
     body: JSON.stringify(jsonBody),
   })
-    .then((resp) => resp.json())
+    .then((resp: Response) => resp.json())
     .then(callback)
     .catch(errorCallback)
     .finally(finalCallback);
+};
+
+export const userRegistration = (
+  user: UserFullType,
+  callback: (userData: UserFullType) => void,
+  errorCallback?: (resp: any) => void,
+  finalCallback?: () => void
+) => {
+  doPostRequest(API_REG, callback, errorCallback, finalCallback, {}, user);
 };

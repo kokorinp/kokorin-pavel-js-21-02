@@ -4,7 +4,10 @@
 
 .regform_dark .ant-form-item-label > label,
 .regform_dark .ant-form-item .ant-picker-input .ant-picker-suffix,
-.regform_dark .ant-form-item .ant-select-arrow{
+.regform_dark .ant-form-item .ant-select-arrow,
+.regform_dark .ant-form-item-extra,
+.regform_dark .ant-upload-list-picture,
+.regform_dark .ant-upload-list-picture .anticon-delete{
     color: #FFFFFF;
 }
 
@@ -15,7 +18,9 @@
 .regform_dark .ant-form-item .ant-input,
 .regform_dark .ant-form-item .ant-picker,
 .regform_dark .ant-form-item-has-error .ant-picker:hover,
-.regform_dark .ant-form-item .ant-picker-input input{
+.regform_dark .ant-form-item .ant-picker-input input,
+.regform_dark .ant-btn,
+.regform_dark .ant-upload-list-item{
     background-color: #383838;
     color: #FFFFFF;
 }
