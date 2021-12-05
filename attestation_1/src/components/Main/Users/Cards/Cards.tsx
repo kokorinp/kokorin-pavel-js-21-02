@@ -1,8 +1,8 @@
 import React from "react";
 
-import "./Cards.css";
+import "./Cards.scss";
 import Card from "./Card/Card";
-import { UserPreview } from "../../../types/types";
+import { UserPreview } from "../../../../types/api/api";
 
 interface Props {
   ListUsers: Array<UserPreview>;

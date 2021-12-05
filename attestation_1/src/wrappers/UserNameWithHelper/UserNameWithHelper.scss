@@ -1,0 +1,40 @@
+.user_name_with_helper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    &__message {
+        position: absolute;
+        font-size: 0.7rem;
+        padding: 0.3rem;
+        background-color: white;
+        border: 1px #606060 dotted;
+        border-radius: 5px;
+        left: 0;
+        top: 0;
+        animation-iteration-count: 1;
+        animation-duration: 0.5s;
+        animation-name: showHelper;
+        animation-fill-mode: forwards;
+    }
+
+    @keyframes showHelper {
+        from {
+            top: -1.5rem;
+            opacity: 0;
+        }
+        50% {
+            opacity: 1;
+        }
+        to {
+            top: -2.5rem;
+        }
+    }
+
+    &__message_dark{
+        background-color: #252525;
+        border: 1px #a6a6a6 dotted;
+        color: #ffffff;
+    }
+}

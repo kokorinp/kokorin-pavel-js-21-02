@@ -1,5 +1,5 @@
 import React, { ReactNode, SyntheticEvent, useState } from "react";
-import "./UserNameWithHelper.css";
+import "./UserNameWithHelper.scss";
 
 interface Props {
   children: ReactNode;

@@ -1,7 +1,7 @@
 import React, { SyntheticEvent, useContext } from "react";
 
 import "./Paginatorselect.css";
-import { ThemeContext } from "../../../../contexts/ThemeContext";
+import { ThemeContext } from "../../../../../contexts/ThemeContext";
 
 interface Props {
   limit: number;

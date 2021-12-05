@@ -1,0 +1,2 @@
+export const USERS_LOAD = "USERS/LOAD";
+export const USERS_LOAD_SUCCESS = "USERS/LOAD_SUCCESS";

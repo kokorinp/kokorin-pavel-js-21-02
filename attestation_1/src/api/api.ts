@@ -2,7 +2,7 @@ import {
   ListResponseTypeUserPreview,
   ResponseError,
   UserFullType,
-} from "../types/types";
+} from "../types/api/api";
 import {
   API_GET_LIST_USERS,
   APP_ID_FIELD,
@@ -13,7 +13,7 @@ import {
   API_BASE_URL,
   METHOD_POST,
   API_REG,
-} from "../const/const";
+} from "../const/api/dummyapi.io";
 
 const doGetRequest = <T>(
   path: string,

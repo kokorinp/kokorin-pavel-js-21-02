@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import "./Card.css";
-import UserNameWithHelper from "../../../../wrappers/UserNameWithHelper/UserNameWithHelper";
-import { ThemeContext } from "../../../../contexts/ThemeContext";
+import "./Card.scss";
+import UserNameWithHelper from "../../../../../wrappers/UserNameWithHelper/UserNameWithHelper";
+import { ThemeContext } from "../../../../../contexts/ThemeContext";
 
 interface Props {
   img: string;

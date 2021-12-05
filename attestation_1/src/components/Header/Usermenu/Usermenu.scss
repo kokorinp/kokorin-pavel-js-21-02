@@ -1,0 +1,30 @@
+@import "../../../const/const";
+
+.user_menu{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding-right: 0.5rem;
+}
+
+.user_menu__divider{
+  padding: 0 0.5rem;
+  color: $text_color;
+}
+
+.user_menu__link{
+  font-size: 0.9rem;
+  color: $text_color;
+}
+
+.user_menu_dark{
+  .user_menu__link, .user_menu__divider{
+    color: $text_color_dark;
+  }
+}
+//.user_menu__divider_dark, .user_menu__link_dark{
+//  color: $text_color_dark;
+//}
+
+

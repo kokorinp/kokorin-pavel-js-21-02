@@ -3,7 +3,7 @@ import React from "react";
 import "./Paginator.css";
 import Page from "./Page/Page";
 import Paginatorselect from "./Paginatorselect/Paginatorselect";
-import GetID from "../../../utils/GetID/GetID";
+import GetID from "../../../../utils/GetID/GetID";
 
 interface Props {
   page: number;

@@ -2,7 +2,7 @@ import React, { ReactElement, useContext, useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router";
 import "./Formuser.css";
 import useScrollToTop from "../../../hooks/useScrollToTop";
-import { ResponseError, UserFullType } from "../../../types/types";
+import { ResponseError, UserFullType } from "../../../types/api/api";
 import { getUserById } from "../../../api/api";
 import { ThemeContext } from "../../../contexts/ThemeContext";
 

@@ -1,5 +1,5 @@
 import { UploadRequestOption } from "rc-upload/es/interface";
-import { IMGBB_KEY, IMGBB_URL, METHOD_POST } from "../const/const";
+import { IMGBB_KEY, IMGBB_URL } from "../const/const";
 
 function uploadBase64IMGBB(options: UploadRequestOption) {
   const reader = new FileReader();
@@ -9,7 +9,7 @@ function uploadBase64IMGBB(options: UploadRequestOption) {
     formData.set("key", IMGBB_KEY);
     formData.set("image", (reader.result as string).replace(/^.*,/, ""));
     await fetch(IMGBB_URL, {
-      method: METHOD_POST,
+      method: "POST",
       body: formData,
     })
       .then((resp: Response) => resp.json())

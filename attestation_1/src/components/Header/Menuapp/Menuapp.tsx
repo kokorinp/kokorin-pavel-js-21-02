@@ -5,9 +5,10 @@ import React, {
   SyntheticEvent,
   useEffect,
 } from "react";
+import "./Menuapp.scss";
 import { useHistory } from "react-router";
 import { Menu } from "antd";
-import { HomeOutlined, UserAddOutlined } from "@ant-design/icons";
+import { IdcardOutlined, TeamOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { ThemeContext } from "../../../contexts/ThemeContext";
 
@@ -16,13 +17,11 @@ const Menuapp = (): ReactElement => {
   const history = useHistory();
 
   useEffect(() => {
-    // Похож на componentDidMount
-    if (history.location.pathname.indexOf("/reg") !== -1) {
-      setPath("reg");
+    if (history.location.pathname.indexOf("/posts") !== -1) {
+      setPath("posts");
     } else {
-      setPath("user");
+      setPath("users");
     }
-    // return () => console.log("Форма размонтирована"); // Будет выполнено, по аналогии с componentWillUnmount
   }, []);
 
   interface TypeClickEvent {
@@ -39,16 +38,17 @@ const Menuapp = (): ReactElement => {
   const themeContext = useContext(ThemeContext);
   return (
     <Menu
+      className="menu"
       theme={themeContext.darkTheme ? "dark" : "light"}
       mode="horizontal"
       selectedKeys={[path]}
       onClick={handleClick}
     >
-      <Menu.Item key="user" icon={<HomeOutlined />}>
-        <Link to="/user">Пользователи</Link>
+      <Menu.Item key="users" icon={<TeamOutlined />}>
+        <Link to="/users">Пользователи</Link>
       </Menu.Item>
-      <Menu.Item key="reg" icon={<UserAddOutlined />}>
-        <Link to="/reg">Регистрация</Link>
+      <Menu.Item key="posts" icon={<IdcardOutlined />}>
+        <Link to="/posts">Посты</Link>
       </Menu.Item>
     </Menu>
   );

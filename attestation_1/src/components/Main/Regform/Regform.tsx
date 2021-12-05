@@ -5,7 +5,7 @@ import { UploadOutlined } from "@ant-design/icons";
 import { useHistory } from "react-router";
 import "./Regform.css";
 import { ThemeContext } from "../../../contexts/ThemeContext";
-import { LocationType, UserFullType } from "../../../types/types";
+import { LocationType, UserFullType } from "../../../types/api/api";
 import { TIME_ZONE_LIST } from "../../../const/const";
 import { userRegistration } from "../../../api/api";
 import uploadBase64IMGBB from "../../../api/imgbbapi";
