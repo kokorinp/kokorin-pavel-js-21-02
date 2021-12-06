@@ -29,12 +29,14 @@ const UserNameWithHelper = ({ children, user_id, darkTheme }: Props) => {
       onFocus={mouseOver}
     >
       {hovered ? (
-        <div
-          className={`user_name_with_helper__message ${
-            darkTheme ? "user_name_with_helper__message_dark" : ""
-          }`}
-        >
-          user_id: {user_id}
+        <div className="user_name_with_helper__message_wrapper">
+          <div
+            className={`user_name_with_helper__message ${
+              darkTheme ? "user_name_with_helper__message_dark" : ""
+            }`}
+          >
+            user_id: {user_id}
+          </div>
         </div>
       ) : (
         ""

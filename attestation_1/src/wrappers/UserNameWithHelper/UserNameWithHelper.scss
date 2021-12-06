@@ -5,18 +5,24 @@
     justify-content: center;
 
     &__message {
-        position: absolute;
+        &_wrapper{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            animation-iteration-count: 1;
+            animation-duration: 0.5s;
+            animation-name: showHelper;
+            animation-fill-mode: forwards;
+            display: flex;
+            justify-content: center;
+
+        }
         font-size: 0.7rem;
         padding: 0.3rem;
         background-color: white;
         border: 1px #606060 dotted;
         border-radius: 5px;
-        left: 0;
-        top: 0;
-        animation-iteration-count: 1;
-        animation-duration: 0.5s;
-        animation-name: showHelper;
-        animation-fill-mode: forwards;
     }
 
     @keyframes showHelper {

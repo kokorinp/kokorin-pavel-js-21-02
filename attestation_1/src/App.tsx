@@ -11,6 +11,7 @@ import {
   ThemeContextState,
 } from "./contexts/ThemeContext";
 import Preloader from "./components/Preloader/Preloader";
+import Errormsg from "./components/Errormsg/Errormsg";
 
 const App = (): ReactElement => (
   <ThemeContextProvider>
@@ -20,6 +21,7 @@ const App = (): ReactElement => (
           className={`container ${context.darkTheme ? "container_dark" : ""}`}
         >
           <Preloader />
+          <Errormsg />
           <div className="body">
             <BrowserRouter>
               <Route path="/">

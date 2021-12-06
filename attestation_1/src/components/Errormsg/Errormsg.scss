@@ -1,0 +1,58 @@
+@import "../../const/const";
+
+.error_msg{
+  position: fixed;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
+  &__fog{
+    position: fixed;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: $bg_dark;
+    z-index: 9999;
+    opacity: 0.3;
+    &_dark{
+      background-color: $bg;
+    }
+  }
+
+
+  &__modal{
+    z-index: 10000;
+    background-color: $bg_block;
+    color: $text_color;
+    border-radius: 0.5rem;
+    &_dark{
+      background-color: $bg_block_dark;
+      color: $text_color_dark;
+    }
+
+    display: flex;
+    flex-direction: column;
+
+    &__title{
+      padding: 1rem;
+      border-bottom: 1px solid #6c6c6c;
+    }
+
+    &__body{
+      padding: 1rem;
+      border-bottom: 1px solid #6c6c6c;
+    }
+
+    &__footer{
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+    }
+  }
+}

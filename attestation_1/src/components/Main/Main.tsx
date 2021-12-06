@@ -2,7 +2,7 @@ import React, { ReactElement, useEffect, useState } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 
 import Formuser from "./Formuser/Formuser";
-import "./Main.css";
+import "./Main.scss";
 import Regform from "./Regform/Regform";
 import Users from "./Users/Users";
 
