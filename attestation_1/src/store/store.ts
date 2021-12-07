@@ -4,6 +4,7 @@ import { all, fork } from "redux-saga/effects";
 import usersReducer from "../reducers/users";
 import usersWatcher from "../sagas/users";
 import preloadReducer from "../reducers/preload";
+import errorReducer from "../reducers/error";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -13,6 +14,7 @@ const store = createStore(
     // auth: authReducer,
     users: usersReducer,
     isLoading: preloadReducer,
+    isError: errorReducer,
     // comments: commentsReducer,
     // posts: postsReducer,
   }),

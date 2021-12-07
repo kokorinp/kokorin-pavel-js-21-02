@@ -13,6 +13,7 @@ import { getUsers } from "../api/users";
 import { usersLoadActionSuccess } from "../actions/users";
 import { ListResponseTypeUserPreview } from "../types/api/api";
 import { preloadOffAction, preloadOnAction } from "../actions/preloader";
+import { ErrorOnAction } from "../actions/error";
 
 function* usersLoad(
   params: UsersAction
@@ -20,7 +21,7 @@ function* usersLoad(
   AllEffect<CallEffect<any>> | PutEffect<UsersAction>,
   void,
   [any, any]
-  > {
+> {
   try {
     switch (params.type) {
       case USERS_LOAD: {
@@ -43,7 +44,12 @@ function* usersLoad(
   } catch (e: any) {
     // yield put(usersErrorAction(e.toString()));
     // yield put(e.toString());
-    console.log(e.toString());
+    // console.log(e.toString());
+    yield put(
+      ErrorOnAction(
+        e.name.toString().concat(" - ").concat(e.message.toString())
+      )
+    );
     yield put(preloadOffAction()); // скрыть прелоадер
   }
 }

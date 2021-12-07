@@ -20,8 +20,6 @@ const App = (): ReactElement => (
         <div
           className={`container ${context.darkTheme ? "container_dark" : ""}`}
         >
-          <Preloader />
-          <Errormsg />
           <div className="body">
             <BrowserRouter>
               <Route path="/">
@@ -31,6 +29,8 @@ const App = (): ReactElement => (
               </Route>
             </BrowserRouter>
           </div>
+          <Preloader />
+          <Errormsg />
         </div>
       )}
     </ThemeContext.Consumer>

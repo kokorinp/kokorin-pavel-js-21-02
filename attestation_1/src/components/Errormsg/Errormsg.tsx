@@ -1,21 +1,29 @@
 import React, { ReactElement, useContext } from "react";
+import { CloseOutlined } from "@ant-design/icons";
 import { connect } from "react-redux";
+import { bindActionCreators, Dispatch } from "redux";
+import { ErrorOffAction } from "../../actions/error";
 import { State } from "../../types/state";
-
 import "./Errormsg.scss";
 import { ThemeContext } from "../../contexts/ThemeContext";
+import ErrorState from "../../types/error/state";
+import { ErrorActionFunc } from "../../types/error/action";
 
 interface Props {
-  isLoading: boolean;
+  isError: ErrorState;
+  offError: ErrorActionFunc;
 }
 
-const Errormsg = (): ReactElement => {
-  const isLoading = true;
+const Errormsg = ({ isError, offError }: Props): ReactElement => {
+  console.log(isError);
+  const handleOff = () => {
+    offError();
+  };
   const themeContext = useContext(ThemeContext);
   return (
     <div
       className={`error_msg ${themeContext.darkTheme ? "error_msg_dark" : ""} ${
-        isLoading ? "" : "error_msg_hide"
+        isError.isError ? "" : "error_msg_hide"
       }`}
     >
       <div
@@ -31,7 +39,12 @@ const Errormsg = (): ReactElement => {
           themeContext.darkTheme ? "error_msg__modal_dark" : ""
         }`}
       >
-        <div className="error_msg__modal__title">Ошибка!</div>
+        <div className="error_msg__modal__title">
+          <div className="error_msg__modal__title__text">Ошибка!</div>
+          <div className="error_msg__modal__title__close">
+            <CloseOutlined onClick={handleOff} />
+          </div>
+        </div>
         <div className="error_msg__modal__body">
           <div className="error_msg__modal__body__img_wrapper">
             <img
@@ -40,11 +53,17 @@ const Errormsg = (): ReactElement => {
               alt="Ошибка"
             />
           </div>
-          <div className="error_msg__modal__body__text">Ошибка ололоев!</div>
+          <div className="error_msg__modal__body__text">
+            {isError.textError}
+          </div>
         </div>
         <div className="error_msg__modal__footer">
-          <button className="error_msg__modal__footer__button" type="button">
-            Ясно, понятно
+          <button
+            className="error_msg__modal__footer__button"
+            type="button"
+            onClick={handleOff}
+          >
+            Ясно, понятно!
           </button>
         </div>
       </div>
@@ -52,9 +71,13 @@ const Errormsg = (): ReactElement => {
   );
 };
 
-/*
-export default connect((state: State) => ({
-  isLoading: state.isLoading.isLoading,
-}))(Errormsg);
-*/
-export default Errormsg;
+export default connect(
+  (state: State) => ({
+    isError: state.isError,
+  }),
+  (dispatch: Dispatch) => ({
+    offError: bindActionCreators(ErrorOffAction, dispatch),
+  })
+)(Errormsg);
+
+// export default Errormsg;

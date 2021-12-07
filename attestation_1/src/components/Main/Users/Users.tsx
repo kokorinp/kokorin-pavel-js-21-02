@@ -15,6 +15,7 @@ interface Props {
 }
 
 const Users = ({ users, getUsers }: Props): ReactElement => {
+  // console.log(users);
   const setNewPage = (newp: number): void => {
     getUsers(newp, users.limit);
   };
