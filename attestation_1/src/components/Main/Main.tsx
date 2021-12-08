@@ -1,7 +1,7 @@
 import React, { ReactElement, useEffect, useState } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 
-import Formuser from "./Formuser/Formuser";
+import User from "./User/User";
 import "./Main.scss";
 import Regform from "./Regform/Regform";
 import Users from "./Users/Users";
@@ -14,11 +14,11 @@ const Main = (): ReactElement => (
       </Route>
       <Route path="/reg">
         <h1 className="main__title">Регистрация</h1>
-        <Regform />
+        {/* <Regform /> */}
       </Route>
       <Route path="/user/:id">
         <h1 className="main__title">Пользователь</h1>
-        <Formuser />
+        <User />
       </Route>
       <Route path="/users">
         <h1 className="main__title">Пользователи</h1>

@@ -64,32 +64,32 @@ const Regform = (): ReactElement => {
       id: "",
     };
 
-    Object.entries(values).forEach((e: Array<any>) => {
-      if (Object.prototype.hasOwnProperty.call(loc, e[0])) {
-        loc[e[0]] = e[1] as string;
-      }
-
-      if (Object.prototype.hasOwnProperty.call(user, e[0])) {
-        let v: string = "";
-        if (e[0] === "dateOfBirth") {
-          // v = e[1].format("l") as string;
-          v = e[1].format("YYYY-MM-DD") as string;
-        }
-        if (e[0] === "picture") {
-          v = (e[1] as Array<{ response: string }>)[0].response;
-        } else {
-          v = e[1] as string;
-        }
-        user[e[0]] = v;
-      }
-    });
+    // Object.entries(values).forEach((e: Array<any>) => {
+    //   if (Object.prototype.hasOwnProperty.call(loc, e[0])) {
+    //     loc[e[0]] = e[1] as string;
+    //   }
+    //
+    //   if (Object.prototype.hasOwnProperty.call(user, e[0])) {
+    //     let v: string = "";
+    //     if (e[0] === "dateOfBirth") {
+    //       // v = e[1].format("l") as string;
+    //       v = e[1].format("YYYY-MM-DD") as string;
+    //     }
+    //     if (e[0] === "picture") {
+    //       v = (e[1] as Array<{ response: string }>)[0].response;
+    //     } else {
+    //       v = e[1] as string;
+    //     }
+    //     user[e[0]] = v;
+    //   }
+    // });
     // console.log(user);
 
     userRegistration(
       user,
       (resp: UserFullType) => {
-        // console.log(resp);
-        history.push("/user/".concat(resp.id));
+        console.log(resp);
+        // history.push("/user/".concat(resp.id));
       },
       (resp: any) => console.error(resp)
     );

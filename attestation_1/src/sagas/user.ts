@@ -7,34 +7,36 @@ import {
   CallEffect,
   PutEffect,
 } from "redux-saga/effects";
-import { UsersAction } from "../types/users/actions";
-import { USERS_LOAD } from "../const/users/actions";
-import { getUsers } from "../api/users";
-import { usersLoadActionSuccess } from "../actions/users";
-import { ListResponseTypeUserPreview } from "../types/api/api";
+import { UserAction } from "../types/user/actions";
+import { USER_LOAD } from "../const/user/actions";
+import { getUser } from "../api/user";
+import { userLoadActionSuccess } from "../actions/user";
+import { UserFullType } from "../types/api/api";
 import { preloadOffAction, preloadOnAction } from "../actions/preloader";
 import { ErrorOnAction } from "../actions/error";
 
-function* usersLoad(
-  params: UsersAction
+function* userLoad(
+  params: UserAction
 ): Generator<
-  AllEffect<CallEffect<any>> | PutEffect<UsersAction>,
+  AllEffect<CallEffect<any>> | PutEffect<UserAction>,
   void,
   [any, any]
 > {
   try {
     switch (params.type) {
-      case USERS_LOAD: {
+      case USER_LOAD: {
+        // const user: UserFullType = {};
+        // user.id = "228";
         yield put(preloadOnAction()); // показать прелоадер
-        const [users]: Array<ListResponseTypeUserPreview> = yield all([
-          call(getUsers, params.page as number, params.limit as number),
+        const [user]: Array<UserFullType> = yield all([
+          call(getUser, params.id as string),
         ]);
-        // console.group("saga USERS_LOAD");
-        // console.log(users);
-        // console.groupEnd();
-        // if (users.hasOwnProperty("data")) {
-        if ("data" in users) {
-          yield put(usersLoadActionSuccess(users));
+
+        console.group("saga USER_LOAD");
+        console.log(user);
+        console.groupEnd();
+        if ("id" in user) {
+          yield put(userLoadActionSuccess(user));
           yield put(preloadOffAction()); // скрыть прелоадер
         }
         break;
@@ -54,6 +56,6 @@ function* usersLoad(
   }
 }
 
-export default function* usersWatcher() {
-  yield takeEvery(USERS_LOAD, usersLoad);
+export default function* userWatcher() {
+  yield takeEvery(USER_LOAD, userLoad);
 }
