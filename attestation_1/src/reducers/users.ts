@@ -4,8 +4,6 @@ import { UsersAction } from "../types/users/actions";
 import { UsersState } from "../types/users/state";
 
 const initialState: UsersState = {
-  error: "",
-  // user: {} as UserType,
   users: [],
   page: 0,
   limit: 20,

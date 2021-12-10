@@ -1,7 +1,7 @@
 import React, { SyntheticEvent, useContext } from "react";
 
 import "./Page.css";
-import { ThemeContext } from "../../../../../contexts/ThemeContext";
+import { ThemeContext } from "../../../contexts/ThemeContext";
 
 interface Props {
   num: number;

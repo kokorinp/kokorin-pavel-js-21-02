@@ -1,63 +1,57 @@
-.form_user{
+@import "../../../const/const";
+
+.user{
     display: flex;
-    flex-direction: row;
-    background-color: #ffffff;
+    background-color: $bg_block;
+    border-radius: 1.5rem;
     padding: 1rem;
-    margin: 1rem 0;
-    border-radius: 0.1rem;
-}
 
-.form_user_dark{
-    background-color: #383838;
-}
+    &__left{
+        margin-right: 1rem;
+        &__img_wrapper{
+            width: 20rem;
+            height: 20rem;
+            overflow: hidden;
+            border-radius: 1rem;
+            //margin: 0.3rem 0.3rem 0.3rem 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-.form_user__img{
-    padding-right: 1rem;
-}
+        &__img{
+            width: 100%;
+            height: 100%;
+        }
+    }
 
-.form_user__img__wrapper{
-    width: 100px;
-    height: 100px;
-    overflow: hidden;
-    border: 1px #C2C2C2 dotted;
-    border-radius: 0.1rem;
-}
+    &__right{
+        //height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-grow: 1;
+        &__userinfo{
+            &__title{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding-bottom: 0.7rem;
+                &__text{
+                    font-weight: bold;
+                }
 
-.form_user__img__wrapper_dark{
-    border: 1px #606060 dotted;
-}
+                &__edit{
+                    font-size: 0.8rem;
+                    &:hover{
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
 
-.form_user__img__img{
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
+    &_dark{
+        background-color: $bg_block_dark;
+    }
 }
-
-.form_user__text{
-    flex-grow: 1;
-}
-
-.button_back{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-}
-
-.button_back__button{
-    background-color: #ffffff;
-    padding: 0.3rem 0.4rem;
-    border: 1px solid #000000;
-    margin: 0.4rem 0;
-    color: #000000;
-}
-
-.button_back__button_dark {
-    background-color: #000000;
-    border: 1px solid #ffffff;
-    color: #ffffff;
-}
-
-.button_back__button:hover{
-    cursor: pointer;
-}
-

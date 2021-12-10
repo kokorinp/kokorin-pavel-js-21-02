@@ -35,7 +35,8 @@ const UserNameWithHelper = ({ children, user_id, darkTheme }: Props) => {
               darkTheme ? "user_name_with_helper__message_dark" : ""
             }`}
           >
-            user_id: {user_id}
+            {/* user_id: {user_id} */}
+            {user_id}
           </div>
         </div>
       ) : (

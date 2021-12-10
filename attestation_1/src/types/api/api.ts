@@ -39,21 +39,20 @@ export interface UserFullType {
   location?: LocationType;
 }
 
-// export interface UserFullType {
-//   [key: string]: string | LocationType;
-//   id: string;
-//   title: string;
-//   firstName: string;
-//   lastName: string;
-//   gender: string;
-//   email: string;
-//   dateOfBirth: string;
-//   registerDate: string;
-//   phone: string;
-//   picture: string;
-//   location: LocationType;
-// }
-
 export interface ResponseError {
   error: string;
 }
+
+// ----------------------- POST ----------------------------------
+export interface PostPreview {
+  id: string;
+  text: string;
+  image: string;
+  likes: number;
+  tags: Array<string>;
+  publishDate: string;
+  owner: UserPreview;
+}
+
+export interface ListResponseTypePostPreview
+  extends ListResponseType<PostPreview> {}
