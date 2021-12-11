@@ -2,6 +2,7 @@ import produce from "immer";
 import { USER_LOAD, USER_LOAD_SUCCESS } from "../const/user/actions";
 import { UserAction } from "../types/user/actions";
 import { UserState } from "../types/user/state";
+import { DateToString } from "../utils/DateUtils";
 
 const initialState: UserState = {
   edit: false,
@@ -32,15 +33,6 @@ const UserLoadSuccess = (dr: UserState, ua: UserAction): UserState => {
     }
   };
 
-  const getDate = (d: string): string => {
-    const o: Intl.DateTimeFormatOptions = {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    };
-    return new Date(d).toLocaleString("ru", o);
-  };
-
   return {
     ...dr,
     edit: ua.edit || false,
@@ -50,8 +42,8 @@ const UserLoadSuccess = (dr: UserState, ua: UserAction): UserState => {
     lastName: ua.lastName || "",
     gender: ua.gender ? getGender(ua.gender) : "",
     email: ua.email || "",
-    dateOfBirth: ua.dateOfBirth ? getDate(ua.dateOfBirth) : "",
-    registerDate: ua.registerDate ? getDate(ua.registerDate) : "",
+    dateOfBirth: ua.dateOfBirth ? DateToString(ua.dateOfBirth) : "",
+    registerDate: ua.registerDate ? DateToString(ua.registerDate) : "",
     phone: ua.phone || "",
     picture: ua.picture || "",
     location: ua.location || {},

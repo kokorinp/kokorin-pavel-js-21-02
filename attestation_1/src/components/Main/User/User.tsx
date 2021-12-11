@@ -23,8 +23,6 @@ interface Props {
 
 const User = ({ user, loadUser }: Props): ReactElement => {
   const themeContext = useContext(ThemeContext);
-  console.log(user);
-
   const params = useParams<ParamsType>();
 
   useEffect(() => {

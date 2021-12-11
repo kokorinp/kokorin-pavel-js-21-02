@@ -3,7 +3,7 @@ import React from "react";
 import "./Paginator.css";
 import Page from "./Page/Page";
 import Paginatorselect from "./Paginatorselect/Paginatorselect";
-import GetID from "../../utils/GetID/GetID";
+// import GetID from "../../utils/GetID/GetID";
 
 interface Props {
   page: number;
@@ -45,14 +45,22 @@ const Paginator = ({ page, limit, total, setNewPage, setNewLimit }: Props) => {
   return (
     <div className="paginator">
       <div className="pages">
-        {resultAllPages.map((e: number) => (
-          <Page
-            key={GetID()}
-            num={e}
-            active={e === page + 1}
-            setNewPage={setNewPage}
-          />
-        ))}
+        {resultAllPages.map((e: number, i: number, arr: Array<number>) => {
+          const dotted: boolean = e === -1;
+          const eee: number =
+            e === -1
+              ? Math.floor(arr[i - 1] + (arr[i + 1] - arr[i - 1]) / 2)
+              : e;
+          return (
+            <Page
+              key={eee}
+              num={eee}
+              active={eee === page + 1}
+              setNewPage={setNewPage}
+              dotted={dotted}
+            />
+          );
+        })}
       </div>
       <Paginatorselect limit={limit} setNewLimit={setNewLimit} />
     </div>

@@ -6,7 +6,6 @@ export interface PostsAction extends Action {
   total?: number;
   page?: number;
   limit?: number;
-  edit?: boolean;
 }
 
 export interface PostsActionFunc {

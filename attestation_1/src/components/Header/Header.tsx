@@ -1,5 +1,5 @@
 import React, { ReactElement, useContext } from "react";
-import { Link } from "react-router-dom";
+
 import { ThemeContext } from "../../contexts/ThemeContext";
 
 import "./Header.scss";

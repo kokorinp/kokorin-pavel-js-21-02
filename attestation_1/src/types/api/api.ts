@@ -3,6 +3,7 @@ export interface ListResponseType<T> {
   total: number;
   page: number;
   limit: number;
+  error?: string;
 }
 
 export interface UserPreview {
@@ -26,6 +27,7 @@ export interface LocationType {
 }
 
 export interface UserFullType {
+  error?: string;
   id?: string;
   title?: string;
   firstName?: string;
@@ -56,3 +58,15 @@ export interface PostPreview {
 
 export interface ListResponseTypePostPreview
   extends ListResponseType<PostPreview> {}
+
+export interface PostFullType {
+  error?: string;
+  id?: string;
+  text?: string;
+  image?: string;
+  likes?: number;
+  link?: string;
+  tags?: Array<string>;
+  publishDate?: string;
+  owner?: UserPreview;
+}

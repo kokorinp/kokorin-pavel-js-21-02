@@ -21,7 +21,7 @@ function* userLoad(
   AllEffect<CallEffect<any>> | PutEffect<UserAction>,
   void,
   [any, any]
-> {
+  > {
   try {
     switch (params.type) {
       case USER_LOAD: {
@@ -32,9 +32,9 @@ function* userLoad(
           call(getUser, params.id as string),
         ]);
 
-        console.group("saga USER_LOAD");
-        console.log(user);
-        console.groupEnd();
+        // console.group("saga USER_LOAD");
+        // console.log(user);
+        // console.groupEnd();
         if ("id" in user) {
           yield put(userLoadActionSuccess(user));
           yield put(preloadOffAction()); // скрыть прелоадер

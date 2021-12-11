@@ -7,15 +7,16 @@ interface Props {
   num: number;
   setNewPage: (page: number) => void;
   active: boolean;
+  dotted: boolean;
 }
 
-const Page = ({ num, setNewPage, active }: Props) => {
+const Page = ({ num, setNewPage, active, dotted }: Props) => {
   const handleSelectPage = (e: SyntheticEvent): void => {
     const page = Number(e.currentTarget.getAttribute("data-page")) - 1;
     setNewPage(page);
   };
   const themeContext = useContext(ThemeContext);
-  return num !== -1 ? (
+  return (
     <div
       className={`page ${active ? "page_active" : ""} ${
         themeContext.darkTheme ? "page_dark" : ""
@@ -23,11 +24,7 @@ const Page = ({ num, setNewPage, active }: Props) => {
       data-page={num}
       onClick={handleSelectPage}
     >
-      {num}
-    </div>
-  ) : (
-    <div className={`page ${themeContext.darkTheme ? "page_dark" : ""}`}>
-      ...
+      {dotted ? "..." : num}
     </div>
   );
 };

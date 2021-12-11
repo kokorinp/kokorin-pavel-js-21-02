@@ -1,9 +1,9 @@
-import React, { ReactElement, useEffect, useState } from "react";
+import React, { ReactElement } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 
 import User from "./User/User";
 import "./Main.scss";
-import Regform from "./Regform/Regform";
+
 import Users from "./Users/Users";
 import Posts from "./Posts/Posts";
 

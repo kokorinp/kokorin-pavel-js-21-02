@@ -5,9 +5,13 @@ import usersReducer from "../reducers/users";
 import preloadReducer from "../reducers/preload";
 import errorReducer from "../reducers/error";
 import userReducer from "../reducers/user";
+import postsReducer from "../reducers/posts";
+import postReducer from "../reducers/post";
 
 import usersWatcher from "../sagas/users";
 import userWatcher from "../sagas/user";
+import postsWatcher from "../sagas/posts";
+import postWatcher from "../sagas/post";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -16,6 +20,8 @@ const store = createStore(
     // объединяет
     // auth: authReducer,
     users: usersReducer,
+    posts: postsReducer,
+    post: postReducer,
     isLoading: preloadReducer,
     isError: errorReducer,
     user: userReducer,
@@ -30,6 +36,8 @@ function* rootSaga() {
     // fork(authWatcher),
     fork(usersWatcher),
     fork(userWatcher),
+    fork(postsWatcher),
+    fork(postWatcher),
     // fork(commentsWatcher),
     // fork(postsWatcher)
   ]);

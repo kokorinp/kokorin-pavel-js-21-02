@@ -8,12 +8,12 @@ interface Props {
   setNewLimit: (limit: number) => void;
 }
 
-const arroptions: Array<number> = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50];
+const arroptions: Array<number> = [5, 6, 12, 18, 24, 30, 36, 42, 48, 54];
 
 const Paginatorselect = ({ limit, setNewLimit }: Props) => {
   const handleSelectLimit = (e: SyntheticEvent) => {
     const l: number = Number.isNaN((e.target as HTMLSelectElement).value)
-      ? 20
+      ? 6
       : Number((e.target as HTMLSelectElement).value);
     setNewLimit(l);
   };
@@ -25,7 +25,7 @@ const Paginatorselect = ({ limit, setNewLimit }: Props) => {
         defaultValue={limit}
         onChange={handleSelectLimit}
       >
-        {arroptions.map((e) => (
+        {arroptions.map((e: number) => (
           <option
             className={`select__option ${
               themeContext.darkTheme ? "select__option_dark" : ""

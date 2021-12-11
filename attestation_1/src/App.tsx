@@ -12,6 +12,7 @@ import {
 } from "./contexts/ThemeContext";
 import Preloader from "./components/Preloader/Preloader";
 import Errormsg from "./components/Errormsg/Errormsg";
+import PostModal from "./components/PostModal/PostModal";
 
 const App = (): ReactElement => (
   <ThemeContextProvider>
@@ -29,6 +30,7 @@ const App = (): ReactElement => (
               </Route>
             </BrowserRouter>
           </div>
+          <PostModal />
           <Preloader />
           <Errormsg />
         </div>
