@@ -19,3 +19,12 @@ export interface UserAction extends Action {
 export interface UserActionFunc {
   (id: string): UserAction;
 }
+
+export interface UserPostsAction extends Action {
+  id?: string;
+  page?: number;
+  limit?: number;
+}
+export interface UserPostsActionFunc {
+  (id: string, page: number, limit: number): UserPostsAction;
+}

@@ -1,6 +1,16 @@
-import { UserAction, UserActionFunc } from "../types/user/actions";
-import { USER_LOAD, USER_LOAD_SUCCESS } from "../const/user/actions";
-import { UserFullType } from "../types/api/api";
+import {
+  UserAction,
+  UserActionFunc,
+  UserPostsActionFunc,
+} from "../types/user/actions";
+import {
+  USER_LOAD,
+  USER_LOAD_SUCCESS,
+  USER_POSTS_LOAD,
+} from "../const/user/actions";
+import { ListResponseTypePostPreview, UserFullType } from "../types/api/api";
+import { PostsAction } from "../types/posts/actions";
+import { POSTS_LOAD_SUCCESS } from "../const/posts/actions";
 
 export const userLoadAction: UserActionFunc = (newid: string) => ({
   type: USER_LOAD,
@@ -26,4 +36,25 @@ export const userLoadActionSuccess = (resp: UserFullType): UserAction => ({
   phone: resp.phone || "",
   picture: resp.picture || "",
   location: resp.location || {},
+});
+
+export const userPostsLoadActionSuccess = (
+  resp: ListResponseTypePostPreview
+): PostsAction => ({
+  type: POSTS_LOAD_SUCCESS,
+  total: resp.total,
+  page: resp.page,
+  limit: resp.limit,
+  posts: resp.data,
+});
+
+export const userPostsLoadAction: UserPostsActionFunc = (
+  id: string,
+  page: number,
+  limit: number
+) => ({
+  type: USER_POSTS_LOAD,
+  id,
+  page,
+  limit,
 });

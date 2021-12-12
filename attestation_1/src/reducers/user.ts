@@ -60,9 +60,11 @@ const userReducer = (state: UserState = initialState, action: UserAction) =>
           id: action.id || "",
         };
       }
+
       case USER_LOAD_SUCCESS: {
         return action.id ? UserLoadSuccess(draft, action) : state;
       }
+
       default:
         return state;
     }

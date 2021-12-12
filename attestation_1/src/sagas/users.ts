@@ -21,7 +21,7 @@ function* usersLoad(
   AllEffect<CallEffect<any>> | PutEffect<UsersAction>,
   void,
   [any, any]
-> {
+  > {
   try {
     switch (params.type) {
       case USERS_LOAD: {

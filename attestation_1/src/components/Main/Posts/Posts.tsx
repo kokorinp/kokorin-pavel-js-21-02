@@ -54,6 +54,7 @@ const Posts = ({ posts, getPosts }: Props): ReactElement => {
         ))}
       </div>
       <Paginator
+        key={posts.limit + posts.total + posts.page}
         page={posts.page}
         limit={posts.limit}
         total={posts.total}

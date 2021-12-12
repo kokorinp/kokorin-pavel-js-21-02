@@ -9,8 +9,14 @@ import { ThemeContext } from "../../../contexts/ThemeContext";
 
 import { State } from "../../../types/state";
 
-import { userLoadAction } from "../../../actions/user";
+import { userLoadAction, userPostsLoadAction } from "../../../actions/user";
 import { UserState } from "../../../types/user/state";
+import PostsByUser from "./PostsByUser/PostsByUser";
+import { PostsState } from "../../../types/posts/state";
+import {
+  UserActionFunc,
+  UserPostsActionFunc,
+} from "../../../types/user/actions";
 
 interface ParamsType {
   id: string;
@@ -18,10 +24,17 @@ interface ParamsType {
 
 interface Props {
   user: UserState;
-  loadUser: (newid: string) => void;
+  posts: PostsState;
+  loadUser: UserActionFunc;
+  loadUserPosts: UserPostsActionFunc;
 }
 
-const User = ({ user, loadUser }: Props): ReactElement => {
+const User = ({
+  user,
+  posts,
+  loadUser,
+  loadUserPosts,
+}: Props): ReactElement => {
   const themeContext = useContext(ThemeContext);
   const params = useParams<ParamsType>();
 
@@ -30,56 +43,72 @@ const User = ({ user, loadUser }: Props): ReactElement => {
     loadUser(params.id);
   }, []);
 
+  const handleGetPosts = (page: number, limit: number): void => {
+    console.group("handleGetPosts");
+    console.log(`${params.id}, ${page}, ${limit}`);
+    console.groupEnd();
+    loadUserPosts(params.id, page, limit);
+  };
+
   useScrollToTop();
   return (
-    <div className={`user ${themeContext.darkTheme ? "user_dark" : ""}`}>
-      <div className="user__left">
-        <div className="user__left__img_wrapper">
-          <img
-            className="user__left__img"
-            src={user.picture}
-            alt={`${user.title}. ${user.lastName} ${user.firstName}`}
-            title={user.id}
-          />
+    <div className="user_wrapper">
+      <div className={`user ${themeContext.darkTheme ? "user_dark" : ""}`}>
+        <div className="user__left">
+          <div className="user__left__img_wrapper">
+            <img
+              className="user__left__img"
+              src={user.picture}
+              alt={`${user.title}. ${user.lastName} ${user.firstName}`}
+              title={user.id}
+            />
+          </div>
+        </div>
+        <div className="user__right">
+          <div className="user__right__userinfo">
+            <div className="user__right__userinfo__title">
+              <h3 className="user__right__userinfo__title__text">
+                {`${user.title}. ${user.lastName} ${user.firstName}`}
+              </h3>
+              <div className="user__right__userinfo__title__edit">
+                <EditOutlined /> Редактировать
+              </div>
+            </div>
+            <p>
+              <strong>Пол: </strong>
+              {user.gender}
+            </p>
+            <p>
+              <strong>Дата рождения: </strong>
+              {user.dateOfBirth}
+            </p>
+            <p>
+              <strong>Дата регистрации: </strong>
+              {user.registerDate}
+            </p>
+            <p>
+              <strong>Email: </strong>
+              {user.email}
+            </p>
+            <p>
+              <strong>Телефон: </strong>
+              {user.phone}
+            </p>
+          </div>
+          <div className="user__right__userid">
+            <p>
+              <strong>ID: </strong>
+              {user.id}
+            </p>
+          </div>
         </div>
       </div>
-      <div className="user__right">
-        <div className="user__right__userinfo">
-          <div className="user__right__userinfo__title">
-            <h3 className="user__right__userinfo__title__text">
-              {`${user.title}. ${user.lastName} ${user.firstName}`}
-            </h3>
-            <div className="user__right__userinfo__title__edit">
-              <EditOutlined /> Редактировать
-            </div>
-          </div>
-          <p>
-            <strong>Пол: </strong>
-            {user.gender}
-          </p>
-          <p>
-            <strong>Дата рождения: </strong>
-            {user.dateOfBirth}
-          </p>
-          <p>
-            <strong>Дата регистрации: </strong>
-            {user.registerDate}
-          </p>
-          <p>
-            <strong>Email: </strong>
-            {user.email}
-          </p>
-          <p>
-            <strong>Телефон: </strong>
-            {user.phone}
-          </p>
-        </div>
-        <div className="user__right__userid">
-          <p>
-            <strong>ID: </strong>
-            {user.id}
-          </p>
-        </div>
+      <div className="user_posts">
+        <PostsByUser
+          // key={posts.limit + posts.total + posts.page}
+          posts={posts}
+          getPosts={handleGetPosts}
+        />
       </div>
     </div>
   );
@@ -88,8 +117,10 @@ const User = ({ user, loadUser }: Props): ReactElement => {
 export default connect(
   (state: State) => ({
     user: state.user,
+    posts: state.posts,
   }),
   (dispatch: Dispatch) => ({
     loadUser: bindActionCreators(userLoadAction, dispatch),
+    loadUserPosts: bindActionCreators(userPostsLoadAction, dispatch),
   })
 )(User);

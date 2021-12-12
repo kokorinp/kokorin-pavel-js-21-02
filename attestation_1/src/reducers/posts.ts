@@ -12,7 +12,8 @@ const initialState: PostsState = {
   limit: getLimitInit("PostsLimit"),
   total: 0,
 };
-// DateToString
+// преобразования с полученными данными делал в action
+// тут сделал в редьюсере
 const PostsLoadSuccess = (dr: PostsState, ua: PostsAction): PostsState => {
   const p = ua.posts
     ? ua.posts.map((e: PostPreview) => ({
@@ -22,9 +23,9 @@ const PostsLoadSuccess = (dr: PostsState, ua: PostsAction): PostsState => {
     : [];
 
   return {
-    ...dr,
+    // ...dr,
     posts: p,
-    page: ua.page || getPageInit("PostsPage"),
+    page: ua.page || ua.page === 0 ? ua.page : getPageInit("PostsPage"),
     limit: ua.limit || getLimitInit("PostsLimit"),
     total: ua.total || 0,
   };

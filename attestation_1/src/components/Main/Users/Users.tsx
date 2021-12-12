@@ -38,6 +38,7 @@ const Users = ({ users, getUsers }: Props): ReactElement => {
     <div className="users">
       <Cards ListUsers={users.users} />
       <Paginator
+        key={users.limit + users.total + users.page}
         page={users.page}
         limit={users.limit}
         total={users.total}
