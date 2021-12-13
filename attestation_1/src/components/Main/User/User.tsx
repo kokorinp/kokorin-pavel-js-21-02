@@ -44,9 +44,9 @@ const User = ({
   }, []);
 
   const handleGetPosts = (page: number, limit: number): void => {
-    console.group("handleGetPosts");
-    console.log(`${params.id}, ${page}, ${limit}`);
-    console.groupEnd();
+    // console.group("handleGetPosts");
+    // console.log(`${params.id}, ${page}, ${limit}`);
+    // console.groupEnd();
     loadUserPosts(params.id, page, limit);
   };
 

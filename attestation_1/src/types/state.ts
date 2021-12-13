@@ -4,6 +4,7 @@ import ErrorState from "./error/state";
 import { UserState } from "./user/state";
 import { PostsState } from "./posts/state";
 import { PostState } from "./post/state";
+import { CommentsState } from "./comments/state";
 
 export interface State {
   // auth: AuthState;
@@ -13,6 +14,6 @@ export interface State {
   isLoading: PreloadState;
   isError: ErrorState;
   user: UserState;
-  // comments: CommentListState;
+  comments: CommentsState;
   // posts: PostListState;
 }

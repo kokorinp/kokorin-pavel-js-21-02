@@ -9,12 +9,12 @@ import {
 } from "redux-saga/effects";
 import { PostAction } from "../types/post/actions";
 import { POST_LOAD } from "../const/post/actions";
-// import { getUser } from "../api/user";
 import { postLoadActionSuccess } from "../actions/post";
-import { PostFullType } from "../types/api/api";
 import { preloadOffAction, preloadOnAction } from "../actions/preloader";
 import { ErrorOnAction } from "../actions/error";
 import { getPost } from "../api/post";
+import { getCommetsByPost } from "../api/comments";
+import { postCommentsLoadActionSuccess } from "../actions/comments";
 
 function* postLoad(
   params: PostAction
@@ -29,12 +29,13 @@ function* postLoad(
         // const post: PostFullType = {};
         // post.id = "228";
         yield put(preloadOnAction()); // показать прелоадер
-        const [post]: Array<PostFullType> = yield all([
+        const [post, comments] = yield all([
           call(getPost, params.id as string),
+          call(getCommetsByPost, params.id as string),
         ]);
 
         // console.group("saga POST_LOAD");
-        // console.log(post);
+        // console.log(comments);
         // console.groupEnd();
         if ("id" in post) {
           yield put(postLoadActionSuccess(post));
@@ -43,6 +44,15 @@ function* postLoad(
         } else {
           yield put(ErrorOnAction("Неизвестная ошибка в SAGA POST_LOAD"));
         }
+
+        if ("data" in comments) {
+          yield put(postCommentsLoadActionSuccess(comments));
+        } else if ("error" in comments) {
+          yield put(ErrorOnAction(comments.error));
+        } else {
+          yield put(ErrorOnAction("Неизвестная ошибка в SAGA POST_LOAD"));
+        }
+
         yield put(preloadOffAction()); // скрыть прелоадер
         break;
       }

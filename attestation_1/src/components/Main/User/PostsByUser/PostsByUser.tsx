@@ -24,9 +24,9 @@ const PostsByUser = ({ posts, getPosts }: Props): ReactElement => {
   //   getPosts(-1, -1);
   // }, []);
 
-  console.group("component PostsByUser");
-  console.log(posts);
-  console.groupEnd();
+  // console.group("component PostsByUser");
+  // console.log(posts);
+  // console.groupEnd();
   const themeContext = useContext(ThemeContext);
 
   return posts.posts.length > 0 ? (

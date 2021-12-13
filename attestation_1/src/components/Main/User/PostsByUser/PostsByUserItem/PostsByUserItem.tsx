@@ -1,5 +1,5 @@
 import React, { ReactElement, SyntheticEvent } from "react";
-import { Link } from "react-router-dom";
+
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import { postLoadAction } from "../../../../../actions/post";

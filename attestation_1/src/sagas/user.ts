@@ -14,7 +14,7 @@ import {
   userLoadActionSuccess,
   userPostsLoadActionSuccess,
 } from "../actions/user";
-import { UserFullType } from "../types/api/api";
+
 import { preloadOffAction, preloadOnAction } from "../actions/preloader";
 import { ErrorOnAction } from "../actions/error";
 import { getPostsByUser } from "../api/posts";
@@ -37,9 +37,9 @@ function* userLoad(
           call(getPostsByUser, params.id as string),
         ]);
 
-        console.group("saga USER_LOAD");
-        console.log(posts);
-        console.groupEnd();
+        // console.group("saga USER_LOAD");
+        // console.log(posts);
+        // console.groupEnd();
         if ("id" in user) {
           yield put(userLoadActionSuccess(user));
         } else {
@@ -91,9 +91,9 @@ function* userPostLoad(
           ),
         ]);
 
-        console.group("saga USER_POSTS_LOAD");
-        console.log(posts);
-        console.groupEnd();
+        // console.group("saga USER_POSTS_LOAD");
+        // console.log(posts);
+        // console.groupEnd();
 
         if ("data" in posts) {
           yield put(userPostsLoadActionSuccess(posts));

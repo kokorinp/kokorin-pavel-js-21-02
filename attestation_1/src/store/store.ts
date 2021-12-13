@@ -12,6 +12,7 @@ import usersWatcher from "../sagas/users";
 import userWatcher from "../sagas/user";
 import postsWatcher from "../sagas/posts";
 import postWatcher from "../sagas/post";
+import commentsReducer from "../reducers/comments";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -25,7 +26,7 @@ const store = createStore(
     isLoading: preloadReducer,
     isError: errorReducer,
     user: userReducer,
-    // comments: commentsReducer,
+    comments: commentsReducer,
     // posts: postsReducer,
   }),
   applyMiddleware(sagaMiddleware)

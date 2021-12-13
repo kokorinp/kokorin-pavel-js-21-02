@@ -13,12 +13,14 @@ const errorReducer = (state: ErrorState = initialState, action: ErrorAction) =>
     switch (action.type) {
       case ERROR_ON: {
         return {
+          ...draft,
           textError: action.textError,
           isError: true,
         };
       }
       case ERROR_OFF: {
         return {
+          ...draft,
           textError: "",
           isError: false,
         };

@@ -6,6 +6,7 @@ export const API_REG: string = API_BASE_URL.concat("user/create");
 
 export const API_USER_URL: string = "user";
 export const API_POST_URL: string = "post";
+export const API_COMMENT_URL: string = "comment";
 
 export const APP_ID_FIELD: string = "app-id";
 export const PAGE_FIELD: string = "page";

@@ -124,10 +124,18 @@
         padding-top: 1rem;
       }
     }
+
+    &__footer{
+      width: 100%;
+    }
   }
 }
 
-
+.comments{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
 
 @media (min-width: 576px) {
   .post {
@@ -147,7 +155,7 @@
 @media (min-width: 992px) {
   .post {
     &__modal {
-      width: 60%;
+      width: 75%;
     }
   }
 }

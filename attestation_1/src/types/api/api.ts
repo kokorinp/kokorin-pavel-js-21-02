@@ -12,6 +12,7 @@ export interface UserPreview {
   firstName: string;
   lastName: string;
   picture: string;
+  error?: string;
 }
 
 export interface ListResponseTypeUserPreview
@@ -27,7 +28,6 @@ export interface LocationType {
 }
 
 export interface UserFullType {
-  error?: string;
   id?: string;
   title?: string;
   firstName?: string;
@@ -39,6 +39,7 @@ export interface UserFullType {
   phone?: string;
   picture?: string;
   location?: LocationType;
+  error?: string;
 }
 
 export interface ResponseError {
@@ -54,13 +55,13 @@ export interface PostPreview {
   tags: Array<string>;
   publishDate: string;
   owner: UserPreview;
+  error?: string;
 }
 
 export interface ListResponseTypePostPreview
   extends ListResponseType<PostPreview> {}
 
 export interface PostFullType {
-  error?: string;
   id?: string;
   text?: string;
   image?: string;
@@ -69,4 +70,19 @@ export interface PostFullType {
   tags?: Array<string>;
   publishDate?: string;
   owner?: UserPreview;
+  error?: string;
 }
+
+// ----------- comments ---------------------
+
+export interface CommentFullType {
+  id?: string;
+  message?: string; // max 500
+  owner?: UserPreview;
+  post?: string;
+  publishDate?: string;
+  error?: string;
+}
+
+export interface ListResponseTypeComments
+  extends ListResponseType<CommentFullType> {}

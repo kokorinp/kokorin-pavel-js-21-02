@@ -42,7 +42,7 @@ const Paginator = ({ page, limit, total, setNewPage, setNewLimit }: Props) => {
     }
   );
 
-  return (
+  return total ? (
     <div className="paginator">
       <div className="pages">
         {resultAllPages.map((e: number, i: number, arr: Array<number>) => {
@@ -64,6 +64,8 @@ const Paginator = ({ page, limit, total, setNewPage, setNewLimit }: Props) => {
       </div>
       <Paginatorselect limit={limit} setNewLimit={setNewLimit} />
     </div>
+  ) : (
+    <></>
   );
 };
 
