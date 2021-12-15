@@ -6,11 +6,10 @@ import { ThemeContext } from "../../../contexts/ThemeContext";
 interface Props {
   limit: number;
   setNewLimit: (limit: number) => void;
+  arroptions: Array<number>;
 }
 
-const arroptions: Array<number> = [5, 6, 12, 18, 24, 30, 36, 42, 48, 54];
-
-const Paginatorselect = ({ limit, setNewLimit }: Props) => {
+const Paginatorselect = ({ limit, setNewLimit, arroptions }: Props) => {
   const handleSelectLimit = (e: SyntheticEvent) => {
     const l: number = Number.isNaN((e.target as HTMLSelectElement).value)
       ? 6

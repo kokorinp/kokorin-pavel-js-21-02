@@ -6,6 +6,7 @@ import "./Main.scss";
 
 import Users from "./Users/Users";
 import Posts from "./Posts/Posts";
+import SignIn from "./SignIn/SignIn";
 
 const Main = (): ReactElement => (
   <main className="main">
@@ -25,6 +26,10 @@ const Main = (): ReactElement => (
       <Route path="/users">
         <h1 className="main__title">Пользователи</h1>
         <Users />
+      </Route>
+      <Route path="/signin">
+        <h1 className="main__title">Вход</h1>
+        <SignIn />
       </Route>
       <Redirect to="/users" />
     </Switch>

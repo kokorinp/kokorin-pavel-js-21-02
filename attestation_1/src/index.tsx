@@ -1,11 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "antd/dist/antd.css";
-import "./index.scss";
+
 import { Provider } from "react-redux";
 import { ConfigProvider } from "antd";
 import ruRU from "antd/lib/locale/ru_RU";
 import App from "./App";
+import "./index.scss";
 // import reportWebVitals from "./reportWebVitals";
 
 import store from "./store/store";

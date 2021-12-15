@@ -7,13 +7,12 @@ import { PostState } from "./post/state";
 import { CommentsState } from "./comments/state";
 
 export interface State {
-  // auth: AuthState;
   users: UsersState;
   posts: PostsState;
   post: PostState;
   isLoading: PreloadState;
   isError: ErrorState;
   user: UserState;
+  auth: UserState;
   comments: CommentsState;
-  // posts: PostListState;
 }

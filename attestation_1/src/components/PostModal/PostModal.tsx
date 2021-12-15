@@ -1,4 +1,4 @@
-import React, { ReactElement, useContext } from "react";
+import React, { ReactElement, useContext, useEffect, useState } from "react";
 import { CloseOutlined } from "@ant-design/icons";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
@@ -20,11 +20,39 @@ interface Props {
   closePost: () => void;
 }
 
+interface PagState {
+  page: number;
+  limit: number;
+  total: number;
+}
+
+const initPagState: PagState = {
+  page: 0,
+  limit: 2,
+  total: 0,
+};
+
 const PostModal = ({ post, comments, closePost }: Props): ReactElement => {
-  console.log(comments);
   const handleClose = () => {
     closePost();
   };
+
+  const [PagParams, setPagParams] = useState(initPagState);
+
+  useEffect(() => {
+    setPagParams({
+      ...initPagState,
+      total: comments.total,
+    });
+  }, [comments.total]);
+
+  const setNewPage = (page: number) => {
+    setPagParams({
+      ...PagParams,
+      page,
+    });
+  };
+
   const themeContext = useContext(ThemeContext);
   return post.isLoading ? (
     <div className={`post ${themeContext.darkTheme ? "post_dark" : ""}`}>
@@ -86,25 +114,34 @@ const PostModal = ({ post, comments, closePost }: Props): ReactElement => {
         </div>
         <div className="post__modal__footer">
           <div className="comments">
-            {comments.comments.map((e: CommentFullType) => (
-              <Comment
-                key={e.id || "s"}
-                darkTheme={themeContext.darkTheme || false}
-                message={e.message || ""}
-                publishDate={e.publishDate || ""}
-                owner_id={e.owner?.id || ""}
-                owner_img={e.owner?.picture || ""}
-                owner_name={`${e.owner?.title}. ${e.owner?.lastName} ${e.owner?.firstName}`}
-              />
-            ))}
+            {comments.comments.map((e: CommentFullType, index: number) => {
+              if (
+                index >= PagParams.page * PagParams.limit &&
+                index < (PagParams.page + 1) * PagParams.limit
+              ) {
+                return (
+                  <Comment
+                    key={e.id || index}
+                    darkTheme={themeContext.darkTheme || false}
+                    message={e.message || ""}
+                    publishDate={e.publishDate || ""}
+                    owner_id={e.owner?.id || ""}
+                    owner_img={e.owner?.picture || ""}
+                    owner_name={`${e.owner?.title}. ${e.owner?.lastName} ${e.owner?.firstName}`}
+                  />
+                );
+              }
+              return <></>;
+            })}
           </div>
           <Paginator
-            key={comments.page + comments.limit + comments.total}
-            page={comments.page}
-            limit={comments.limit}
-            total={comments.total}
-            setNewPage={() => {}}
+            key={PagParams.page + PagParams.limit + PagParams.total}
+            page={PagParams.page}
+            limit={PagParams.limit}
+            total={PagParams.total}
+            setNewPage={setNewPage}
             setNewLimit={() => {}}
+            arroptions={[2]}
           />
         </div>
       </div>

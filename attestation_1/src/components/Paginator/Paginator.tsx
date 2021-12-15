@@ -11,9 +11,17 @@ interface Props {
   total: number;
   setNewPage: (page: number) => void;
   setNewLimit: (limit: number) => void;
+  arroptions: Array<number>;
 }
 
-const Paginator = ({ page, limit, total, setNewPage, setNewLimit }: Props) => {
+const Paginator = ({
+  page,
+  limit,
+  total,
+  setNewPage,
+  setNewLimit,
+  arroptions,
+}: Props) => {
   const AllPages: Array<number> = [];
   for (let i = 1; i <= total / limit; i += 1) {
     if (
@@ -62,7 +70,15 @@ const Paginator = ({ page, limit, total, setNewPage, setNewLimit }: Props) => {
           );
         })}
       </div>
-      <Paginatorselect limit={limit} setNewLimit={setNewLimit} />
+      {arroptions.length > 1 ? (
+        <Paginatorselect
+          limit={limit}
+          setNewLimit={setNewLimit}
+          arroptions={arroptions}
+        />
+      ) : (
+        <></>
+      )}
     </div>
   ) : (
     <></>

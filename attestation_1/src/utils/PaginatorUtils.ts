@@ -20,6 +20,9 @@ export const setToLocalStorage = (key: string, value: string): void => {
   localStorage.setItem(key, value);
 };
 
+export const getFromLocalStorage = (key: string): string | null =>
+  localStorage.getItem(key);
+
 // export const setLimit = (limit: string): void => {
 //   localStorage.setItem("limit", limit);
 // };

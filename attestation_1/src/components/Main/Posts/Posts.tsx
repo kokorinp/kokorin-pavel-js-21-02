@@ -10,6 +10,7 @@ import { ThemeContext } from "../../../contexts/ThemeContext";
 import { postsLoadAction } from "../../../actions/posts";
 import { PostPreview } from "../../../types/api/api";
 import Paginator from "../../Paginator/Paginator";
+import { PostsPagArrSelectOptions } from "../../../const/posts/const";
 
 interface Props {
   posts: PostsState;
@@ -60,6 +61,7 @@ const Posts = ({ posts, getPosts }: Props): ReactElement => {
         total={posts.total}
         setNewPage={setNewPage}
         setNewLimit={setNewLimit}
+        arroptions={PostsPagArrSelectOptions}
       />
     </div>
   );

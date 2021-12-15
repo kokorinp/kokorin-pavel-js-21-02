@@ -133,7 +133,7 @@
 
 .comments{
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   width: 100%;
 }
 
@@ -157,6 +157,12 @@
     &__modal {
       width: 75%;
     }
+  }
+
+  .comments{
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
 }
 @media (min-width: 1200px) {

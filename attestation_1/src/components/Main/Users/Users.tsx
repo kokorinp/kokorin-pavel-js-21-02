@@ -9,6 +9,7 @@ import Cards from "./Cards/Cards";
 
 import "./Users.scss";
 import useScrollToTop from "../../../hooks/useScrollToTop";
+import { UsersPagArrSelectOptions } from "../../../const/users/const";
 
 interface Props {
   users: UsersState;
@@ -44,6 +45,7 @@ const Users = ({ users, getUsers }: Props): ReactElement => {
         total={users.total}
         setNewPage={setNewPage}
         setNewLimit={setNewLimit}
+        arroptions={UsersPagArrSelectOptions}
       />
     </div>
   );

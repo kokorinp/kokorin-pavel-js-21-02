@@ -1,6 +1,6 @@
 import produce from "immer";
 import { CommentsState } from "../types/comments/state";
-import { CommentFullType, PostPreview } from "../types/api/api";
+import { CommentFullType } from "../types/api/api";
 import { CommentsAction } from "../types/comments/actions";
 import { COMMENTS_LOAD_SUCCESS } from "../const/comments/actions";
 import { DateToString } from "../utils/DateUtils";

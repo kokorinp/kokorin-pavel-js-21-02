@@ -12,24 +12,27 @@ import { IdcardOutlined, TeamOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { ThemeContext } from "../../../contexts/ThemeContext";
 
+interface TypeClickEvent {
+  item: any;
+  key: string;
+  keyPath: Array<string>;
+  domEvent: SyntheticEvent;
+}
+
 const Menuapp = (): ReactElement => {
-  const [path, setPath] = useState("user");
+  const [path, setPath] = useState("users");
   const history = useHistory();
 
   useEffect(() => {
     if (history.location.pathname.indexOf("/posts") !== -1) {
       setPath("posts");
-    } else {
+    } else if (history.location.pathname.indexOf("/user") !== -1) {
       setPath("users");
+    } else {
+      setPath("");
     }
+    console.log(history.location.pathname);
   }, []);
-
-  interface TypeClickEvent {
-    item: any;
-    key: string;
-    keyPath: Array<string>;
-    domEvent: SyntheticEvent;
-  }
 
   const handleClick = (e: TypeClickEvent) => {
     setPath(e.key);

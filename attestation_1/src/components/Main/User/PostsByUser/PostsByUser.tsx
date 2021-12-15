@@ -5,6 +5,7 @@ import PostsByUserItem from "./PostsByUserItem/PostsByUserItem";
 import { ThemeContext } from "../../../../contexts/ThemeContext";
 import { PostPreview } from "../../../../types/api/api";
 import Paginator from "../../../Paginator/Paginator";
+import { PostsPagArrSelectOptions } from "../../../../const/posts/const";
 
 interface Props {
   posts: PostsState;
@@ -54,6 +55,7 @@ const PostsByUser = ({ posts, getPosts }: Props): ReactElement => {
         total={posts.total}
         setNewPage={setNewPage}
         setNewLimit={setNewLimit}
+        arroptions={PostsPagArrSelectOptions}
       />
     </div>
   ) : (

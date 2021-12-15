@@ -17,11 +17,6 @@ export const userLoadAction: UserActionFunc = (newid: string) => ({
   id: newid,
 });
 
-// console.group("Action USER_LOAD");
-// console.log(page);
-// console.log(pageSize);
-// console.groupEnd();
-
 export const userLoadActionSuccess = (resp: UserFullType): UserAction => ({
   type: USER_LOAD_SUCCESS,
   edit: false,
