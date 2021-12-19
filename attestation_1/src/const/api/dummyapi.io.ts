@@ -2,7 +2,7 @@ export const APP_TOKEN: string = "618a6eae85dd51ac218a6202";
 export const API_BASE_URL: string = "https://dummyapi.io/data/v1/";
 
 export const API_GET_LIST_USERS: string = API_BASE_URL.concat("user");
-export const API_REG: string = API_BASE_URL.concat("user/create");
+export const API_REG_URL: string = "create";
 
 export const API_USER_URL: string = "user";
 export const API_POST_URL: string = "post";

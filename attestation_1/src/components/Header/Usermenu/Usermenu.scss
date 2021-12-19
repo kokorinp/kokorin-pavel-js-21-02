@@ -6,17 +6,49 @@
   justify-content: center;
   height: 100%;
   padding-right: 0.5rem;
+
+  &__divider{
+    padding: 0 0.5rem;
+    color: $text_color;
+  }
+
+  &__link{
+    font-size: 0.9rem;
+    color: $text_color;
+  }
+
+  &__auth{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: $text_color;
+    font-size: 0.9rem;
+    &_dark{
+      color: $text_color_dark;
+    }
+
+    &__img {
+      &_wrapper {
+        width: 2.2rem;
+        height: 2.2rem;
+        overflow: hidden;
+        border-radius: 10rem;
+        margin: 0.3rem 0.3rem 0.3rem 0.5rem;
+        border: 1px #C2C2C2 dotted;
+      }
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    &__name{
+      padding-left: 0.4rem;
+    }
+  }
 }
 
-.user_menu__divider{
-  padding: 0 0.5rem;
-  color: $text_color;
-}
 
-.user_menu__link{
-  font-size: 0.9rem;
-  color: $text_color;
-}
 
 .user_menu_dark{
   .user_menu__link, .user_menu__divider{

@@ -1,4 +1,4 @@
-import { ERROR_OFF, ERROR_ON } from "../const/error/const";
+import { ERROR_OFF, ERROR_ON } from "../const/error/actions";
 import { ErrorActionFunc } from "../types/error/action";
 
 export const ErrorOnAction: ErrorActionFunc = (text?: string) => {

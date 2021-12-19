@@ -3,6 +3,7 @@ import {
   APP_ID_FIELD,
   APP_TOKEN,
   METHOD_GET,
+  METHOD_POST,
 } from "../const/api/dummyapi.io";
 
 export const GetApi = (path: string, searchParams?: Record<string, any>) => {
@@ -16,5 +17,17 @@ export const GetApi = (path: string, searchParams?: Record<string, any>) => {
     headers: new Headers({
       [APP_ID_FIELD]: APP_TOKEN,
     }),
+  }).then((resp: Response) => resp.json());
+};
+
+export const PostApi = (path: string, data: Record<string, any>) => {
+  const url = new URL(path, API_BASE_URL);
+  return fetch(url.toString(), {
+    method: METHOD_POST,
+    headers: new Headers({
+      [APP_ID_FIELD]: APP_TOKEN,
+      "Content-Type": "application/json",
+    }),
+    body: JSON.stringify(data),
   }).then((resp: Response) => resp.json());
 };

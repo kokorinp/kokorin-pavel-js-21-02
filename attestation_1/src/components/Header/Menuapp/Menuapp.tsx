@@ -6,7 +6,7 @@ import React, {
   useEffect,
 } from "react";
 import "./Menuapp.scss";
-import { useHistory } from "react-router";
+import { useHistory, useParams } from "react-router";
 import { Menu } from "antd";
 import { IdcardOutlined, TeamOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
@@ -19,20 +19,24 @@ interface TypeClickEvent {
   domEvent: SyntheticEvent;
 }
 
+interface ParamsType {
+  link: string;
+}
+
 const Menuapp = (): ReactElement => {
   const [path, setPath] = useState("users");
-  const history = useHistory();
+  const params: ParamsType = useParams();
 
   useEffect(() => {
-    if (history.location.pathname.indexOf("/posts") !== -1) {
+    if (params.link.indexOf("posts") !== -1) {
       setPath("posts");
-    } else if (history.location.pathname.indexOf("/user") !== -1) {
+    } else if (params.link.indexOf("user") !== -1) {
       setPath("users");
     } else {
       setPath("");
     }
-    console.log(history.location.pathname);
-  }, []);
+    // console.log(params); // params работает... один минус, пришлось костылить его в роутах как :link
+  }, [params.link]);
 
   const handleClick = (e: TypeClickEvent) => {
     setPath(e.key);

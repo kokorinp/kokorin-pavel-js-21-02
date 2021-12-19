@@ -1,5 +1,5 @@
 import { UploadRequestOption } from "rc-upload/es/interface";
-import { IMGBB_KEY, IMGBB_URL } from "../const/const";
+import { IMGBB_KEY, IMGBB_URL } from "../const/api/imgbb";
 
 function uploadBase64IMGBB(options: UploadRequestOption) {
   const reader = new FileReader();

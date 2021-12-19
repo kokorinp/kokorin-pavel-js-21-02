@@ -1,7 +1,7 @@
 import React, { ReactElement } from "react";
 
 import "./App.scss";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Main from "./components/Main/Main";
@@ -13,6 +13,7 @@ import {
 import Preloader from "./components/Preloader/Preloader";
 import Errormsg from "./components/Errormsg/Errormsg";
 import PostModal from "./components/PostModal/PostModal";
+import UserEditModal from "./components/UserEditModal/UserEditModal";
 
 const App = (): ReactElement => (
   <ThemeContextProvider>
@@ -23,14 +24,18 @@ const App = (): ReactElement => (
         >
           <div className="body">
             <BrowserRouter>
-              <Route path="/">
-                <Header />
-                <Main />
-                <Footer />
-              </Route>
+              <Switch>
+                <Route path="/:link">
+                  <Header />
+                  <Main />
+                  <Footer />
+                </Route>
+                <Redirect to="/users" />
+              </Switch>
             </BrowserRouter>
           </div>
           <PostModal />
+          <UserEditModal />
           <Preloader />
           <Errormsg />
         </div>

@@ -24,6 +24,7 @@ interface ParamsType {
 
 interface Props {
   user: UserState;
+  auth: UserState;
   posts: PostsState;
   loadUser: UserActionFunc;
   loadUserPosts: UserPostsActionFunc;
@@ -31,6 +32,7 @@ interface Props {
 
 const User = ({
   user,
+  auth,
   posts,
   loadUser,
   loadUserPosts,
@@ -41,7 +43,7 @@ const User = ({
   useEffect(() => {
     // getUsers(users.page, users.limit);
     loadUser(params.id);
-  }, []);
+  }, [params.id]);
 
   const handleGetPosts = (page: number, limit: number): void => {
     // console.group("handleGetPosts");
@@ -70,9 +72,14 @@ const User = ({
               <h3 className="user__right__userinfo__title__text">
                 {`${user.title}. ${user.lastName} ${user.firstName}`}
               </h3>
-              <div className="user__right__userinfo__title__edit">
-                <EditOutlined /> Редактировать
-              </div>
+
+              {auth.id === user.id ? (
+                <div className="user__right__userinfo__title__edit">
+                  <EditOutlined /> Редактировать
+                </div>
+              ) : (
+                <></>
+              )}
             </div>
             <p>
               <strong>Пол: </strong>
@@ -117,6 +124,7 @@ const User = ({
 export default connect(
   (state: State) => ({
     user: state.user,
+    auth: state.auth,
     posts: state.posts,
   }),
   (dispatch: Dispatch) => ({

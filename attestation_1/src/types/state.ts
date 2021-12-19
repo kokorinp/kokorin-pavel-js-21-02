@@ -5,6 +5,7 @@ import { UserState } from "./user/state";
 import { PostsState } from "./posts/state";
 import { PostState } from "./post/state";
 import { CommentsState } from "./comments/state";
+import { RegistrationState } from "./reg/state";
 
 export interface State {
   users: UsersState;
@@ -15,4 +16,5 @@ export interface State {
   user: UserState;
   auth: UserState;
   comments: CommentsState;
+  reg: RegistrationState;
 }

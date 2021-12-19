@@ -1,7 +1,7 @@
 import produce from "immer";
 import { ErrorAction } from "../types/error/action";
 import ErrorState from "../types/error/state";
-import { ERROR_OFF, ERROR_ON } from "../const/error/const";
+import { ERROR_OFF, ERROR_ON } from "../const/error/actions";
 
 const initialState: ErrorState = {
   textError: "",

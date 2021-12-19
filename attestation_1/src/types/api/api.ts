@@ -19,7 +19,6 @@ export interface ListResponseTypeUserPreview
   extends ListResponseType<UserPreview> {}
 
 export interface LocationType {
-  // [key: string]: string;
   street?: string;
   city?: string;
   state?: string;
@@ -40,6 +39,7 @@ export interface UserFullType {
   picture?: string;
   location?: LocationType;
   error?: string;
+  data?: any;
 }
 
 export interface ResponseError {
