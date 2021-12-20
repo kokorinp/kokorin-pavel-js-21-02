@@ -19,7 +19,6 @@ export const userLoadAction: UserActionFunc = (newid: string) => ({
 
 export const userLoadActionSuccess = (resp: UserFullType): UserAction => ({
   type: USER_LOAD_SUCCESS,
-  edit: false,
   id: resp.id || "",
   title: resp.title || "",
   firstName: resp.firstName || "",

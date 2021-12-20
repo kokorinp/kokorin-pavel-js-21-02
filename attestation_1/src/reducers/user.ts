@@ -3,7 +3,7 @@ import { USER_LOAD, USER_LOAD_SUCCESS } from "../const/user/actions";
 import { UserAction } from "../types/user/actions";
 import { UserState } from "../types/user/state";
 import { DateToString } from "../utils/DateUtils";
-import { getGender } from "../utils/utils";
+// import { getGender } from "../utils/utils";
 
 const initialState: UserState = {
   edit: false,
@@ -27,10 +27,13 @@ const UserLoadSuccess = (dr: UserState, ua: UserAction): UserState => ({
   title: ua.title || "",
   firstName: ua.firstName || "",
   lastName: ua.lastName || "",
-  gender: ua.gender ? getGender(ua.gender) : "",
+  // gender: ua.gender ? getGender(ua.gender) : "",
+  gender: ua.gender || "",
   email: ua.email || "",
   dateOfBirth: ua.dateOfBirth ? DateToString(ua.dateOfBirth) : "",
+  dateOfBirthRaw: ua.dateOfBirth || "",
   registerDate: ua.registerDate ? DateToString(ua.registerDate) : "",
+  registerDateRaw: ua.registerDate || "",
   phone: ua.phone || "",
   picture: ua.picture || "",
   location: ua.location || {},

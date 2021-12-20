@@ -6,6 +6,7 @@ import { PostsState } from "./posts/state";
 import { PostState } from "./post/state";
 import { CommentsState } from "./comments/state";
 import { RegistrationState } from "./reg/state";
+import { UserEditState } from "./useredit/state";
 
 export interface State {
   users: UsersState;
@@ -15,6 +16,7 @@ export interface State {
   isError: ErrorState;
   user: UserState;
   auth: UserState;
+  userEdit: UserEditState;
   comments: CommentsState;
   reg: RegistrationState;
 }

@@ -93,33 +93,69 @@
       width: 100%;
     }
   }
+
+
+  &__form{
+    &_dark{
+      background-color: $bg_block_dark;
+      color: $text_color_dark;
+
+      & .user-edit__form__input{
+        color: $text_color_dark!important;
+        background-color: $bg_dark!important;
+      }
+
+      & .user-edit__form__datepicker, & .user-edit__form__datepicker span, & .user-edit__form__datepicker input{
+        color: $text_color_dark!important;
+        background-color: $bg_dark!important;
+      }
+
+      & .user-edit__form__label label, & .user-edit__form__label .ant-form-item-extra{
+        color: $text_color_dark!important;
+      }
+
+      & .user-edit__form__select, & .user-edit__form__select div{
+        color: $text_color_dark!important;
+        background-color: $bg_dark!important;
+      }
+
+      & .user-edit__form__label .ant-upload-list-item{
+        color: $text_color_dark!important;
+        background-color: $bg_dark!important;
+        & span{
+          color: $text_color_dark!important;
+        }
+      }
+    }
+    &__label{
+      margin-bottom: 0.5rem!important;
+    }
+
+  }
+
 }
 
-.comments{
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
+
 
 @media (min-width: 576px) {
   .user-edit {
     &__modal {
       // width: 400px;
-      width: 80%;
+      width: 70%;
     }
   }
 }
 @media (min-width: 768px) {
   .user-edit {
     &__modal {
-      width: 65%;
+      width: 55%;
     }
   }
 }
 @media (min-width: 992px) {
   .user-edit {
     &__modal {
-      width: 65%;
+      width: 55%;
     }
   }
 
@@ -127,7 +163,7 @@
 @media (min-width: 1200px) {
   .user-edit {
     &__modal {
-      width: 700px;
+      width: 600px;
     }
   }
 

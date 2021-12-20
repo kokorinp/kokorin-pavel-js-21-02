@@ -7,7 +7,7 @@ import {
   AUTH_LOGIN_SUCCESS,
   AUTH_LOGOUT,
 } from "../const/auth/actions";
-import { getGender } from "../utils/utils";
+// import { getGender } from "../utils/utils";
 import {
   getFromLocalStorage,
   setToLocalStorage,
@@ -38,10 +38,13 @@ const authUserLoadSuccess = (dr: UserState, ua: UserAction): UserState => {
     title: ua.title || "",
     firstName: ua.firstName || "",
     lastName: ua.lastName || "",
-    gender: ua.gender ? getGender(ua.gender) : "",
+    // gender: ua.gender ? getGender(ua.gender) : "",
+    gender: ua.gender || "",
     email: ua.email || "",
     dateOfBirth: ua.dateOfBirth ? DateToString(ua.dateOfBirth) : "",
+    dateOfBirthRaw: ua.dateOfBirth || "",
     registerDate: ua.registerDate ? DateToString(ua.registerDate) : "",
+    registerDateRaw: ua.registerDate || "",
     phone: ua.phone || "",
     picture: ua.picture || "",
     location: ua.location || {},

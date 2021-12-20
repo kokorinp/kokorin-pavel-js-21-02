@@ -17,6 +17,7 @@ import {
   UserActionFunc,
   UserPostsActionFunc,
 } from "../../../types/user/actions";
+import { userEditOnAction } from "../../../actions/useredit";
 
 interface ParamsType {
   id: string;
@@ -28,6 +29,7 @@ interface Props {
   posts: PostsState;
   loadUser: UserActionFunc;
   loadUserPosts: UserPostsActionFunc;
+  openUserEdit: () => void;
 }
 
 const User = ({
@@ -36,6 +38,7 @@ const User = ({
   posts,
   loadUser,
   loadUserPosts,
+  openUserEdit,
 }: Props): ReactElement => {
   const themeContext = useContext(ThemeContext);
   const params = useParams<ParamsType>();
@@ -50,6 +53,10 @@ const User = ({
     // console.log(`${params.id}, ${page}, ${limit}`);
     // console.groupEnd();
     loadUserPosts(params.id, page, limit);
+  };
+
+  const handleUserEdit = (): void => {
+    openUserEdit();
   };
 
   useScrollToTop();
@@ -74,7 +81,10 @@ const User = ({
               </h3>
 
               {auth.id === user.id ? (
-                <div className="user__right__userinfo__title__edit">
+                <div
+                  onClick={handleUserEdit}
+                  className="user__right__userinfo__title__edit"
+                >
                   <EditOutlined /> Редактировать
                 </div>
               ) : (
@@ -130,5 +140,6 @@ export default connect(
   (dispatch: Dispatch) => ({
     loadUser: bindActionCreators(userLoadAction, dispatch),
     loadUserPosts: bindActionCreators(userPostsLoadAction, dispatch),
+    openUserEdit: bindActionCreators(userEditOnAction, dispatch),
   })
 )(User);
