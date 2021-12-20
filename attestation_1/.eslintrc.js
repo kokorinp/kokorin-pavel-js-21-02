@@ -76,5 +76,6 @@ module.exports = {
     "@typescript-eslint/quotes": "off",
     "operator-linebreak": "off",
     "@typescript-eslint/indent": "warn",
+    "function-paren-newline": "warn",
   },
 };

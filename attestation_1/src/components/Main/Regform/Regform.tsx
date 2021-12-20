@@ -4,28 +4,31 @@ import { UploadOutlined } from "@ant-design/icons";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";
 import { useHistory } from "react-router";
-import { Moment } from "moment";
 import { State } from "../../../types/state";
-import { RegistrationState } from "../../../types/reg/state";
 import { RegistrationActionFunc } from "../../../types/reg/actions";
-import { LocationType, UserFullType } from "../../../types/api/api";
-// import { TIME_ZONE_LIST } from "../../../const/const";
-
+import { UserFullType } from "../../../types/api/api";
 import uploadBase64IMGBB from "../../../api/imgbbapi";
 import { RegistrationOnAction } from "../../../actions/reg";
 import "./Regform.scss";
 import { ThemeContext } from "../../../contexts/ThemeContext";
 import { UserState } from "../../../types/user/state";
-import { ErrorInfoType, ValuesFormType } from "../../../types/reg/form";
+import {
+  ErrorFieldsType,
+  ErrorInfoType,
+  ValuesFormType,
+} from "../../../types/reg/form";
+import { ErrorOnAction } from "../../../actions/error";
+import { ErrorActionFunc } from "../../../types/error/action";
 
 const { Option } = Select;
 
 interface Props {
   auth: UserState;
   regUser: RegistrationActionFunc;
+  ErrorOn: ErrorActionFunc;
 }
 
-const Regform = ({ auth, regUser }: Props): ReactElement => {
+const Regform = ({ ErrorOn, auth, regUser }: Props): ReactElement => {
   const history = useHistory();
   auth.id !== "" && history.push(`/user/${auth.id}`);
   const onFinish = (values: ValuesFormType) => {
@@ -69,16 +72,22 @@ const Regform = ({ auth, regUser }: Props): ReactElement => {
 
     const filterUser: UserFullType = Object.fromEntries(map);
 
-    console.log(filterUser);
+    // console.log(filterUser);
     regUser(filterUser);
   };
 
   const onFinishFailed = (errorInfo: ErrorInfoType) => {
-    // тут что-то можно делать с ошибками... оповещать пользователя
-    // errorInfo.errorFields.forEach((e: ErrorFieldsType) => {
-    //   console.log("e:", e.name[0]);
-    // });
-    console.log("Failed:", errorInfo);
+    const err: Array<string> = [];
+    errorInfo.errorFields.forEach((e: ErrorFieldsType) => {
+      err.push(
+        e.errors.reduce(
+          (acc: string, val: string) => acc.concat(val).concat(" | "),
+          ""
+        )
+      );
+    });
+    // console.log("Failed:", err.toString());
+    ErrorOn(err.toString());
   };
 
   const normFile = (e: any): any => {
@@ -269,5 +278,6 @@ export default connect(
   }),
   (dispatch: Dispatch) => ({
     regUser: bindActionCreators(RegistrationOnAction, dispatch),
+    ErrorOn: bindActionCreators(ErrorOnAction, dispatch),
   })
 )(Regform);

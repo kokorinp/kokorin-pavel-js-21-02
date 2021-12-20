@@ -6,7 +6,7 @@ import React, {
   useEffect,
 } from "react";
 import "./Menuapp.scss";
-import { useHistory, useParams } from "react-router";
+import { useParams } from "react-router";
 import { Menu } from "antd";
 import { IdcardOutlined, TeamOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";

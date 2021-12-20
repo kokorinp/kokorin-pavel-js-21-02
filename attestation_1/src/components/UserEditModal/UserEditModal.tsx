@@ -1,9 +1,9 @@
-import React, { ReactElement, useContext, useEffect, useState } from "react";
+import React, { ReactElement, useContext } from "react";
 import { CloseOutlined, UploadOutlined } from "@ant-design/icons";
 import { connect } from "react-redux";
 import { Button, DatePicker, Form, Input, Select, Upload } from "antd";
 import { bindActionCreators, Dispatch } from "redux";
-import moment, { Moment } from "moment";
+import moment from "moment";
 import { State } from "../../types/state";
 import { UserState } from "../../types/user/state";
 
@@ -11,7 +11,11 @@ import "./UserEditModal.scss";
 import { ThemeContext } from "../../contexts/ThemeContext";
 
 import uploadBase64IMGBB from "../../api/imgbbapi";
-import { ErrorInfoType, ValuesFormType } from "../../types/reg/form";
+import {
+  ErrorFieldsType,
+  ErrorInfoType,
+  ValuesFormType,
+} from "../../types/reg/form";
 import { UserFullType } from "../../types/api/api";
 import { UserEditState } from "../../types/useredit/state";
 import {
@@ -19,6 +23,8 @@ import {
   userEditUpdateAction,
 } from "../../actions/useredit";
 import { RegistrationActionFunc } from "../../types/reg/actions";
+import { ErrorOnAction } from "../../actions/error";
+import { ErrorActionFunc } from "../../types/error/action";
 
 const { Option } = Select;
 
@@ -27,6 +33,7 @@ interface Props {
   userEdit: UserEditState;
   closeUserEdit: () => void;
   updateUserEdit: RegistrationActionFunc;
+  ErrorOn: ErrorActionFunc;
 }
 
 const UserEditModal = ({
@@ -34,6 +41,7 @@ const UserEditModal = ({
   auth,
   userEdit,
   updateUserEdit,
+  ErrorOn,
 }: Props): ReactElement => {
   const themeContext = useContext(ThemeContext);
 
@@ -71,12 +79,22 @@ const UserEditModal = ({
 
     const filterUser: UserFullType = Object.fromEntries(map);
 
-    console.log(filterUser);
+    // console.log(filterUser);
     updateUserEdit(filterUser);
   };
 
   const onFinishFailed = (errorInfo: ErrorInfoType) => {
-    console.log("Failed:", errorInfo);
+    const err: Array<string> = [];
+    errorInfo.errorFields.forEach((e: ErrorFieldsType) => {
+      err.push(
+        e.errors.reduce(
+          (acc: string, val: string) => acc.concat(val).concat(" | "),
+          ""
+        )
+      );
+    });
+    // console.log("Failed:", err.toString());
+    ErrorOn(err.toString());
   };
 
   const normFile = (e: any): any => {
@@ -268,6 +286,7 @@ export default connect(
   (dispatch: Dispatch) => ({
     closeUserEdit: bindActionCreators(userEditOffAction, dispatch),
     updateUserEdit: bindActionCreators(userEditUpdateAction, dispatch),
+    ErrorOn: bindActionCreators(ErrorOnAction, dispatch),
   })
 )(UserEditModal);
 

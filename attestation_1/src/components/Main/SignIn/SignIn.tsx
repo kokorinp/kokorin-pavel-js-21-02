@@ -21,7 +21,6 @@ interface Props {
 
 const SignIn = ({ auth, errorOn, login }: Props): ReactElement => {
   const history = useHistory();
-  auth.id !== "" && history.push(`/user/${auth.id}`);
   const themeContext = useContext(ThemeContext);
 
   // console.log(auth);
@@ -42,6 +41,13 @@ const SignIn = ({ auth, errorOn, login }: Props): ReactElement => {
     // console.log("err:", err.toString());
   };
 
+  if (auth.id !== "") {
+    history.push(`/user/${auth.id}`);
+  }
+  // Warning: Cannot update during an existing state transition (such as within `render`).
+  // Render methods should be a pure function of props and state.
+  //   at SignIn
+  // пока не знаю как исправить
   return (
     <div className={`signin ${themeContext.darkTheme ? "signin_dark" : ""}`}>
       <div className="signin__form">
@@ -81,7 +87,7 @@ const SignIn = ({ auth, errorOn, login }: Props): ReactElement => {
           </Form>
         </div>
         <div className="signin__form__footer">
-          Ещё нет аккаунта? Зарегистрироваться
+          Нет аккаунта? Зарегистрироваться
         </div>
       </div>
     </div>

@@ -7,10 +7,7 @@ import {
   CallEffect,
   PutEffect,
 } from "redux-saga/effects";
-import { UserAction } from "../types/user/actions";
-import { getUser } from "../api/user";
 
-import { AUTH_LOGIN } from "../const/auth/actions";
 import { authLoginActionSuccess } from "../actions/auth";
 
 import { preloadOffAction, preloadOnAction } from "../actions/preloader";
@@ -33,9 +30,9 @@ function* regLogin(
           call(regUser, params.user),
         ]);
 
-        console.group("saga REGISTRATION_ON");
-        console.log(user);
-        console.groupEnd();
+        // console.group("saga REGISTRATION_ON");
+        // console.log(user);
+        // console.groupEnd();
         if ("id" in user) {
           yield put(authLoginActionSuccess(user));
         } else if ("error" in user) {
