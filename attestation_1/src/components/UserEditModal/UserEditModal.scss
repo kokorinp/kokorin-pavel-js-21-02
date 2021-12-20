@@ -1,0 +1,171 @@
+@import "../../const/const";
+
+.user-edit {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
+  &__fog {
+    position: fixed;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: $bg_dark;
+    z-index: 19;
+    opacity: 0.3;
+
+    &_dark {
+      background-color: $bg;
+    }
+  }
+
+  &__close{
+    position: fixed;
+    top: 0.5rem;
+    right: 0.5rem;
+    color: $text_color;
+    font-size: 2em;
+    z-index: 31;
+    &:hover{cursor: pointer;}
+    &_dark{
+      color: $text_color_dark;
+    }
+  }
+
+  &__modal {
+    z-index: 20;
+    // width: 300px;
+    width: 90%;
+    background-color: $bg_block;
+    color: $text_color;
+    border-radius: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    &_dark {
+      background-color: $bg_block_dark;
+      color: $text_color_dark;
+    }
+
+    &__header{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      &__img{
+        &_wrapper{
+          width: 100%;
+          aspect-ratio: 4/3;
+          overflow: hidden;
+          border-radius: 1.5rem;
+          border: 1px #C2C2C2 dotted;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &__body{
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      padding: 1rem 0;
+
+      &__text{
+        padding-top: 1rem;
+      }
+    }
+
+    &__footer{
+      width: 100%;
+    }
+  }
+
+
+  &__form{
+    &_dark{
+      background-color: $bg_block_dark;
+      color: $text_color_dark;
+
+      & .user-edit__form__input{
+        color: $text_color_dark!important;
+        background-color: $bg_dark!important;
+      }
+
+      & .user-edit__form__datepicker, & .user-edit__form__datepicker span, & .user-edit__form__datepicker input{
+        color: $text_color_dark!important;
+        background-color: $bg_dark!important;
+      }
+
+      & .user-edit__form__label label, & .user-edit__form__label .ant-form-item-extra{
+        color: $text_color_dark!important;
+      }
+
+      & .user-edit__form__select, & .user-edit__form__select div{
+        color: $text_color_dark!important;
+        background-color: $bg_dark!important;
+      }
+
+      & .user-edit__form__label .ant-upload-list-item{
+        color: $text_color_dark!important;
+        background-color: $bg_dark!important;
+        & span{
+          color: $text_color_dark!important;
+        }
+      }
+    }
+    &__label{
+      margin-bottom: 0.5rem!important;
+    }
+
+  }
+
+}
+
+
+
+@media (min-width: 576px) {
+  .user-edit {
+    &__modal {
+      // width: 400px;
+      width: 70%;
+    }
+  }
+}
+@media (min-width: 768px) {
+  .user-edit {
+    &__modal {
+      width: 55%;
+    }
+  }
+}
+@media (min-width: 992px) {
+  .user-edit {
+    &__modal {
+      width: 55%;
+    }
+  }
+
+}
+@media (min-width: 1200px) {
+  .user-edit {
+    &__modal {
+      width: 600px;
+    }
+  }
+
+}
+
