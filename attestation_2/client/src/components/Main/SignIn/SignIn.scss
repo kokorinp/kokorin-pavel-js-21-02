@@ -1,0 +1,55 @@
+@import "../../../const/const";
+
+.signin{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  background-color: $bg_block;
+  color: $text_color;
+  width: 100%;
+  padding: 25vh 0;
+
+
+  &__form{
+    min-width: 50%;
+    display: flex;
+    flex-direction: column;
+
+    &__title{
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+  }
+
+  &_dark{
+    background-color: $bg_block_dark;
+    color: $text_color_dark;
+  }
+}
+
+
+
+.form{
+  &__input{
+    margin: 0.5rem 0;
+  }
+  &__button{
+    margin: 0.5rem 0;
+    width: 100%;
+  }
+}
+
+
+.signin_dark {
+  & .form__label {
+    color: $text_color_dark;
+  }
+
+  & .form__input {
+    color: $text_color_dark;
+    background-color: $bg_dark;
+  }
+}
+

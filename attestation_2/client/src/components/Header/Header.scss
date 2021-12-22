@@ -1,0 +1,16 @@
+@import "../../const/const";
+
+.header{
+    //padding: 0 1rem;
+    background-color: $bg_block;
+    border-radius: 0.1rem;
+    display: flex;
+}
+
+.header_dark{
+    background-color: $bg_block_dark;
+}
+
+.header__menu{
+    padding-left: 1rem ;
+}
