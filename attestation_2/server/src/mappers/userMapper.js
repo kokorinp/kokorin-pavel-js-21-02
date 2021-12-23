@@ -7,7 +7,7 @@ class UserMapper {
     return {
       ...userList,
       data: userList.data.map((user) => {
-        const fullname = `${user.title ? user.title + '.' : ''} ${user.firstName} ${user.lastName}`;
+        const fullname = `${user.title ? `${user.title}.` : ''} ${user.firstName} ${user.lastName}`;
         return {
           ...user,
           fullname,
@@ -19,7 +19,7 @@ class UserMapper {
   userid(user) {
     return {
       ...user,
-      fullname: `${user.title ? user.title + '.' : ''} ${user.firstName} ${user.lastName}`,
+      fullname: `${user.title ? `${user.title}.` : ''} ${user.firstName} ${user.lastName}`,
       dateOfBirth: user.dateOfBirth ? DateToString(user.dateOfBirth) : '',
       dateOfBirthRaw: user.dateOfBirth || '',
       registerDate: user.registerDate ? DateToString(user.registerDate) : '',

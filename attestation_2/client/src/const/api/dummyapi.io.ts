@@ -7,7 +7,7 @@ export const API_REG_URL: string = 'create';
 
 export const API_USER_URL: string = 'user';
 export const API_LIST_URL: string = 'list';
-export const API_USER_ID_URL: string = 'id';
+export const API_ID_URL: string = 'id';
 
 export const API_POST_URL: string = 'post';
 export const API_COMMENT_URL: string = 'comment';

@@ -1,11 +1,11 @@
-import React, { ReactElement, useContext } from "react";
-import { PostsState } from "../../../../types/posts/state";
-import "./PostsByUser.scss";
-import PostsByUserItem from "./PostsByUserItem/PostsByUserItem";
-import { ThemeContext } from "../../../../contexts/ThemeContext";
-import { PostPreview } from "../../../../types/api/api";
-import Paginator from "../../../Paginator/Paginator";
-import { PostsPagArrSelectOptions } from "../../../../const/posts/const";
+import React, { ReactElement, useContext } from 'react';
+import { PostsState } from '../../../../types/posts/state';
+import './PostsByUser.scss';
+import PostsByUserItem from './PostsByUserItem/PostsByUserItem';
+import { ThemeContext } from '../../../../contexts/ThemeContext';
+import { PostPreview } from '../../../../types/api/api';
+import Paginator from '../../../Paginator/Paginator';
+import { PostsPagArrSelectOptions } from '../../../../const/posts/const';
 
 interface Props {
   posts: PostsState;
@@ -49,6 +49,7 @@ const PostsByUser = ({ posts, getPosts }: Props): ReactElement => {
         ))}
       </div>
       <Paginator
+        KeyPrefix="PostsByUsers"
         key={posts.limit + posts.total + posts.page}
         page={posts.page}
         limit={posts.limit}

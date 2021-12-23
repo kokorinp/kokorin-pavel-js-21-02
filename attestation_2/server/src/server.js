@@ -1,9 +1,9 @@
 // В этом файле у нас конфигурируется сервер и назначаются middlewares
 const express = require('express');
-const { host, port } = require('../config/serverConfig');
-const logger = require('./logger/logger');
 const context = require('request-context');
 const { v4: generateUUID } = require('uuid');
+const { host, port } = require('../config/serverConfig');
+const logger = require('./logger/logger');
 const router = require('./routes/index');
 
 const app = express();

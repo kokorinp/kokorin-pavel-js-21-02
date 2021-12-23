@@ -1,7 +1,7 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement } from 'react';
 
-import "./Comment.scss";
-import UserNameWithHelper from "../../../wrappers/UserNameWithHelper/UserNameWithHelper";
+import './Comment.scss';
+import UserNameWithHelper from '../../../wrappers/UserNameWithHelper/UserNameWithHelper';
 
 interface Props {
   darkTheme: boolean;
@@ -10,28 +10,19 @@ interface Props {
   owner_id: string;
   owner_name: string;
   owner_img: string;
+  index: number;
 }
 
-const Comment = ({
-  darkTheme,
-  message,
-  publishDate,
-  owner_id,
-  owner_img,
-  owner_name,
-}: Props): ReactElement => (
-  <div className={`comment ${darkTheme ? "comment_dark" : ""}`}>
+const Comment = ({ darkTheme, message, publishDate, owner_id, owner_img, owner_name, index }: Props): ReactElement => (
+  <div className={`comment ${darkTheme ? 'comment_dark' : ''}`}>
     <div className="comment__img_wrapper">
       <img src={owner_img} className="comment__img" alt={owner_name} />
     </div>
     <div className="comment__text">
       <div className="comment__text__user">
         <div className="comment__text__user__name">
-          <UserNameWithHelper user_id={owner_id} darkTheme={darkTheme}>
-            <a
-              href={`/user/${owner_id}`}
-              className="post__modal__header__user__name__link"
-            >
+          <UserNameWithHelper key={owner_id + publishDate + index.toString()} user_id={owner_id} darkTheme={darkTheme}>
+            <a href={`/user/${owner_id}`} className="post__modal__header__user__name__link">
               {owner_name}
             </a>
           </UserNameWithHelper>

@@ -1,8 +1,8 @@
 // const UserMapper = require('../mappers/userMapper');
-const logger = require('../logger/logger');
 const format = require('string-format');
+const logger = require('../logger/logger');
 const { postRepository: messages } = require('../const/logger');
-const { getPosts, getPost } = require('../api/posts');
+const { getPosts, getPost, getCommentsPost } = require('../api/posts');
 
 class PostRepository {
   list(page, limit) {
@@ -33,6 +33,22 @@ class PostRepository {
       })
       .catch((error) => {
         logger.error(format(messages.POST_ID_REPLY_ERROR, JSON.stringify(error)));
+        return Promise.reject(error);
+      });
+  }
+
+  comment(id, page, limit) {
+    logger.info(format(messages.LIST_COMMENTS_INVOKE, id, page, limit));
+    return getCommentsPost(id, page, limit)
+      .then((resp) => {
+        logger.info(format(messages.LIST_COMMENTS_SUCCESS, id, page, limit, JSON.stringify(resp)));
+        // const result = UserMapper.list(resp);
+        // logger.info(format(messages.LIST_COMMENTS_MAPPER_RESULT, JSON.stringify(result)));
+        // return result;
+        return resp;
+      })
+      .catch((error) => {
+        logger.error(format(messages.LIST_COMMENTS_REPLY_ERROR, JSON.stringify(error)));
         return Promise.reject(error);
       });
   }

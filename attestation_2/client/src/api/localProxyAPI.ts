@@ -1,4 +1,4 @@
-import { API_BASE_URL, APP_ID_FIELD, APP_TOKEN, METHOD_GET, METHOD_POST, METHOD_PUT } from '../const/api/dummyapi.io';
+import { API_BASE_URL, METHOD_GET, METHOD_POST, METHOD_PUT } from '../const/api/dummyapi.io';
 
 export const GetApi = (path: string, page?: number, limit?: number) => {
   let url: string = API_BASE_URL.concat(path);
@@ -21,9 +21,9 @@ export const GetApi = (path: string, page?: number, limit?: number) => {
     url = url.concat('/').concat(l);
   }
 
-  console.group('GET URL');
-  console.log(url);
-  console.groupEnd();
+  // console.group('GET URL');
+  // console.log(url);
+  // console.groupEnd();
 
   return fetch(url, {
     method: METHOD_GET,
@@ -38,7 +38,7 @@ export const PostApi = (path: string, data: Record<string, any>) => {
   return fetch(url.toString(), {
     method: METHOD_POST,
     headers: new Headers({
-      [APP_ID_FIELD]: APP_TOKEN,
+      // [APP_ID_FIELD]: APP_TOKEN,
       'Content-Type': 'application/json',
     }),
     body: JSON.stringify(data),
@@ -51,7 +51,7 @@ export const PutApi = (path: string, data: Record<string, any>) => {
   return fetch(url.toString(), {
     method: METHOD_PUT,
     headers: new Headers({
-      [APP_ID_FIELD]: APP_TOKEN,
+      // [APP_ID_FIELD]: APP_TOKEN,
       'Content-Type': 'application/json',
     }),
     body: JSON.stringify(data),

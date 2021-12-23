@@ -1,16 +1,16 @@
-import React, { ReactElement, useContext, useEffect } from "react";
-import { connect } from "react-redux";
-import { bindActionCreators, Dispatch } from "redux";
-import { State } from "../../../types/state";
-import { PostsState } from "../../../types/posts/state";
+import React, { ReactElement, useContext, useEffect } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators, Dispatch } from 'redux';
+import { State } from '../../../types/state';
+import { PostsState } from '../../../types/posts/state';
 
-import "./Posts.scss";
-import PostsItem from "./PostsItem/PostsItem";
-import { ThemeContext } from "../../../contexts/ThemeContext";
-import { postsLoadAction } from "../../../actions/posts";
-import { PostPreview } from "../../../types/api/api";
-import Paginator from "../../Paginator/Paginator";
-import { PostsPagArrSelectOptions } from "../../../const/posts/const";
+import './Posts.scss';
+import PostsItem from './PostsItem/PostsItem';
+import { ThemeContext } from '../../../contexts/ThemeContext';
+import { postsLoadAction } from '../../../actions/posts';
+import { PostPreview } from '../../../types/api/api';
+import Paginator from '../../Paginator/Paginator';
+import { PostsPagArrSelectOptions } from '../../../const/posts/const';
 
 interface Props {
   posts: PostsState;
@@ -55,6 +55,7 @@ const Posts = ({ posts, getPosts }: Props): ReactElement => {
         ))}
       </div>
       <Paginator
+        KeyPrefix="Posts"
         key={posts.limit + posts.total + posts.page}
         page={posts.page}
         limit={posts.limit}
@@ -73,7 +74,7 @@ export default connect(
   }),
   (dispatch: Dispatch) => ({
     getPosts: bindActionCreators(postsLoadAction, dispatch),
-  })
+  }),
 )(Posts);
 
 // export default Posts;

@@ -20,28 +20,28 @@ module.exports = {
     }).then((resp) => resp.json());
   },
 
-  PostApi: (path, data) => {
+  PostApi: (path, body) => {
     const url = new URL(path, constDummyapi.API_BASE_URL);
     return fetch(url.toString(), {
       method: constDummyapi.METHOD_POST,
-      headers: new Headers({
+      headers: {
         [constDummyapi.APP_ID_FIELD]: constDummyapi.APP_TOKEN,
         'Content-Type': 'application/json',
-      }),
-      body: JSON.stringify(data),
+      },
+      body: JSON.stringify(body),
     }).then((resp) => resp.json());
   },
 
   // один в один как post разница в методе
-  PutApi: (path, data) => {
+  PutApi: (path, body) => {
     const url = new URL(path, constDummyapi.API_BASE_URL);
     return fetch(url.toString(), {
       method: constDummyapi.METHOD_PUT,
-      headers: new Headers({
+      headers: {
         [constDummyapi.APP_ID_FIELD]: constDummyapi.APP_TOKEN,
         'Content-Type': 'application/json',
-      }),
-      body: JSON.stringify(data),
+      },
+      body: JSON.stringify(body),
     }).then((resp) => resp.json());
   },
 };

@@ -5,9 +5,8 @@ const options = {
   fileNamePattern: '<DATE>.log', // Паттерн файла логов
   dateFormat: 'DD.MM.YYYY', // Формат даты
 };
-
-const logger = require('simple-node-logger').createRollingFileLogger(options); // Создание логгера
-
+const logger = require('simple-node-logger').createRollingFileLogger(options);
+// Создание логгера
 module.exports = {
   ...logger,
   info: (message) => logger.info(context.get('uuid'), ' ', message), // Переназначение метода, для автоматического логирования UUID запроса

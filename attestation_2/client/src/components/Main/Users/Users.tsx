@@ -1,15 +1,15 @@
-import React, { ReactElement, useEffect } from "react";
-import { connect } from "react-redux";
-import { bindActionCreators, Dispatch } from "redux";
-import { State } from "../../../types/state";
-import { UsersState } from "../../../types/users/state";
-import { usersLoadAction } from "../../../actions/users";
-import Paginator from "../../Paginator/Paginator";
-import Cards from "./Cards/Cards";
+import React, { ReactElement, useEffect } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators, Dispatch } from 'redux';
+import { State } from '../../../types/state';
+import { UsersState } from '../../../types/users/state';
+import { usersLoadAction } from '../../../actions/users';
+import Paginator from '../../Paginator/Paginator';
+import Cards from './Cards/Cards';
 
-import "./Users.scss";
-import useScrollToTop from "../../../hooks/useScrollToTop";
-import { UsersPagArrSelectOptions } from "../../../const/users/const";
+import './Users.scss';
+import useScrollToTop from '../../../hooks/useScrollToTop';
+import { UsersPagArrSelectOptions } from '../../../const/users/const';
 
 interface Props {
   users: UsersState;
@@ -39,6 +39,7 @@ const Users = ({ users, getUsers }: Props): ReactElement => {
     <div className="users">
       <Cards ListUsers={users.users} />
       <Paginator
+        KeyPrefix="Users"
         key={users.limit + users.total + users.page}
         page={users.page}
         limit={users.limit}
@@ -57,5 +58,5 @@ export default connect(
   }),
   (dispatch: Dispatch) => ({
     getUsers: bindActionCreators(usersLoadAction, dispatch),
-  })
+  }),
 )(Users);

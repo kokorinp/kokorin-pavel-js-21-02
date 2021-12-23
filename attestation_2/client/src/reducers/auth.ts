@@ -1,55 +1,49 @@
-import produce from "immer";
-import { UserAction } from "../types/user/actions";
-import { UserState } from "../types/user/state";
-import { DateToString } from "../utils/DateUtils";
-import {
-  AUTH_LOGIN,
-  AUTH_LOGIN_SUCCESS,
-  AUTH_LOGOUT,
-} from "../const/auth/actions";
-// import { getGender } from "../utils/utils";
-import {
-  getFromLocalStorage,
-  setToLocalStorage,
-} from "../utils/PaginatorUtils";
+import produce from 'immer';
+import { UserAction } from '../types/user/actions';
+import { UserState } from '../types/user/state';
 
-const auth = JSON.parse(getFromLocalStorage("Auth") || "{}");
+import { AUTH_LOGIN, AUTH_LOGIN_SUCCESS, AUTH_LOGOUT } from '../const/auth/actions';
+// import { getGender } from "../utils/utils";
+import { getFromLocalStorage, setToLocalStorage } from '../utils/PaginatorUtils';
+
+const auth = JSON.parse(getFromLocalStorage('Auth') || '{}');
 
 const initialState: UserState = Object.keys(auth).length
   ? auth
   : {
-    id: "",
-    title: "",
-    firstName: "",
-    lastName: "",
-    gender: "",
-    email: "",
-    dateOfBirth: "",
-    registerDate: "",
-    phone: "",
-    picture: "",
-    location: {},
-  };
+      id: '',
+      title: '',
+      firstName: '',
+      lastName: '',
+      gender: '',
+      email: '',
+      dateOfBirth: '',
+      registerDate: '',
+      phone: '',
+      picture: '',
+      location: {},
+    };
 
 const authUserLoadSuccess = (dr: UserState, ua: UserAction): UserState => {
   const r = {
     ...dr,
-    id: ua.id || "",
-    title: ua.title || "",
-    firstName: ua.firstName || "",
-    lastName: ua.lastName || "",
+    id: ua.id || '',
+    title: ua.title || '',
+    firstName: ua.firstName || '',
+    lastName: ua.lastName || '',
     // gender: ua.gender ? getGender(ua.gender) : "",
-    gender: ua.gender || "",
-    email: ua.email || "",
-    dateOfBirth: ua.dateOfBirth ? DateToString(ua.dateOfBirth) : "",
-    dateOfBirthRaw: ua.dateOfBirth || "",
-    registerDate: ua.registerDate ? DateToString(ua.registerDate) : "",
-    registerDateRaw: ua.registerDate || "",
-    phone: ua.phone || "",
-    picture: ua.picture || "",
+    gender: ua.gender || '',
+    email: ua.email || '',
+    dateOfBirth: ua.dateOfBirth || '',
+    dateOfBirthRaw: ua.dateOfBirthRaw || '',
+    registerDate: ua.registerDate || '',
+    registerDateRaw: ua.registerDateRaw || '',
+    phone: ua.phone || '',
+    picture: ua.picture || '',
     location: ua.location || {},
+    fullname: ua.fullname || '',
   };
-  setToLocalStorage("Auth", JSON.stringify(r));
+  setToLocalStorage('Auth', JSON.stringify(r));
   return r;
 };
 
