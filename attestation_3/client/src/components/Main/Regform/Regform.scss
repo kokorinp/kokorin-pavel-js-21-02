@@ -1,0 +1,63 @@
+@import "../../../const/const";
+.regform {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    background-color: $bg_block;
+    color: $text_color;
+    width: 100%;
+    padding: 2rem 0;
+
+
+    &__form {
+        width: 100%;
+        &__title{
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding-bottom: 1rem;
+        }
+        &__body{
+            width: 100%;
+        }
+    }
+
+    &_dark{
+        background-color: $bg_block_dark;
+        color: $text_color_dark;
+
+        & .regform__form__input{
+            color: $text_color_dark!important;
+            background-color: $bg_dark!important;
+        }
+
+        & .regform__form__datepicker, & .regform__form__datepicker span, & .regform__form__datepicker input{
+            color: $text_color_dark!important;
+            background-color: $bg_dark!important;
+        }
+
+        & .regform__form__label label, & .regform__form__label .ant-form-item-extra{
+            color: $text_color_dark!important;
+        }
+
+        & .regform__form__select, & .regform__form__select div{
+            color: $text_color_dark!important;
+            background-color: $bg_dark!important;
+        }
+
+        & .regform__form__label .ant-upload-list-item{
+            color: $text_color_dark!important;
+            background-color: $bg_dark!important;
+            & span{
+                color: $text_color_dark!important;
+            }
+        }
+    }
+
+}
+
+
+
+
