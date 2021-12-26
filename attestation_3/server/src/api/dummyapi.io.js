@@ -1,6 +1,6 @@
 const constDummyapi = require('../const/dummyapi.io');
 
-const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
+const fetch = require('node-fetch');
 
 module.exports = {
   GetApi: (path, searchParams) => {
