@@ -2,11 +2,12 @@
   "name": "attestation-3-server",
   "version": "0.1.0",
   "description": "",
-  "main": " src/server.js",
+  "main": "src/app.js",
   "scripts": {
-    "startServer": "nodemon src/server.js",
+    "startServer": "nodemon ./server.js",
     "eslint": "eslint ./src",
-    "eslint:fix": "eslint ./src --fix"
+    "eslint:fix": "eslint ./src --fix",
+    "testAll": "jest"
   },
   "private": true,
   "author": "Kokorin Pavel",
@@ -21,7 +22,9 @@
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-prettier": "^4.0.0",
     "nodemon": "^2.0.15",
-    "prettier": "^2.4.1"
+    "prettier": "^2.4.1",
+    "jest": "^27.4.4",
+    "supertest": "^6.1.6"
   },
   "dependencies": {
     "express": "^4.17.1",
@@ -31,6 +34,14 @@
     "request-context": "^2.0.0",
     "simple-node-logger": "^21.8.12",
     "string-format": "^2.0.0",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "multer": "^1.4.4"
+  },
+  "jest": {
+    "testRegex": "(/tests/.*|(\\.|/)(test|spec))\\.jsx?$",
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "**/src/**/**/*.js"
+    ]
   }
 }

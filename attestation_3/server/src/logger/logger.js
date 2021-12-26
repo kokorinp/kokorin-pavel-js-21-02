@@ -1,4 +1,10 @@
+const fs = require('fs');
 const context = require('request-context');
+
+if (!fs.existsSync('./logs')) {
+  console.log('Не существует каталога logs');
+  fs.mkdirSync('./logs');
+}
 
 const options = {
   logDirectory: './logs', // Директория для хранения логгов (должна существовать)

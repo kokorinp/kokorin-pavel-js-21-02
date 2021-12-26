@@ -2,7 +2,7 @@
 const express = require('express');
 const context = require('request-context');
 const { v4: generateUUID } = require('uuid');
-const { host, port } = require('../config/serverConfig');
+
 const logger = require('./logger/logger');
 const router = require('./routes/index');
 
@@ -29,4 +29,4 @@ app.use((err, req, res, next) => {
   next();
 });
 
-app.listen(port, host, () => console.log(`Server started http://${host}:${port}`));
+module.exports = app;
