@@ -20,7 +20,7 @@ const initialState: UserState = {
 
 const UserLoadSuccess = (dr: UserState, ua: UserAction): UserState => ({
   ...dr,
-  edit: ua.edit || false,
+  // edit: ua.edit || false,
   id: ua.id || '',
   title: ua.title || '',
   firstName: ua.firstName || '',
@@ -43,7 +43,7 @@ const userReducer = (state: UserState = initialState, action: UserAction) =>
       case USER_LOAD: {
         return {
           ...draft,
-          edit: action.edit || false,
+          // edit: action.edit || false,
           id: action.id || '',
         };
       }

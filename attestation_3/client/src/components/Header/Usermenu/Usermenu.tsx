@@ -1,12 +1,12 @@
-import React, { ReactElement, useContext } from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { State } from "../../../types/state";
-import { UserState } from "../../../types/user/state";
+import React, { ReactElement, useContext } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { State } from '../../../types/state';
+import { UserState } from '../../../types/user/state';
 
-import { ThemeContext } from "../../../contexts/ThemeContext";
+import { ThemeContext } from '../../../contexts/ThemeContext';
 
-import "./Usermenu.scss";
+import './Usermenu.scss';
 
 interface Props {
   auth: UserState;
@@ -16,12 +16,7 @@ const Usermenu = ({ auth }: Props): ReactElement => {
   const themeContext = useContext(ThemeContext);
 
   const userMenuAuth = (): ReactElement => (
-    <Link
-      className={`user_menu__auth ${
-        themeContext.darkTheme ? "user_menu__auth_dark" : ""
-      }`}
-      to={`/user/${auth.id}`}
-    >
+    <Link className={`user_menu__auth ${themeContext.darkTheme ? 'user_menu__auth_dark' : ''}`} to={`/user/${auth.id}`}>
       <div className="user_menu__auth__img_wrapper">
         <img
           className="user_menu__auth__img"
@@ -30,21 +25,16 @@ const Usermenu = ({ auth }: Props): ReactElement => {
           title={`${auth.title}. ${auth.lastName} ${auth.firstName}`}
         />
       </div>
-      <div
-        className="user_menu__auth__name"
-        title={`${auth.title}. ${auth.lastName} ${auth.firstName}`}
-      >
+      <div className="user_menu__auth__name" title={`${auth.title}. ${auth.lastName} ${auth.firstName}`}>
         {auth.firstName}
       </div>
     </Link>
   );
 
   return (
-    <div
-      className={`user_menu ${themeContext.darkTheme ? "user_menu_dark" : ""}`}
-    >
-      {auth.id === "" ? (
-        <Link className="user_menu__link" to="/signin">
+    <div className={`user_menu ${themeContext.darkTheme ? 'user_menu_dark' : ''}`}>
+      {auth.id === '' ? (
+        <Link id="signin" className="user_menu__link" to="/signin">
           Вход
         </Link>
       ) : (
@@ -52,7 +42,7 @@ const Usermenu = ({ auth }: Props): ReactElement => {
       )}
       <div className="user_menu__divider"> | </div>
 
-      {auth.id === "" ? (
+      {auth.id === '' ? (
         <Link className="user_menu__link" to="/reg">
           Регистрация
         </Link>

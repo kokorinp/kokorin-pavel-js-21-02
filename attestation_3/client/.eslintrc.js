@@ -67,6 +67,8 @@ module.exports = {
     'operator-linebreak': 'off',
     '@typescript-eslint/indent': 'off',
     'function-paren-newline': 'warn',
-    'linebreak-style': ['error', 'windows'],
+    // 'linebreak-style': ['error', 'windows'],
+    'linebreak-style': 'off',
+    'import/no-extraneous-dependencies': 'off',
   },
 };

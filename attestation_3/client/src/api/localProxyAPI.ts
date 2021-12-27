@@ -20,16 +20,8 @@ export const GetApi = (path: string, page?: number, limit?: number) => {
     }
     url = url.concat('/').concat(l);
   }
-
-  // console.group('GET URL');
-  // console.log(url);
-  // console.groupEnd();
-
   return fetch(url, {
     method: METHOD_GET,
-    // headers: new Headers({
-    //   [APP_ID_FIELD]: APP_TOKEN,
-    // }),
   }).then((resp: Response) => resp.json());
 };
 
@@ -51,7 +43,6 @@ export const PutApi = (path: string, data: Record<string, any>) => {
   return fetch(url.toString(), {
     method: METHOD_PUT,
     headers: new Headers({
-      // [APP_ID_FIELD]: APP_TOKEN,
       'Content-Type': 'application/json',
     }),
     body: JSON.stringify(data),

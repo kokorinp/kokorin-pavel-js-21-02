@@ -27,6 +27,7 @@ module.exports = {
     'no-unused-vars': 'warn',
     'class-methods-use-this': 'warn',
     'new-cap': 'warn',
+    'linebreak-style': ['error', 'windows'],
     // 'no-shadow': 'warn',
     // 'max-classes-per-file': ['error', 10],
     // 'no-useless-constructor': 'off',
