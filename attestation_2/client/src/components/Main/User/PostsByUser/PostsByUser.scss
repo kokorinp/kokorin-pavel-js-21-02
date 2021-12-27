@@ -1,0 +1,18 @@
+@import "../../../../const/const";
+
+.posts{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+
+
+
+
+
+@media (min-width: 992px) {
+  .posts{
+    justify-content: flex-start;
+  }
+}

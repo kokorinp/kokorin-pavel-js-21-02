@@ -1,0 +1,10 @@
+.paginator{
+    display: flex;
+    flex-direction: row;
+    margin: 0.5rem 0;
+}
+
+.pages{
+    display: flex;
+    flex-wrap: wrap;
+}
